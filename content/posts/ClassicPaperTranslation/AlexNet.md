@@ -1,7 +1,6 @@
 ---
 title: "AlexNet"
 date: 2024-06-24
-aliases: ["/ClassicPaperTranslation"]
 tags: ["NN"]
 categories: ["ClassicPaperTranslation"]
 author: "Kurong"
