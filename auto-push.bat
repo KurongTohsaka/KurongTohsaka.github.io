@@ -1,0 +1,1 @@
+@echo offcd E:\705248010.github.iogit add .git commit -m "add some posts"git push

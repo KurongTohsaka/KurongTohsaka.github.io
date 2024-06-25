@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Daily Dev on KurongBlog</title>
+    <link>http://localhost:1313/categories/daily-dev/</link>
+    <description>Recent content in Daily Dev on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 24 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/daily-dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记一次博客搭建</title>
+      <link>http://localhost:1313/posts/daily-dev/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/daily-dev/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>My Blog Construction 前言 这是第二次用 Hugo 搭建静态博客了，之前的那个博客不论是主题、工作流、文件结构都很不合理，用起来效率低下。遂决定在研一之前重新搞一次。
+完整过程 hugo 安装 在官方的 Releases · gohugoio/hugo (github.com) 下载对应版本即可，然后设置环境变量。
+环境配置 网站选用 Github Pages 搭建，因为静态网站可以满足我的所有写作需求。域名就是仓库名705248010.github.io.
+将仓库拉取到本地后就要开始配置了。先用
+1 hugo new site &amp;lt;your site name&amp;gt; 生成一个对应文件夹，然后我将选择的主题 adityatelange/hugo-PaperMod: A fast, clean, responsive Hugo theme. (github.com) 放到 themes 文件夹内。
+可以通过
+1 hugo server 查看效果。
+写Markdown 根据官方文档配置完成后就可以本地写文章了，用以下命令生成
+1 hugo new --kind post ./xxxx/xxxx.md Github Actions（CI/CD）的使用 再之后就是编译生成静态文件并部署。Hugo的原生方式是在文件夹内使用 hugo 命令直接编译，然后把生成的 public 文件夹pull到仓库就部署完成。可是每次都这样就太麻烦了。
+所以就要用到 Github Actions 自动部署了，我是从 Actions 中找的 Hugo 官方 yml 文件，一行未改就运行成功。在运行工作流之前记得把仓库设置中的 Actions 相关权限给了，还有把 Pages 中的 Deploy Source 设置为 Actions。</description>
+    </item>
+    <item>
+      <title>记一次博客搭建</title>
+      <link>http://localhost:1313/posts/test/test/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/test/test/</guid>
+      <description>$$a^*=x-b^*$$ $$ a^*=x-b^* $$ $$ a^*=x-b^* $$ $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$</description>
+    </item>
+  </channel>
+</rss>
