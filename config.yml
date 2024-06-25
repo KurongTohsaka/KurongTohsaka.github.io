@@ -1,6 +1,6 @@
 baseURL: "https://705248010.github.io"
 title: KurongBlog
-paginate: 5
+paginate: 6
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -30,13 +30,13 @@ params:
   defaultTheme: dark # dark, light
   disableThemeToggle: false
 
-  ShowReadingTime: true
-  ShowShareButtons: true
+  ShowReadingTime: false
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  ShowWordCount: true
-  ShowRssButtonInSectionTermList: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: false
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
@@ -83,7 +83,7 @@ params:
 
   socialIcons:
     - name: github
-      url: "https://github.com/705248010/KurongBlog"
+      url: "https://github.com/705248010/705248010.github.io"
 
   analytics:
     google:
@@ -96,10 +96,10 @@ params:
   cover:
     hidden: false # hide everywhere but not in structured data
     hiddenInList: false # hide on list pages and home
-    hiddenInSingle: true # hide on single page
+    hiddenInSingle: false # hide on single page
 
   editPost:
-    URL: "https://github.com/705248010/KurongBlog"
+    URL: "https://github.com/705248010/705248010.github.io"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
