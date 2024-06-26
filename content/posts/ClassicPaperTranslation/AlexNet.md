@@ -14,10 +14,8 @@ disableShare: true
 disableHLJS: false
 hideSummary: false
 searchHidden: true
-ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
-ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
 ---
@@ -83,7 +81,7 @@ mageNet包含各种分辨率的图像，而CNNs要求输入固定维度。因此
 >
 > 采用ReLU的深度卷积神经网络训练时间比等价的Tanh单元要快几倍，对于一个特定的四层卷积网络，在CIFAR-10数据集上达到25%的训练误差所需要的迭代次数可以证实这一点。
 
-![图1](notes_images/AlexNet/Figure_1.png)
+![图1](/img/ClassicPaperTranslation/AlexNet/Figure_1.png)
 
 > 使用ReLU的四层卷积神经网络在CIFAR-10数据集上达到25%的训练误差比使用tanh神经元的等价网络（虚线）快六倍。为了使训练尽可能快，每个网络的学习率是单独选择的，且没有采用任何类型的正则化。这里展示的效果的大小随网络结构的变化而变化，但使用ReLU的网络都比等价的饱和神经元快几倍。
 
@@ -93,7 +91,7 @@ mageNet包含各种分辨率的图像，而CNNs要求输入固定维度。因此
 
 （该部分就是在说怎样用GPU训练的，略）
 
-![](./notes_images/AlexNet/Figure_2.png)
+![](/img/ClassicPaperTranslation/AlexNet/Figure_2.png)
 
 > CNN架构图解，明确描述了两个GPU之间的责任。在图的顶部，一个GPU运行在部分层上，而在图的底部，另一个GPU运行在部分层上。GPU只在特定的层进行通信。网络的输入是150,528维，网络剩下层的神经元数目分别是253,440–186,624–64,896–64,896–43,264–4096–4096–1000（8层）。
 
@@ -130,7 +128,7 @@ CNN中的池化层归纳了同一核映射上相邻组神经元的输出。习�
 
 ### 3.5 Overall Architecture
 
-![](./notes_images/AlexNet/Figure_2.png)
+![](/img/ClassicPaperTranslation/AlexNet/Figure_2.png)
 
 如图2所示，网络包含8个带权重的层，前5层是卷积层，剩下的3层是全连接层。最后一层全连接层的输出是1000维softmax的输入，softmax会产生1000类标签的分布。训练以最大化多项逻辑回归为目标，目标函数等价于最大化预测分布下训练样本正确标签的对数概率的均值。
 
@@ -180,7 +178,7 @@ Dropout（失活）[10]，它会以0.5的概率对每个隐层神经元的输出
 
 ILSVRC-2010竞赛中最佳结果（竞赛top1）是top-1：47.1%，top-5：28.2%，使用的方法是对6个在不同特征上训练的稀疏编码模型生成的预测采取平均融合。从那时起已公布的最好结果是top-1 ：45.7%，top-5：25.7%，使用的方法是平均在Fisher向量（FV）上训练的两个分类器的预测结果，Fisher向量是通过两种密集采样特征计算得到的[24]。（后续成果）
 
-![](./notes_images/AlexNet/Table_1.png)
+![](/img/ClassicPaperTranslation/AlexNet/Table_1.png)
 
 > ILSVRC-2010测试集上的结果对比。斜体是其它人取得的最好结果。
 
@@ -190,7 +188,7 @@ ILSVRC-2010竞赛中最佳结果（竞赛top1）是top-1：47.1%，top-5：28.2%
 
 本文中描述的单一CNN取得了top-5：18.2%的错误率。五个类似的CNN预测的平均误差率为16.4%。为了对ImageNet 2011秋季发布的整个数据集（1500万图像，22000个类别）进行分类，在最后的池化层之后有一个额外的第6卷积层，训练了一个CNN，然后在它上面进行finetune，在ILSVRC-2012取得了16.6%的错误率。对在ImageNet 2011秋季发布的整个数据集上预训练的两个CNN和前面提到的五个CNN的预测进行平均得到了15.3%的错误率。第二名的最好竞赛输入取得了26.2%的错误率，他的方法是对FV上训练的一些分类器的预测结果进行平均，FV在不同类型密集采样特征计算得到的。
 
-![](./notes_images/AlexNet/Table_2.png)
+![](/img/ClassicPaperTranslation/AlexNet/Table_2.png)
 
 > ILSVRC-2012验证集和测试集的误差对比。斜线部分是其它人取得的最好的结果。带星号的是“预训练的”对ImageNet 2011秋季数据集进行分类的模型。更多细节请看第六节。
 
@@ -200,13 +198,13 @@ ILSVRC-2010竞赛中最佳结果（竞赛top1）是top-1：47.1%，top-5：28.2%
 
 图3显示了网络的两个数据连接层学习到的卷积核。网络学习到了大量的频率核、方向选择核，也学到了各种颜色点。注意两个GPU表现出的专业化，3.5小节中描述的受限连接的结果。GPU 1上的核主要是没有颜色的，而GPU 2上的核主要是针对颜色的。这种专业化在每次运行时都会发生，并且是与任何特别的随机权重初始化（以GPU的重新编号为模）无关的。
 
-![](./notes_images/AlexNet/Figure_3.png)
+![](/img/ClassicPaperTranslation/AlexNet/Figure_3.png)
 
 > 第一卷积层在224×224×3的输入图像上学习到的大小为11×11×3的96个卷积核。上面的48个核是在GPU 1上学习到的而下面的48个卷积核是在GPU 2上学习到的。更多细节请看6.1小节。
 
 在图4的左边部分，是通过在8张测试图像上计算它的top-5预测定性地评估了网络学习到的东西。注意即使是不在图像中心的目标也能被网络识别，例如左上角的小虫。大多数的top-5标签似乎是合理的。例如，对于美洲豹来说，只有其它类型的猫被认为是看似合理的标签。在某些案例（格栅，樱桃）中，网络在意的图片焦点真的很含糊。
 
-![](./notes_images/AlexNet/Figure_4.png)
+![](/img/ClassicPaperTranslation/AlexNet/Figure_4.png)
 
 > （左）8张ILSVRC-2010测试图像和我们的模型认为最可能的5个标签。每张图像的下面是它的正确标签，正确标签的概率用红条表示（如果正确标签在top 5中）。（右）第一列是5张ILSVRC-2010测试图像。剩下的列展示了6张训练图像，这些图像在最后的隐藏层的特征向量与测试图像的特征向量有最小的欧氏距离。
 
@@ -217,60 +215,4 @@ ILSVRC-2010竞赛中最佳结果（竞赛top1）是top-1：47.1%，top-5：28.2%
 ## 7 Discussion
 
 本文结果表明一个大型深度卷积神经网络在一个具有高度挑战性的数据集上使用纯有监督学习可以取得破纪录的结果。值得注意的是，如果移除一个卷积层，网络性能会降低。例如，移除任何中间层都会引起网络损失大约2%的top-1性能。因此深度对于实现我们的结果非常重要。
-
-
-
-## References
-
-> [1] R.M.BellandY.Koren.Lessonsfromthenetflixprizechallenge.ACMSIGKDDExplorationsNewsletter, 9(2):75–79, 2007.
->
-> [2] A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. [www.imagenet.org/challenges](http://www.imagenet.org/challenges). 2010.
->
-> [3] L. Breiman. Random forests. Machine learning, 45(1):5–32, 2001.
->
-> [4] D. Cires ̧an, U. Meier, and J. Schmidhuber. Multi-column deep neural networks for image classification. Arxiv preprint arXiv:1202.2745, 2012.
->
-> [5] D.C. Cires ̧an, U. Meier, J. Masci, L.M. Gambardella, and J. Schmidhuber. High-performance neural networks for visual object classification. Arxiv preprint arXiv:1102.0183, 2011.
->
-> [6] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei. ImageNet: A Large-Scale Hierarchical Image Database. In CVPR09, 2009.
->
-> [7] J. Deng, A. Berg, S. Satheesh, H. Su, A. Khosla, and L. Fei-Fei. ILSVRC-2012, 2012. URL http://www.image-net.org/challenges/LSVRC/2012/.
->
-> [8] L. Fei-Fei, R. Fergus, and P. Perona. Learning generative visual models from few training examples: An incremental bayesian approach tested on 101 object categories. Computer Vision and Image Understanding, 106(1):59–70, 2007.
->
-> [9] G. Griffin, A. Holub, and P. Perona. Caltech-256 object category dataset. Technical Report 7694, California Institute of Technology, 2007. URL http://authors.library.caltech.edu/7694.
->
-> [10] G.E. Hinton, N. Srivastava, A. Krizhevsky, I. Sutskever, and R.R. Salakhutdinov. Improving neural networks by preventing co-adaptation of feature detectors. arXiv preprint arXiv:1207.0580, 2012.
->
-> [11] K. Jarrett, K. Kavukcuoglu, M. A. Ranzato, and Y. LeCun. What is the best multi-stage architecture for object recognition? In International Conference on Computer Vision, pages 2146–2153. IEEE, 2009.
->
-> [12] A. Krizhevsky. Learning multiple layers of features from tiny images. Master’s thesis, Department of Computer Science, University of Toronto, 2009.
->
-> [13] A. Krizhevsky. Convolutional deep belief networks on cifar-10. Unpublished manuscript, 2010.
->
-> [14] A. Krizhevsky and G.E. Hinton. Using very deep autoencoders for content-based image retrieval. In ESANN, 2011.
->
-> [15] Y. Le Cun, B. Boser, J.S. Denker, D. Henderson, R.E. Howard, W. Hubbard, L.D. Jackel, et al. Handwritten digit recognition with a back-propagation network. In Advances in neural information processing systems, 1990.
->
-> [16] Y. LeCun, F.J. Huang, and L. Bottou. Learning methods for generic object recognition with invariance to pose and lighting. In Computer Vision and Pattern Recognition, 2004. CVPR 2004. Proceedings of the 2004 IEEE Computer Society Conference on, volume 2, pages II–97. IEEE, 2004.
->
-> [17] Y. LeCun, K. Kavukcuoglu, and C. Farabet. Convolutional networks and applications in vision. In Circuits and Systems (ISCAS), Proceedings of 2010 IEEE International Symposium on, pages 253–256. IEEE, 2010.
->
-> [18] H. Lee, R. Grosse, R. Ranganath, and A.Y. Ng. Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations. In Proceedings of the 26th Annual International Conference on Machine Learning, pages 609–616. ACM, 2009.
->
-> [19] T. Mensink, J. Verbeek, F. Perronnin, and G. Csurka. Metric Learning for Large Scale Image Classification: Generalizing to New Classes at Near-Zero Cost. In ECCV - European Conference on Computer Vision, Florence, Italy, October 2012.
->
-> [20] V. Nair and G. E. Hinton. Rectified linear units improve restricted boltzmann machines. In Proc. 27th International Conference on Machine Learning, 2010.
->
-> [21] N. Pinto, D.D. Cox, and J.J. DiCarlo. Why is real-world visual object recognition hard? PLoS computational biology, 4(1):e27, 2008.
->
-> [22] N. Pinto, D. Doukhan, J.J. DiCarlo, and D.D. Cox. A high-throughput screening approach to discovering good forms of biologically inspired visual representation. PLoS computational biology, 5(11):e1000579,2009.
->
-> [23] B.C. Russell, A. Torralba, K.P. Murphy, and W.T. Freeman. Labelme: a database and web-based tool for image annotation. International journal of computer vision, 77(1):157–173, 2008.
->
-> [24] J.SánchezandF.Perronnin.High-dimensionalsignaturecompressionforlarge-scaleimageclassification. In Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on, pages 1665–1672. IEEE,2011.
->
-> [25] P.Y. Simard, D. Steinkraus, and J.C. Platt. Best practices for convolutional neural networks applied to visual document analysis. In Proceedings of the Seventh International Conference on Document Analysis and Recognition, volume 2, pages 958–962, 2003.
->
-> [26] S.C.Turaga,J.F.Murray,V.Jain,F.Roth,M.Helmstaedter,K.Briggman,W.Denk,andH.S.Seung.Convolutional networks can learn to generate affinity graphs for image segmentation. Neural Computation, 22(2):511–538, 2010.
 

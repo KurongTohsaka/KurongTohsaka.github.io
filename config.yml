@@ -135,13 +135,13 @@ markup:
     lineNos: true
     style: monokai
   goldmark:
-    extensions:
+    extensions: 
       passthrough:
         delimiters:
           block:
           - - $$
             - $$
           inline:
-          - - \\
-            - \\
+          - - $
+            - $
         enable: true
