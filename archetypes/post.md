@@ -1,6 +1,6 @@
 ---
 title: "My 1st post"
-date: 2020-09-15
+date: 2024-06-26
 aliases: ["/first"]
 tags: ["first"]
 categories: ["first"]

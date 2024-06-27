@@ -1,6 +1,6 @@
 baseURL: "https://705248010.github.io"
 title: KurongBlog
-paginate: 6
+paginate: 10
 theme: PaperMod
 
 enableRobotsTXT: true
