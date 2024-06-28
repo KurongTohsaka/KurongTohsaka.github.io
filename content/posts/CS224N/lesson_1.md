@@ -22,7 +22,7 @@ ShowRssButtonInSectionTermList: true
 UseHugoToc: true
 ---
 
-## 语义
+## Meaning 
 
 Definition: **meaning 语义**
 
@@ -93,7 +93,6 @@ The equation above has some points:
   softmax(x_i)=\frac{exp(x_i)}{\sum^n_{j=1}exp(x_j)}=p_i
   $$
   
-
 - The softmax function maps arbitrary values $x_i$ :  to a **probability distribution** $p_i$​
 
   - “max” because amplifies probability of largest $x_i$ ;
