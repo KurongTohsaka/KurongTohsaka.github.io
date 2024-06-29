@@ -1,5 +1,5 @@
 ---
-title: "My 1st post"
+title: "Continuous Bag of Words"
 date: 2024-06-29
 aliases: ["/NLP"]
 tags: ["NLP", "word2vec"]
