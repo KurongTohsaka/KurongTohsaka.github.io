@@ -66,3 +66,40 @@ $$
 ## skip-gram 完整过程
 
 ![](/img/NLP/img2.png)
+
+
+
+## skip-gram with negative sampling
+
+负样本即非中心词的上下文，而使用梯度下降更新参数时会对所有的正负样本一起更新。为减少计算量，遂引入 **negative sampling 负采样**。
+
+负采样在更新负样本的参数时只考虑其中的一小部分，且是随选择一个负样本集合。此时，对上面公式的优化目标即最大正样本概率之外又添加了最小化负样本概率。
+
+而 softmax 的计算量也很大，同时对于词嵌入的前身 one-hot 也能看出skip-gram的任务更偏向于二分类，所以可以使用 sigmoid $\sigma(x)=\frac{1}{1+exp(-x)}$ 来降低计算量。
+
+可以得到以下新的目标函数：
+$$
+L=- \bigg[\sum log \ \sigma(c_{pos}·w)+\sum log \ \sigma(-c_{neg}·w) \bigg]
+$$
+其中 $w$ 表示**目标词对应的词向量**，$c$ 表示**目标词的上下文对应的词向量**。
+
+训练方法则选用 **Stochastic gradient descent 随机梯度下降** 来完成参数的更新。
+
+随机梯度下降法的思想就是按照数据生成分布抽取 $m$ 个样本，通过计算他们梯度的平均值来更新梯度，梯度下降法采用的是全部样本的梯度平均值来更新梯度。则目标函数又变为：
+$$
+L=- \bigg[log \ \sigma(c_{pos}·w)+\sum^k_{i=1} log \ \sigma(-c_{neg}·w) \bigg]
+$$
+使用链式法则计算梯度：
+$$
+\begin{align}
+\frac{\partial L}{\partial w}=&-\bigg[\frac{\partial}{\partial w}(log \ \sigma(c_{pos}·w))+\frac{\partial}{\partial w}(\sum^k_{i=1}log \ \sigma(-c_{neg_i}·w))\bigg]
+\\
+=& [\sigma(c_{pos}·w)-1]c_{pos}+\sum^k_{i=1}[\sigma(c_{neg_i})·w]c_{neg_i}
+\end{align}
+$$
+则SGD阶段的参数更新为：
+$$
+w^{t+1}=w^t-\alpha \bigg \{[\sigma(c_{pos}·w)-1]c_{pos}+\sum^k_{i=1}[\sigma(c_{neg_i})·w]c_{neg_i} \bigg\}
+$$
+最后，通常会将两个词向量进行相加来表述单词。例如第 $i$ 个单词就可以表示为$ w_i+c_i$ 。
+
