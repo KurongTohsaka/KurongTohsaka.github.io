@@ -1,8 +1,8 @@
 ---
-title: "Dependency parsing"
+title: "Lecture 4: Dependency parsing"
 date: 2024-07-04
 aliases: ["/CS224N"]
-tags: ["CS224N"]
+tags: ["CS224N", "NLP"]
 categories: ["CS224N"]
 author: "Kurong"
 showToc: true
