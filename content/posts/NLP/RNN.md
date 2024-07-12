@@ -10,7 +10,7 @@ TocOpen: true
 draft: false
 hidemeta: false
 comments: false
-description: "Desc Text."
+description: "了解RNN本体"
 disableHLJS: false # to disable highlightjs
 disableShare: true
 disableHLJS: false
