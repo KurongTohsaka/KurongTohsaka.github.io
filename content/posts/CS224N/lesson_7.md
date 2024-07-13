@@ -40,7 +40,7 @@ The sequence-to-sequence model is an example of a Conditional Language Model
 - Language Model because the decoder is predicting the  next word of the target sentence $y$
 - Conditional because its predictions are also conditioned on the source sentence $x$
 
-![](/img/CS224N/lesson_6/img1.png)
+![](/img/CS224N/lesson_7/img1.png)
 
 ### Multi-layer RNNs in practice
 
@@ -56,13 +56,13 @@ We saw how to generate (or “decode”) the target sentence by taking argmax on
 
 But this way has some problems. Like this:
 
-![](/img/CS224N/lesson_6/img2.png)
+![](/img/CS224N/lesson_7/img2.png)
 
 ### Exhaustive search decoding
 
 Ideally, we want to find a (length T) translation y that maximizes 
 
-![](/img/CS224N/lesson_6/img3.png)
+![](/img/CS224N/lesson_7/img3.png)
 
 We could try computing all possible sequences $y$​
 
@@ -75,7 +75,7 @@ Core idea: On each step of decoder, keep track of the $k$ most probable partial 
 
 - $k$  is the beam size (in practice around 5 to 10)
 
-![](/img/CS224N/lesson_6/img4.png)
+![](/img/CS224N/lesson_7/img4.png)
 
 Beam search is not guaranteed to find optimal solution, but much more efficient than exhaustive search.
 
@@ -85,12 +85,12 @@ In beam search decoding, different hypotheses may produce \<END\> tokens on diff
 
 We have our list of completed hypotheses.
 
-![](/img/CS224N/lesson_6/img5.png)
+![](/img/CS224N/lesson_7/img5.png)
 
 Problem with this: longer hypotheses have lower scores.
 
-![](/img/CS224N/lesson_6/img6.png)
+![](/img/CS224N/lesson_7/img6.png)
 
 ### The bottleneck problem
 
-![](/img/CS224N/lesson_6/img7.png)
+![](/img/CS224N/lesson_7/img7.png)
