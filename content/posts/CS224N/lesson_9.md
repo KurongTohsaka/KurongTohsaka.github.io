@@ -30,7 +30,7 @@ UseHugoToc: true
 
 - **Problem:** RNNs take **O(sequence length)** steps for distant word pairs to interact
 
-  ![](/img/CS224N/lesson_9/img1.png)
+![](/img/CS224N/lesson_9/img1.png)
 
 What does the **O Problem** means ?
 
