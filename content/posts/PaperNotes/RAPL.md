@@ -3,7 +3,7 @@ title: "RAPL: A Relation-Aware Prototype Learning Approach for
 Few-Shot Document-Level Relation Extraction"
 date: 2024-09-17
 aliases: ["/PaperNotes"]
-tags: ["PaperNotes", "RE", "FSRE", "EMNLP"]
+tags: ["PaperNotes", "RE", "EMNLP", "Meta Learning", "Few-Shot Learning"]
 categories: ["PaperNotes"]
 author: "Kurong"
 showToc: true
@@ -136,6 +136,6 @@ FSDLRE 任务的简单描述：
 
 ##  Experiments
 
-![](/img/PaperNotes/RAPL/img3.png)
+![](/img/PaperNotes/RAPL/img4.png)
 
 > Results on FREDo and ReFREDo benchmarks. Reported results are macro averages across relation types. The best and second best performance methods are denoted in bold and underlined respectively.
