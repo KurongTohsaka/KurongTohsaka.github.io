@@ -47,7 +47,7 @@ Accepted ACL 2021。
 
 与长文本描述相比，概念是对实体的直观和简洁的描述，可以从概念数据库（如 YAGO3、ConceptNet 和 Concept Graph 等）中轻松获得。此外，概念比每个实体的具体文本描述更抽象，这是对 FSRE 场景中有限信息的理想补充。
 
-![](/img/PaperNotes/Entity Concept-enhanced Few-shot Relation Extraction/img1.png)
+![](/img/PaperNotes/Entity_Concept-enhanced_Few-shot_Relation_Extraction/img1.png)
 
 为了应对上述挑战，我们提出了一种新的实体概念增强的少样本关系抽取方案（**CONCEPT**-enhanced **FE**w-shot **R**elation **E**xtraction，**ConceptFERE**），该方案引入实体概念以提供有效的关系预测线索。首先，如上表所示，一个实体可能有多个来自不同方面或层次的概念，只有一个概念可能对最终的关系分类有价值。因此，我们设计了一个概念-句子注意力模块，通过比较句子和每个概念的语义相似性来选择最合适的概念。其次，由于句子嵌入和预训练的概念嵌入不是在同一语义空间中学习的，我们采用自注意力机制对句子和选定概念进行词级语义融合，以进行最终的关系分类。
 
@@ -57,7 +57,7 @@ Accepted ACL 2021。
 
 下图为 ConceptFERE 的结构。
 
-![](/img/PaperNotes/Entity Concept-enhanced Few-shot Relation Extraction/img2.png)
+![](/img/PaperNotes/Entity_Concept-enhanced_Few-shot_Relation_Extraction/img2.png)
 
 ### System Overview
 
@@ -83,8 +83,8 @@ $$
 
 在 Wikipedia 数据集上的实验，其中 ConceptFERE(Simple) 去掉了部分模块。
 
-![](/img/PaperNotes/Entity Concept-enhanced Few-shot Relation Extraction/img3.png)
+![](/img/PaperNotes/Entity_Concept-enhanced_Few-shot_Relation_Extraction/img3.png)
 
 下面是消融实验：
 
-![](/img/PaperNotes/Entity Concept-enhanced Few-shot Relation Extraction/img4.png)
+![](/img/PaperNotes/Entity_Concept-enhanced_Few-shot_Relation_Extraction/img4.png)
