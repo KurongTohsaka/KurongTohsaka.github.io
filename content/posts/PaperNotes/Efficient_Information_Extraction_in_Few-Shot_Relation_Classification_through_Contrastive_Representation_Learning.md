@@ -29,6 +29,14 @@ cover:
     hidden: true # only hide on current single page
 ---
 
+## Link
+
+[[2403.16543\] Efficient Information Extraction in Few-Shot Relation Classification through Contrastive Representation Learning (arxiv.org)](https://arxiv.org/abs/2403.16543)
+
+Accepted NAACL 2024.
+
+
+
 ## Intro
 
 关系分类（Relation Classification, RC）是关系抽取中的一个重要子任务，主要关注在给定文本上下文中识别实体对之间的关系类型。为了实现这一目标，RC 模型必须从句子中提取丰富的信息，包括上下文线索、实体属性和关系特征。虽然语言模型在提取文本表示方面重要，但它们在句子表示中的向量空间使用并不理想。为了改进这一点，最近的研究通过各种技术增强了句子表示。
@@ -114,3 +122,8 @@ $$
 对于 N-way K-shot ，增大 N 对模型的影响：
 
 ![](/img/PaperNotes/Efficient_Information_Extraction_in_Few-Shot_Relation_Classification_through_Contrastive_Representation_Learning/img4.png)
+
+> N-way K-shot 评估是一种用于评估机器学习模型在少样本学习（few-shot learning）任务中的性能的方法。具体来说：
+>
+> - **N-way**：表示模型需要在N个不同的类别中进行分类。例如，如果N=5，那么模型需要在5个类别中进行分类。
+> - **K-shot**：表示每个类别中有K个样本用于训练模型。例如，如果K=1，那么每个类别只有一个样本用于训练。
