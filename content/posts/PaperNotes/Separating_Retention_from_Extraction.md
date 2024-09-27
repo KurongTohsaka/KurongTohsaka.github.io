@@ -1,5 +1,5 @@
 ---
-title: "My 1st post"
+title: "《Separating Retention from Extraction in the Evaluation of End-to-end Relation Extraction》笔记"
 date: 2024-09-27
 aliases: ["/PaperNotes"]
 tags: ["PaperNotes", "RE", "NER"]
