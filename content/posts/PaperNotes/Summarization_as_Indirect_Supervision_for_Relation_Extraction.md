@@ -28,8 +28,6 @@ cover:
     hidden: true # only hide on current single page
 ---
 
-Summarization_as_Indirect_Supervision_for_Relation_Extraction
-
 ## Link
 
 [[2205.09837v2\] Summarization as Indirect Supervision for Relation Extraction (arxiv.org)](https://arxiv.org/abs/2205.09837v2)
