@@ -72,11 +72,11 @@ gRPC 是一项进程间通信技术，可以用来连接、调用、操作和调
     
     // ProductInfo 的 go 实现
     
-    func (s *server) AddProduct(ctx context.context, in *pb.Product) (*pb.ProductID, error) {
+    func (s *server) AddProduct(ctx context.Context, in *pb.Product) (*pb.ProductID, error) {
       // 业务逻辑
     }
     
-    func (s *server) getProduct(ctx context.context, in *pb.ProductID) (*pb.Product, error) {
+    func (s *server) getProduct(ctx context.Context, in *pb.ProductID) (*pb.Product, error) {
       // 业务逻辑
     }
 
@@ -140,3 +140,57 @@ gRPC 的优势所在：
 - 支持全双工：可以开发流服务或流客户端；
 - 具备多种特性：支持认证、加密、弹性、负载均衡、服务发现等；
 - 与云原生的集成：是 CNCF 的一部分，大多数现代框架和技术都提供了对 gRPC 的原生支持。
+
+
+
+## 开始使用 gRPC
+
+### 创建服务定义
+
+正如一开始的“gRPC 入门”篇章中的代码片段，先定义消息类型、服务接口。完成服务定义后，就是生成代码并进行实现了。
+
+### Go 实现
+
+- gRPC 服务端：
+
+  - ```go
+    package main
+    
+    import (
+      "context"
+      "errors"
+      "log"
+      
+      "github.com/gofrs/uuid"
+      pb "productinfo/service/ecommerce"
+    )
+    
+    // 中间件交互的抽象
+    type server struct {
+      productMap map[string]*pb.Product
+    }
+    
+    func (s *server) AddProduct(ctx context.Context, in *pb.Product) (*pb.ProductID, error) {
+      out, err := uuid.NewV4()
+      if err != nil {
+        return nil, status.Errorf(codes.Internal, "Error while generating Product ID", err)
+      }
+      
+      in.Id = out.String()
+      if s.productMap != nil {
+        s.ProductMap = make(map[string]*pb.Product)
+      }
+      s.productMap[in.Id] = in
+      
+      return &pb.ProductID{Value: in.Id}, status.New(codes.OK, "").Err()
+    }
+    ```
+
+  - 
+
+- gRPC 客户端：
+
+  - ```go
+    ```
+
+  - 
