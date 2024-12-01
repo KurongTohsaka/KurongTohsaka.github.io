@@ -186,11 +186,248 @@ gRPC 的优势所在：
     }
     ```
 
-  - 
+  - ```go
+    package main
+    
+    import {
+      "log"
+      "net"
+      
+      pb "productinfo/service/ecommerce"
+      "google.golang.org/grpc"
+    }
+    
+    const (
+      port = ":50051"
+    )
+    
+    func main() {
+      lis, err := net.listen("tcp". port)
+      if err != nil {
+        log.Fatalf("failed to listen: %v", err)
+      }
+      
+      // 创建服务器并监听
+      s := grpc.NewServer()
+      pb.RegisterProductInfoServer(s, &server())
+      log.Printf("Starting gRPC listener on port "+ port)
+      
+      if err := s.Serve(lis); err != nil {
+        log.Fatalf("failed to serve: %v", err)
+      }
+    }
+    ```
 
 - gRPC 客户端：
 
   - ```go
+    package main
+    import (
+      "context"
+      "time"
+      "log"
+      
+      "google.golang.org/grpc"
+      pb "productinfo/service/ecommerce"
+    )
+    
+    const (
+      address = "localhost:50051"
+    )
+    
+    func main() {
+      conn, errr := grpc.Dial(address. grpc.WithInsecure())
+      if err != nil {
+        log.Fatalf("did not connect: %v", err)
+      }
+      defer conn.close()
+      
+      c := pb.NewProductInfoClient(conn)
+      ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+      defer cancel()
+      
+      name := "Apple 11"
+      description := "Apple 11"
+      price := float32(1000.0)
+      r, err := c.AddProduct(ctx, &pb.Product{Name: name, Description: description, Price: price})
+      if err != nil {
+        log.Fatalf("Could not add product: %v", err)
+      }
+      log.Printf("Product ID: %s added successfully", r.Value)
+      
+      product, err := c.GetProduct(ctx, &pb.ProductID(Value: r.Value))
+      if err != nil {
+        log.Fatalf("Could not get product: %v", err)
+      }
+      log.Printf("Product: ", Product.String())
+    }
     ```
 
-  - 
+
+
+## gRPC 的通信模式
+
+### 一元 RPC 模式
+
+前面出现的示例就是一元 RPC 模式，一个服务端、一个客户端，通信时始终只有一个请求和一个响应。这种方式适用于大多数的进程间通信。
+
+### 服务端流 RPC 模式
+
+在服务端流 RPC 模式，服务端接收到客户端的请求消息后，会发回一个响应的序列，这个序列叫做“流”。在将所有的服务端响应发送结束后，服务端会以 trailer 元数据的形式将其状态发送给客户端，从而标记流的结束。
+
+使用方式：
+
+- 服务定义：返回是 stream 类型
+
+  - ```protobuf
+    service OrderManagement {
+    	rpc searchOrders(google.protobuf.StringValue) returns (stream Order);
+    }
+    ```
+
+- 服务端实现：
+
+  - ```go
+    func (s *server) SearchOrders(searchQuery *wrappers.StringValue, stream pb.OrderManagement_SearchOrdersServer) error {
+      // 业务逻辑
+      ...
+      err := stream.Send(&order)  // 通过 send 发送到流中
+     	return nil
+    }
+    ```
+
+  - 接收 stream 的响应，最后返回 nil 来标记流已经结束。
+
+- 客户端实现：
+
+  - ```go
+    ...
+    c := pb.NewOrderManagementClient(conn)
+    ...
+    searchStream, _ := c.SearchOrders(ctx, &wrapper.StringValue{Value: "Google"})
+    for {
+      searchOrder, err := searchStream.Recv()
+      if err == io.EOF {  // 流已经结束
+        break
+      }
+      log.Printf("Search Result: ", searchOrder)
+    }
+    ```
+
+### 客户端流 RPC 模式
+
+在客户端流 RPC 模式，客户端会发送多个请求给服务端，服务端会发送一个响应给客户端。但是服务端不一定要等到客户端接收到所有消息后才发送响应。
+
+使用方式：
+
+- 服务定义：请求是 stream 类型
+
+  -  ```protobuf
+     service OrderManagement {
+     	rpc updateOrders(stream Order) returns (google.protobuf.StringValue);
+     }
+     ```
+
+- 服务端实现：
+
+  - ```go
+    func (s *server) UpdateOrders(stream pb.OrderManagement_UpdateOrdersServer) error {
+      ...
+      order, err := stream.Recv()
+      ...
+      return stream.SendAndClose(...)  // 服务端通过该方法发送响应
+      ...
+    }
+    ```
+
+- 客户端实现：
+
+  - ```go
+    ...
+    c := pb.NewOrderManagementClient(conn)
+    ...
+    if err := updateStream.Send(&upOrder1); err != nil {  // 客户端通过 Send 连续发送多条请求
+      log.Fatalf(...)
+    }
+    ...
+    updateRes, err := updateStream.CloseAndRecv()  // 接收响应
+    ...
+    ```
+
+### 双向流 RPC 模式
+
+在双向流 RPC 模式中，客户端以消息流的形式发送请求到服务端，服务端也以消息流形式响应。
+
+流的操作完全独立，客户端和服务端可以按照任意顺序进行读取和写入。一旦建立连接，通信模式就完全取决于客户端和服务端本身。
+
+
+
+## gRPC 的底层原理
+
+### RPC 流
+
+一个基本的 gRPC 过程，以 getProduct 方法为例：
+
+1. 客户端通过生成的存根调用 getProduct方法；
+2. 客户端存根使用已编码的消息创建 POST 请求。在 gRPC 中所有的请求都是 PSOT，并且 content-type 的值为 application/grpc ；
+3. HTTP 请求消息通过网络发送到服务端；
+4. 接收到消息后，服务端检查消息头消息，确定要调用的方法，然后将消息传递给服务端骨架；
+5. 服务端骨架将消息解析成特定的数据结构；
+6. 借助解析后的消息，服务发起对 getProduct 方法的本地调用。
+
+gRPC 的这些步骤与其他 RPC 方式很相似，而主要区别在与消息的编码方式。gRPC 采用 protocol buffers。
+
+### 使用 protocol buffers 编码消息
+
+对于 protocol buffers 中的消息定义：
+
+- ```protobuf
+  message ProductID {
+  	string value = 1;
+  }
+  ```
+
+- 消息在经过编码后的字节流：消息字段1、消息字段2、….、结束标志。
+
+  - 每个消息字段由标签、值两部分组成，标签由字段索引和线路类型（wire type）组成，字段索引就是上面消息定义里的“1”，线路类型则是该消息字段所属数据结构的类型，如 string 属于 “2:基于长度分隔”，那么其线路类型就是 2。值的编码会根据数据类型而不同。
+
+### 基于长度前缀的消息分帧
+
+长度前缀分帧是指在写入消息本身之前，写入长度信息，来表明每条消息的大小。
+
+在 gRPC 通信中，每条消息都有额外的4字节用来设置其大小，这表示 gRPC 通信可以处理大小不超过 4GB 的所有消息。
+
+除了消息的大小外，还有单字节的无符号整数，用于表明数据是否进行了压缩。
+
+### 基于 HTTP/2 的 gRPC
+
+- 请求消息：请求消息包含请求头信息、以长度作为前缀的消息、流结束标记 EOS。远程调用会在客户端发送请求信息之后就会初始化，然后发送以长度作为前缀的消息，最后发送 EOS 标记。
+- 响应消息：响应消息包含响应头消息、以长度作为前缀的消息、trailer，这个也是发送顺序。
+
+那么，从这个角度再来重新看下 gRPC 的通信模式：
+
+- 一元 RPC 模式：就是以上面消息原始的方式互相发出去；
+- 服务端流 RPC 模式：请求消息不变，响应消息中以长度作为前缀的消息可以是多个；
+- 客户端流 RPC 模式：响应消息不变，请求消息中以长度作为前缀的消息可以是多个；
+- 双向流 RPC 模式：两种消息的以长度作为前缀的消息都可以是多个。
+
+至此，gRPC 在 HTTP/2 层的原理介绍就到这了。
+
+
+
+## gRPC：超越基础知识
+
+这一部分就不看了，就简单的把 gRPC 还能干啥写出来：
+
+- 拦截器
+- 截止时间
+- 取消
+- 错误处理
+- 多路复用
+- 元数据
+- 负载均衡
+
+
+
+
+
