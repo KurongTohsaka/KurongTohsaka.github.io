@@ -1,7 +1,7 @@
 ---
 title: "neo4j常用命令"
 date: 2024-06-26
-tags: ["neo4j"]
+tags: ["Neo4j"]
 categories: ["Daily Dev"]
 author: "Kurong"
 showToc: true
