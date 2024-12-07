@@ -223,3 +223,246 @@ typedef struct dict {
 
 ### 集合
 
+Redis 的集合底层基于 dict 和 intset 实现，当集合类型的元素都处于 64 位有符号整数范围之内时用 intset 存储，其他情况用 dict 存储。
+
+intset 是一个有序的、存储整型数据的结构，结构体定义如下：
+
+```c
+typedef struct intset {
+  uint32_t encoding;  // 编码类型，决定每个元素占用几个字节
+  uint32_t length;  // 元素个数
+  int8_t contents[];  // 柔性数组
+} intset;
+```
+
+intset 会根据待插入的值决定是否需要进行扩容，扩容会修改 encoding 属性的值，进而需要扩展 contents 中原来的元素。可以得到集合的一个简单结论，只要引起了扩容，这个待插入值一定是最值。
+
+### 有序集合
+
+Redis 的有序集合没有使用平衡树或红黑树实现，而是跳跃表。跳跃表的效率与红黑树相似，但实现要简单很多。
+
+跳跃表是一种有序链表的升级版，通过额外的“跳跃层”提高查找效率，接近于二分查找的性能。它的基本结构是：
+
+- 跳跃表由多层链表组成，底层是一个普通的有序链表（包含所有数据）。
+- 上层链表是底层链表的“索引”，每一层跳跃表包含一部分关键节点，链接在更高层级。
+- 每层的节点数量逐级减少，形成一种“金字塔”结构，层数越高一般节点越少。
+
+关于层数的生成，每个节点通过随机算法决定是否出现在上一层。这个随机性使跳跃表的性能接近二分查找。
+
+跳跃表从顶层开始向右查找，直到超过目标值（或者到达链表尾部）。如果当前层找不到，就下移一层继续，直到到底层链表。
+
+查找、插入、删除的平均时间复杂度是 $O(log⁡n)$ 。
+
+它具有以下的优势：
+
+- 动态性好：插入和删除时只需局部调整，不像平衡二叉树需要全局旋转或调整。
+
+- 实现简单：不需要复杂的树平衡操作，代码更易维护。
+
+- 空间效率高：相比平衡树，跳跃表额外的索引层占用较小空间。
+
+跳跃表的结构体定义：
+```c
+typedef struct zskiplistNode {
+  sds ele;  // 存储字符串类型数据
+  double score;  // 存储用于排序的分值
+  struct zskiplistNode *backward;  // 回溯指针，指向当前节点最底层的前一个节点。从后向前遍历时使用
+  struct zskiplistLevel {
+    struct zskiplistNode *forward;  // 指向本层下一个节点
+    unsigned int span;  // forward 指针指向的节点与本节点之间的元素个数，值越大，跳过的节点个数越多
+  } level[];  // level 数组，柔性数组
+} zskiplistNode;
+
+// 表头
+typedef struct zskiplist {
+  struct zskiplistNode *header, *tail;
+  unsigned long length;  // 跳跃表长度
+  int level;  // 跳跃表的层高
+}
+```
+
+zskiplist 的 header 指针指向跳跃表的 head 节点。head 节点的 level 数组元素个数为 32，head 节点不存储任何 member、score值，ele 值为 NULL，score 值为 0 ，也不计入总长度的计算。
+
+
+
+## stream 简介
+
+Redis 的 Stream 是一种高效的、功能强大的数据结构，适用于消息队列、日志管理和实时数据处理等场景。它在 Redis 5.0 中引入，提供了一种基于时间序列的数据模型，类似于 Kafka 等消息队列系统，但具有 Redis 的高性能和易用性。
+
+stream 的基本特性：
+
+- 日志结构：
+
+  - Stream 是按时间排序的日志记录，每条记录包含一个唯一的 ID 和对应的数据。
+
+  - ID 通常是自动生成的时间戳（形如 `1669872150488-0`），包含毫秒时间戳和序号。
+
+- 消费者组：
+  - 支持消费者组 (Consumer Groups)，允许多个消费者分摊处理消息，提高并行处理能力。
+  - 消息在消费者组中只会被一个消费者消费，避免重复处理。
+- 轻量级：
+  - Stream 是内置的数据类型，无需额外配置，易于上手。
+
+Redis 的消息队列功能在一些场景中被广泛使用，特别是在轻量级、低延迟的实时消息处理场景中。相比专业的消息队列中间件（如 RabbitMQ），Redis 的消息队列有其独特的优势和局限性。
+
+stream 的优势
+
+1. 高性能、低延迟：
+   - Redis 是内存数据库，消息的发布和消费速度非常快，特别适合对延迟敏感的场景。
+2. 简化架构：
+   - Redis 集成了多种功能（如缓存、存储、队列等），不需要引入额外的消息队列中间件，降低了运维和管理成本。
+3. 简单易用：
+   - 通过 PUBLISH/SUBSCRIBE 或 Stream 数据结构即可实现消息队列功能，开发和配置简单。
+4. 轻量级任务队列：
+   - 对于简单任务分发或轻量级的数据流处理，Redis 是一个理想的选择。
+
+
+
+## Redis 启动流程与事件驱动模型
+
+### server 启动过程
+
+1. 初始化配置，包含用户可配置的参数以及命令表的初始化，入口函数为 initServerConfig；
+2. 加载并解析配置文件，入口函数为 loadServerConfig；
+3. 初始化服务端内部变量，入口函数 initServer；
+4. 创建事件循环 eventLoop，入口为 aeEventLoop；
+5. 创建 socket 并启动监听，入口为 listenToPort；
+6. 创建文件事件与时间事件；
+7. 开启事件循环。
+
+### 事件处理
+
+事件都封装在 aeEventLoop 中，它的定义如下：
+
+```c
+typedef struct aeEventLoop {
+  int stop;  // 标志事件结束
+  aeFileEvent *events;  // 文件事件数组
+  aeFiredEvent *fired;  // 已触发事件数组
+  aeTimeEvent *timeEventHead;  // 时间事件链表头节点
+  void *apidata;  // 多路复用的底层实现相关数据
+  aeBeforeSleepProc *beforesleep;  // 事件循环前执行的钩子函数
+  aeBeforeSleepProc *aftersleep;  // 事件循环后执行的钩子函数
+} aeEventLoop;
+```
+
+Redis 的事件驱动模型是基于事件循环的，它将所有任务分为两类：文件事件（File Event）和时间事件（Time Event），并通过事件循环依次处理这些事件。
+
+Redis 的事件循环通过函数 aeMain 实现，大致流程如下：
+
+1. 检查是否需要退出：通过 stop 标志判断是否需要退出事件循环；
+2. 处理已触发的文件事件：
+   - 调用多路复用器（如 epoll_wait）等待文件事件触发；
+   - 收集触发的事件，执行相应的回调函数。
+3. 处理到期的时间事件：
+   - 遍历时间事件链表，检查当前时间是否已达到某个事件的触发时间；
+   - 如果是，则执行该时间事件的回调函数。
+4. 执行钩子函数：
+   - 在进入或退出休眠状态时，执行 beforesleep 和 aftersleep 钩子函数，完成一些特定的任务（如清理数据或更新状态）。
+5. 重复上述步骤，直到事件循环终止。
+
+### I/O 多路复用机制
+
+Redis 支持以下几种 I/O 多路复用技术：
+
+- epoll（linux）：
+
+  - 性能最优，适合大规模并发连接。
+
+  - 采用事件通知方式，避免了 select 的轮询开销。
+
+- kqueue（macOS）：
+
+  - 类似于 epoll，性能优越。
+
+- select（跨平台）：
+
+  - 简单但性能差，适合小规模连接。
+
+- poll（linux、unix）：
+
+  - 比 select 稍好，但性能较差。
+
+Redis 使用抽象层封装了多路复用的具体实现，核心接口包括：
+
+- **`aeApiCreate`**：创建多路复用上下文。
+- **`aeApiAddEvent`**：注册文件描述符及其感兴趣的事件类型（读/写）。
+- **`aeApiPoll`**：阻塞等待事件触发，并将触发的事件写入 fired 数组。
+- **`aeApiDelEvent`**：注销文件描述符上的某个事件类型。
+- **`aeApiFree`**：释放多路复用器资源。
+
+### 文件事件
+
+在 Redis 的事件循环机制中，"文件事件（File Event）" 是对可读写的文件描述符（File Descriptor, FD）进行异步处理的核心手段。虽然名为“文件事件”，但实际应用中，它更多用于处理网络套接字（如客户端连接的 TCP Socket）的读写，这与传统的 UNIX 网络编程中“文件描述符既可代表文件又可代表套接字”的概念相呼应。Redis 基本上是通过文件事件来实现非阻塞、单线程的网络 I/O 处理，从而在不依赖多线程的情况下实现高吞吐和低延迟。
+
+Redis 单线程运行中，为了同时处理众多客户端请求，需要在不阻塞主线程的前提下对 I/O 操作（如读写套接字）进行管理。文件事件模型就是为了解决这个问题而设计的。通过将每一个套接字（客户端连接）注册到事件循环中，当该套接字可读或可写时，事件循环会获悉并调用相应的回调函数进行处理。文件事件基于操作系统的多路复用机制（select、epoll、kqueue），以非阻塞方式高效地管理多个 I/O 通道。
+
+aeFileEvent 是文件事件的核心结构，它的结构体定义：
+
+```c
+typedef struct aeFileEvent {
+    int mask;                 // 事件类型掩码，可以是 AE_READABLE 或 AE_WRITABLE 或两者的组合
+    aeFileProc *rfileProc;    // 可读事件的回调函数
+    aeFileProc *wfileProc;    // 可写事件的回调函数
+    void *clientData;         // 用户数据，可以传递给回调函数
+} aeFileEvent;
+```
+
+文件事件有几个实现的关键点：
+
+- 事件注册与管理：
+  - aeEventLoop 的 events 属性中，每个 FD 对应一个 aeFileEvent ；
+  - 注册文件事件时，调用 aeCreateFileEvent 将 FD 与事件类型绑定，同时更新底层多路复用器的监听列表。
+- 事件监听与触发：
+  - Redis 使用多路复用器监听所有注册的 FD 的状态变化，多路复用器由 aeApiPoll 实现；
+  - 多路复用器会在事件发生时返回触发的 FD 和事件类型。
+- 事件分发与处理：
+  - Redis 将触发的文件事件存入 aeEventLoop 的 fired 数组；
+  - 遍历 fired 数组，根据 FD 查找对应的 aeFileEvent 并执行绑定的回调函数。
+
+一个较完整的文件事件的流程：
+
+1. 初始化事件循环 aeEventLoop ；
+2. 用 aeCreateFileEvent 注册文件事件；
+3. 事件循环：
+   - Redis 使用 aeProcessEvents 处理事件：
+     1. 等待事件发生：调用 aeApiPoll 阻塞等待 FD 的状态变化；
+     2. 收集触发事件：将触发的事件放入 fired 数组；
+     3. 执行回调函数：遍历 fired 数组，调用回调函数。
+4. 注销文件事件：当 FD 不再需要被监听了，调用aeDeleteFileEvent 注销事件并更新多路复用器。
+
+### 时间事件
+
+时间事件是基于定时触发的回调机制，用于在特定时间点或周期性地执行特定任务。例如，Redis 中的一些周期性操作（如服务器内部维护、过期键清理、统计信息更新）都是通过时间事件来实现的。
+
+Redis 使用一个单向链表管理所有注册的时间事件，头指针就是 aeEventLoop 中的 timeEventHead 属性。时间事件的核心结构是 aeTimeEvent：
+
+```c
+typedef struct aeTimeEvent {
+    long long id;  // 时间事件的唯一标识符
+    long whenSec;  // 事件触发的时间（秒级）
+    long whenMs;   // 事件触发的时间（毫秒级，与 whenSec 合用可表示一个精确时间点）
+    aeTimeProc *timeProc;  // 时间事件的回调函数
+    aeEventFinalizerProc *finalizerProc;  // 可选的清理回调函数，当时间事件删除时调用
+    struct aeTimeEvent *next;  // 下一个时间事件的指针
+} aeTimeEvent;
+
+```
+
+时间事件的触发与处理流程：
+
+1. 事件检查与触发时机：
+
+   时间事件并非由操作系统机制直接触发，而是由 Redis 在事件循环每一轮迭代（aeProcessEvents 调用）中自行检查当前时间与事件的触发时间是否匹配：
+
+   - Redis 在执行 aeProcessEvents 时，先处理文件事件，然后调用 aeProcessTimeEvents 遍历 timeEventHead 链表；
+   - 对于每个时间事件，Redis 获取当前系统时间并与 whenSec、whenMs 对比。如果当前时间已达或超过事件设定的触发时间，则执行 timeProc 回调函数。
+
+2. 执行回调函数与事件重设：
+
+   当执行 timeProc 时：
+
+   - 若返回 -1，该时间事件时一次性执行，执行结束后立即删除该事件；
+   - 若返回整数（毫秒数），则 Redis 会在当前执行时间基础上增加该毫秒作为下次触发时间，这样就实现了周期性执行的逻辑。
+
+3. 事件清理：如果事件执行结束或调用 aeDeleteTimeEvent 删除，Redis 会调用 finalizerProc 进行清理。
