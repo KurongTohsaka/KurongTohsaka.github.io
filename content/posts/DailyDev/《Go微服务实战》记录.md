@@ -826,40 +826,300 @@ func main() {
 
 ### 微服务中处理事务的方式
 
-- 避免跨微服务的事务
-- 基于 XA 协议的两阶段提交协议
+- 避免跨微服务的事务：微服务架构设计追求的是一种平衡，同等情况下，跨微服务事务越少越好。
 
-最终一致性和补偿
+- 基于 XA 协议的两阶段提交协议：XA 协议是一种分布式事务处理协议，以下是两阶段提交协议的执行流程：
+
+  - 准备阶段：事务协调器向所有参与的资源管理器（如数据库）发送事务准备请求，每个资源管理器执行事务操作但不提交，仅记录操作日志并锁定资源，然后返回是否可以提交的响应。
+  - 提交阶段：如果所有参与者都返回 “Yes”，事务协调器向所有资源管理器发送提交请求，完成事务。如果任何一个参与者返回 “No” 或发生故障，事务协调器向所有资源管理器发送回滚请求，撤销事务。
+
+  这种方式保证了事务的强一致性，即在所有参与节点上的一致性。但是两次网络通信和资源锁定导致性能开销大、单点故障问题。
+
+- 最终一致性和补偿方案：最终一致性是一种弱一致性，不强求所有节点的状态在任一时刻都一致，而是保证在一定时间内最终达成一致。补偿方案是最终一致性的一种具体实现形式，以下是它的执行流程：
+
+  - 异步操作：系统中的各个节点独立地执行操作，无需等待其他节点的响应。然后记录操作的结果，并通过异步通信的方式同步到其他节点。
+  - 一致性检查：定期检查数据一致性，发现不一致时触发补偿操作。
+  - 补偿：如果事务执行失败，通过补偿操作（反向操作、撤销操作）来回滚或调整不一致的状态。
+
+  这种方式显然性能高、容错性强，但是存在一致性延迟问题。
 
 ### Saga模式
 
-Saga 模式最受欢迎。
+Saga 模式是一种分布式事务管理模式，特别适用于微服务架构中。它将一个全局事务拆分为一系列局部事务，这些局部事务通过事件驱动或直接调用的方式来协调执行。每个局部事务都有与之对应的补偿事务，用于回滚或修正操作，从而保证系统的最终一致性。
+
+Saga 模式分为两种实现方式：
+
+- 基于事件驱动的编排式（Orchestration） Saga：
+  - 一个中心化的事务协调器负责事务的调度，它根据预定义的流程，依次调用每个局部事务，接收执行结果，决定是否继续或触发补偿事务。
+- 基于事件的分布式事务链（Choreography）：没有中心协调器，各个服务之间通过事件驱动机制进行通信，每个局部事务完成后通过事件通知下一个局部事务开始执行。如果某个事务失败，会发布回滚事件，触发相关服务执行补偿事务。
+
+Saga 模式具有高性能和高可用性、松耦合（事件驱动）、适应复杂业务逻辑等优点，现在 Saga 模式被广泛应用。
 
 
 
 ## 领域驱动设计的Go实现
 
+这里以电商订单系统为例，将 DDD 用 Go 进行简单实现。
+
+DDD 通常会将系统分为以下层次：
+
+- 用户接口层：负责处理外部请求和响应。
+- 应用层：编排业务用例，协调领域层对象。
+- 领域层：包含核心业务逻辑。
+- 基础设施层：数据库、消息队列、第三方服务等。
+
+以下是电商订单系统的需求：
+
+- 用户下单，选择商品并进行支付。
+- 系统需要校验库存，并在支付后更新库存。
+- 如果库存不足，则禁止下单。
+- 系统分为用户、订单、库存是三个子模块。
+
+基于分层和需求，项目目录结构大致如下：
+
+```
+ecommerce/
+├── app/
+│   ├── order/
+│   │   ├── domain/
+│   │   │   ├── entity.go       # 领域实体
+│   │   │   ├── service.go      # 领域服务
+│   │   │   ├── value_object.go # 值对象
+│   │   │   ├── event.go        # 领域事件
+│   │   │   └── repository.go   # 仓储接口
+│   │   ├── application/
+│   │   │   └── order_service.go # 应用服务
+│   │   ├── infrastructure/
+│   │   │   ├── db.go           # 数据库实现
+│   │   │   └── repository.go   # 仓储实现
+│   │   └── interface/
+│   │       └── handler.go      # HTTP接口
+├── shared/
+│   ├── event_bus.go            # 事件总线
+│   └── database.go             # 通用数据库操作
+└── main.go
+```
+
+那么，先是领域层实现：
+
+- 实体类：
+
+  ```go
+  package domain
+  
+  type Order struct {
+      ID        string
+      Items     []OrderItem
+      TotalCost float64
+      Status    string
+  }
+  
+  type OrderItem struct {
+      ProductID string
+      Quantity  int
+      Price     float64
+  }
+  ```
+
+  为什么这样设计？
+
+  1. 业务主键：ID 表示订单的唯一标识，是实体的核心特性。
+  2. 聚合根：订单是一个业务上下文中的核心概念，是聚合根，负责维护订单的完整性和一致性。
+  3. 业务逻辑集中：将与订单相关的操作和规则封装在实体中（如计算总金额、验证状态转换等），确保业务规则的单一职责。
+
+- 值对象：
+
+  ```go
+  package domain
+  
+  type Address struct {
+      Street  string
+      City    string
+      ZipCode string
+  }
+  
+  func (a Address) IsValid() bool {
+      return a.Street != "" && a.City != "" && a.ZipCode != ""
+  }
+  ```
+
+  设计原因：
+
+  1. 不可变性：值对象是不可变的，这反映了现实中地址的属性在生命周期内一般不会改变。
+  2. 轻量级建模：值对象没有业务标识，所以它们通过值来进行比较。
+  3. 复用性：值对象独立于实体，便于在其他上下文中复用。
+  4. 约束验证：值对象通常内置校验逻辑，报纸数据合法性。
+
+- 领域服务：
+
+  ```go
+  package domain
+  
+  type InventoryService interface {
+      CheckStock(productID string, quantity int) (bool, error)
+  }
+  
+  func CanPlaceOrder(order Order, inventory InventoryService) error {
+      for _, item := range order.Items {
+          available, err := inventory.CheckStock(item.ProductID, item.Quantity)
+          if err != nil {
+              return err
+          }
+          if !available {
+              return fmt.Errorf("insufficient stock for product %s", item.ProductID)
+          }
+      }
+      return nil
+  }
+  ```
+
+  设计原因：
+
+  1. 职责分离：某些业务逻辑不属于任何单一实体或值对象（如跨实体的库存校验），因此需要领域服务来集中管理这些逻辑。领域服务只包含纯粹的业务逻辑，不处理技术细节（如数据库操作）。
+  2. 跨聚合逻辑：库存校验涉及多个商品的库存状态，与订单的完整性强相关，是一种典型的跨聚合逻辑。
+  3. 接口设计：使用接口（`InventoryService`），使得领域层对具体实现保持独立性，便于替换或测试（如模拟库存服务）。
+
+- 领域事件：
+
+  ```go
+  package domain
+  
+  type OrderCreatedEvent struct {
+      OrderID string
+  }
+  
+  func NewOrderCreatedEvent(orderID string) *OrderCreatedEvent {
+      return &OrderCreatedEvent{OrderID: orderID}
+  }
+  ```
+
+  设计原因：
+
+  1. 解耦：通过领域事件，可以将某些业务逻辑（如通知用户或更新统计数据）从订单创建的核心逻辑中解耦。
+  2. 异步性：领域事件适合用于异步处理（通过事件总线或消息队列），提高系统性能。
+  3. 记录领域变化：领域事件反映了领域中的重要业务动作，如“订单已创建”、“支付已完成”等，便于审计或追踪。
+  4. 业务扩展：未来可以很容易地在不修改现有逻辑的情况下订阅新事件以实现扩展。
+
+应用层实现：
+
+```go
+package application
+
+import (
+    "ecommerce/app/order/domain"
+)
+
+type OrderService struct {
+    orderRepo       domain.OrderRepository
+    inventoryService domain.InventoryService
+    eventBus         EventBus
+}
+
+func (s *OrderService) CreateOrder(order domain.Order) error {
+    // 检查库存
+    if err := domain.CanPlaceOrder(order, s.inventoryService); err != nil {
+        return err
+    }
+
+    // 保存订单
+    if err := s.orderRepo.Save(order); err != nil {
+        return err
+    }
+
+    // 发布领域事件
+    event := domain.NewOrderCreatedEvent(order.ID)
+    s.eventBus.Publish(event)
+
+    return nil
+}
+```
+
+设计原因：
+
+1. 协调领域逻辑：应用层负责调用领域层中的逻辑（如实体和领域服务），但不会直接实现业务规则。
+2. 事务管理：应用层负责开启、提交或回滚事务。
+3. 解耦外部接口：应用层将输入命令（如 `PlaceOrderCommand`）转化为领域模型的调用逻辑，不让外部接口直接接触领域层。
+4. 简化用户交互：应用层提供面向用户用例的服务（如下单、支付），隐藏内部复杂性。
+
+基础设施层实现：
+
+```go
+package infrastructure
+
+import (
+    "ecommerce/app/order/domain"
+)
+
+type OrderRepositoryImpl struct {
+    db *sql.DB
+}
+
+func NewOrderRepository(db *sql.DB) *OrderRepositoryImpl {
+    return &OrderRepositoryImpl{db: db}
+}
+
+func (r *OrderRepositoryImpl) Save(order domain.Order) error {
+    // 使用SQL保存订单
+    _, err := r.db.Exec("INSERT INTO orders (id, status) VALUES (?, ?)", order.ID, order.Status)
+    return err
+}
+```
+
+设计原因：
+
+1. 封装技术细节：基础设施层负责具体的技术实现，如数据库访问、消息队列、缓存等。
+2. 数据转换：领域模型与数据库模型可能不同步（如聚合对象需要拆分存储），基础设施层负责进行必要的数据转换。
+3. 外部集成：处理与外部系统的集成（如支付网关、日志系统、第三方 API 调用）。
+4. 抽象与复用：将通用的基础设施逻辑（如数据库连接池、Redis 缓存配置）封装为独立模块，便于在多个上下文中复用。
+
+接口层实现：
+
+```go
+package interface
+
+import (
+    "ecommerce/app/order/application"
+    "net/http"
+)
+
+type OrderHandler struct {
+    orderService *application.OrderService
+}
+
+func (h *OrderHandler) CreateOrder(w http.ResponseWriter, r *http.Request) {
+    // 从请求中解析订单
+    var order domain.Order
+    if err := json.NewDecoder(r.Body).Decode(&order); err != nil {
+        http.Error(w, err.Error(), http.StatusBadRequest)
+        return
+    }
+
+    // 调用应用服务
+    if err := h.orderService.CreateOrder(order); err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    w.WriteHeader(http.StatusCreated)
+}
+```
+
+下面以“创建订单”请求为例，梳理一遍整个过程：
+
+| **层次**   | **作用**                                             | **示例操作**                                                 |
+| ---------- | ---------------------------------------------------- | ------------------------------------------------------------ |
+| 接口层     | 接收用户请求，解析输入数据并返回响应                 | 将 HTTP 请求解析为 `PlaceOrderCommand`，调用应用层并返回结果。 |
+| 应用层     | 协调用例逻辑，调用领域层和基础设施层                 | 调用领域逻辑（如校验库存），通过仓储保存订单，发布事件。     |
+| 领域层     | 定义核心业务逻辑，保证业务规则和一致性               | 创建订单对象，校验库存是否足够。                             |
+| 基础设施层 | 处理技术细节，实现与数据库、消息队列等外部系统的交互 | 将订单保存到数据库，通过领域事件通知其他服务。               |
 
 
 
+## 日志记录
 
-## 生产环境的微服务安全
+在微服务架构中，日志记录通常会用到 ELK 解决方案：Elasticsearch、Logstash 和 Kibana 。
 
-
-
-
-
-## 日志与监控
-
-
-
-
-
-## CI/CD
-
-
-
-
-
-## 使用 go-kit 框架构建微服务
+- Elasticsearch：用于存储和搜索日志数据。
+- Logstash：一个数据处理管道工具，用于从多个来源收集、解析和传输数据到 Elasticsearch 或其他存储系统。
+- Kibana：一个数据可视化和分析工具，用于展示 Elasticsearch 中存储的数据。
 
