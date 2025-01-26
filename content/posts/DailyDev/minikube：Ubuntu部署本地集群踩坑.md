@@ -59,7 +59,7 @@ sudo snap install helm --classic
 snap 上大分：
 
 ```bash
-snap install kubectl --classic
+snap install kubectl --classicuy
 ```
 
 
