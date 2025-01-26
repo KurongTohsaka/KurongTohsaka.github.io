@@ -111,3 +111,9 @@ spec:
 - 扩展集群的总容量。
 
 同时，K8s 可以对 Pod、资源等进行监控，日志也实现了集中管理。
+
+
+
+docker.io/kubernetesui/metrics-scraper:v1.0.8
+
+docker.io/kubernetesui/dashboard:v2.7
