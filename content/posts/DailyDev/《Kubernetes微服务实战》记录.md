@@ -245,11 +245,161 @@ NATS 是一款高性能、轻量级的开源消息系统，广泛用于分布式
 
 ### 抽象存储
 
-### 使用StatefulSet 在 Kubernetes 集群内存储数据
+K8s 的存储模型包含以下几个概念：
+
+- 卷：是 K8s 中最基本的存储单元，用于为 Pod 提供持久化存储。
+- 持久卷：是集群级别的存储资源，由管理员进行配置。
+- 持久卷声明：是用户对存储资源的请求，类似于 Pod 对计算资源的请求。持久卷声明与持久卷绑定，Pod 通过持久卷声明使用持久卷。
+
+- 存储类：用于动态创建持久卷，允许按需分配存储资源。每个存储类对应一种存储后端（如SSD、HDD），并定义了持久卷的属性（如卷类型、回收策略）。
+
+- 动态供给：允许根据持久卷声明自动创建持久卷，无需管理员手动干预。
+- CSI（容器存储接口）：是 K8s 与存储插件之间的标准接口，允许第三方存储提供商集成。
+
+### 使用 StatefulSet 在 Kubernetes 集群内存储数据
+
+StatefulSet 是K8s 中用于管理有状态应用的工作负载 API 对象。与 Deployment 不同，StatefulSet 为每个 Pod 提供唯一的标识和稳定的网络标识、持久化存储，确保 Pod 在重启、迁移或扩展时保持一致性。StatefulSet 适用于需要稳定网络标识、有序部署和持久化存储的应用，如数据库（MySQL、PostgreSQL）、分布式系统（Zookeeper、Kafka）等。
+
+StatefulSet 有一些核心特性：
+
+- 稳定的网络标识：每个 Pod 都有一个唯一的、稳定的网络标识（如 `pod-name-0`, `pod-name-1`），即使 Pod 被重新调度，其名称和网络标识也不会改变。
+- 有序部署和扩展：Pod 的创建和扩展是按顺序进行的。
+- 有序终止和缩容：Pod 的删除是按逆序进行的。
+- 持久化存储：每个 Pod 可以绑定一个独立的持久卷，确保数据在 Pod 重启或迁移时不会丢失。
+- 稳定存储：通过配置，StatefulSet 可以为每个 Pod 动态的创建持久卷声明。
+
+StatefulSet 通常与 Headless Service 使用。Headless Service 不会分配 ClusterIP，而是直接返回 Pod 的 IP 和 DNS 记录。
+
+下面是一个 StatefulSet 配置：
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  serviceName: "nginx"  # 关联的 Headless Service 名称
+  replicas: 3           # Pod 副本数
+  selector:
+    matchLabels:
+      app: nginx        # 匹配 Pod 的标签
+  template:
+    metadata:
+      labels:
+        app: nginx      # Pod 的标签
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: www      # 挂载的卷名称
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:  # 动态创建 PVC
+  - metadata:
+      name: www          # PVC 名称
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi   # 存储大小
+```
 
 ### 在 Kubernetes 中使用关系型和非关系型数据库
 
+使用 StatefulSet 部署 MySQL：
 
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  serviceName: "mysql"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "password"
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi
+```
+
+使用 StatefulSet 部署 Redis：
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+spec:
+  serviceName: "redis"  # 关联的 Headless Service 名称
+  replicas: 3           # Redis 实例数量
+  selector:
+    matchLabels:
+      app: redis         # 匹配 Pod 的标签
+  template:
+    metadata:
+      labels:
+        app: redis       # Pod 的标签
+    spec:
+      containers:
+      - name: redis
+        image: redis:6.2  # Redis 镜像
+        ports:
+        - containerPort: 6379  # Redis 默认端口
+        volumeMounts:
+        - name: redis-data     # 挂载的卷名称
+          mountPath: /data     # Redis 数据目录
+  volumeClaimTemplates:        # 动态创建 PVC
+  - metadata:
+      name: redis-data         # PVC 名称
+    spec:
+      accessModes: [ "ReadWriteOnce" ]  # 访问模式
+      resources:
+        requests:
+          storage: 1Gi         # 存储大小
+```
+
+这是 Redis 的 Headless Service 配置：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  clusterIP: None  # Headless Service
+  ports:
+  - port: 6379     # Redis 默认端口
+    name: redis
+  selector:
+    app: redis     # 匹配 StatefulSet 的 Pod 标签
+```
 
 
 
