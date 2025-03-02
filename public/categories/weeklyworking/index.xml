@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>WeeklyWorking on KurongBlog</title>
+    <link>http://localhost:1313/categories/weeklyworking/</link>
+    <description>Recent content in WeeklyWorking on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 11 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/weeklyworking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>8.06-8.11：一周总结</title>
+      <link>http://localhost:1313/posts/weeklyworking/2024_08_06-2024_08_11/</link>
+      <pubDate>Sun, 11 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/weeklyworking/2024_08_06-2024_08_11/</guid>
+      <description>&lt;h2 id=&#34;本周工作&#34;&gt;本周工作&lt;/h2&gt;
+&lt;p&gt;本周工作是从8月10号vpn重置之后才开始进行的，所以内容有点少&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完成了第一版训练、验证代码&lt;/li&gt;
+&lt;li&gt;调试第一个模型，修复各种bug&lt;/li&gt;
+&lt;li&gt;学习 Transformer 相关内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;课题下周改进&#34;&gt;课题下周改进&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;先快速训练出几个模型出来，选出一个最好的模型&lt;/li&gt;
+&lt;li&gt;进行第二次及多次迭代训练，更新词典&lt;/li&gt;
+&lt;li&gt;关系抽取看相关文献&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;本周反思&#34;&gt;本周反思&lt;/h2&gt;
+&lt;p&gt;本周算是玩爽了，课题下周尽快开展关系抽取的调研工作。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>7.29-8.04：一周总结</title>
+      <link>http://localhost:1313/posts/weeklyworking/2024_07_29-2024_08_04/</link>
+      <pubDate>Tue, 06 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/weeklyworking/2024_07_29-2024_08_04/</guid>
+      <description>&lt;h2 id=&#34;本周任务&#34;&gt;本周任务&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;改进了数据集的标注格式，并更新了词典&lt;/li&gt;
+&lt;li&gt;完成 BERT 系、BiLSTM-CRF、CNN-CRF 等模型代码&lt;/li&gt;
+&lt;li&gt;第一版训练、验证代码进度50%，但是 vpn 流量过期，需要等到10号以后才能继续训练😅&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;课题下周改进&#34;&gt;课题下周改进&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;完成第一版训练、验证代码&lt;/li&gt;
+&lt;li&gt;改进现有模型结构，尽可能地从微调 BERT 的过时手段中走出&lt;/li&gt;
+&lt;li&gt;记录实验数据&lt;/li&gt;
+&lt;li&gt;继续 cs224n、Transformer 论文学习&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;本周反思&#34;&gt;本周反思&lt;/h2&gt;
+&lt;p&gt;本周实在是有太多事，课题进展有限，预计下周会有一定进展。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>7.22-7.28：一周总结</title>
+      <link>http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/</guid>
+      <description>&lt;h2 id=&#34;本周任务&#34;&gt;本周任务&lt;/h2&gt;
+&lt;p&gt;本周主要还是做计组知识图谱课题。以下为本周具体进度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量&lt;/li&gt;
+&lt;li&gt;第一次标注采用预标注，之后用词典不断迭代标注&lt;/li&gt;
+&lt;li&gt;完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注&lt;/li&gt;
+&lt;li&gt;用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;课题下周改进&#34;&gt;课题下周改进&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签&lt;/li&gt;
+&lt;li&gt;弃用 Adaseq ，国产的玩意是真不如 Transformers 好用&lt;/li&gt;
+&lt;li&gt;找一个新的预训练模型进行训练（其实已经找到了）&lt;/li&gt;
+&lt;li&gt;多模型对比训练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少&lt;/p&gt;
+&lt;h2 id=&#34;本周反思&#34;&gt;本周反思&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;每一步的数据尽可能的量化并记录，方便日后发论文&lt;/li&gt;
+&lt;li&gt;对课题各个工作部分理解浅显，应当在阅读部分文献后再进行&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

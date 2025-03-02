@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>云原生 on KurongBlog</title>
+    <link>http://localhost:1313/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+    <description>Recent content in 云原生 on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 22 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《云原生开发实践》记录</title>
+      <link>http://localhost:1313/posts/dailydev/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h1 id=&#34;云原生开发实践记录&#34;&gt;《云原生开发实践》记录&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;本书会包含大量的实践内容，现阶段应着重看理论内容、实践内容暂且忽略，实践内容在理论补充完毕后用到哪块补哪块。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;容器化&#34;&gt;容器化&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;DOCKERFILE 的多阶段构建在部署阶段很有用，可以大幅减少镜像的体积。&lt;/li&gt;
+&lt;li&gt;Docker 可以自建网络，这样就可以把很多容器纳入到同一个网络下，实现容器间按容器名访问对方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;容器编排&#34;&gt;容器编排&lt;/h2&gt;
+&lt;p&gt;对于一个中大型的应用，会有很多的容器组件。而有些容器如Redis、RabbitMQ、Kafka等需要紧密的配合，这时候就需要用到容器编排。&lt;/p&gt;
+&lt;p&gt;Docker Compose 组件用于实现本地单个节点上的容器编排，它会从 &lt;code&gt;docker-compose.yaml&lt;/code&gt; 文件中读取所需的全部容器的定义，然后运行 &lt;code&gt;docker-compose up&lt;/code&gt; 命令启动容器编排。Docker Swarm 可以管理多个节点上的容器，即管理 Docker 集群。&lt;/p&gt;
+&lt;h2 id=&#34;云原生软件生产流程&#34;&gt;云原生软件生产流程&lt;/h2&gt;
+&lt;p&gt;云计算的能力：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;弱化了传统 IT 硬件概念，革命性地降低了企业在基础设施上的建设成本。&lt;/li&gt;
+&lt;li&gt;实现了弹性获取计算资源，用户可以按需使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;云计算的成熟时云原生发展的基石，使云原生的许多概念得以落地。云原生应用一般有以下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在应用的设计和开发阶段就为部署到云上做适配。&lt;/li&gt;
+&lt;li&gt;应用由多个松耦合的小模块构成而不是一个庞大的单体项目，即微服务架构。&lt;/li&gt;
+&lt;li&gt;通过容器来交付和发布应用，应用代码中会加入容器化需要的文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;和传统的软件生产方式相比，云原生的优势主要在塔提高了应用发布和运维时的效率，显著降低了运维的复杂性。&lt;/p&gt;
+&lt;h2 id=&#34;云原生基础设施&#34;&gt;云原生基础设施&lt;/h2&gt;
+&lt;h3 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h3&gt;
+&lt;p&gt;Kubernetes 是开源的容器编排平台，支持集群环境下部署和管理容器化应用。目前已经是容器编排领域的事实标准，成为云原生的操作系统。Kubernetes 也叫 K8s ，8指中间的8个字母。K8s 2013年由 Google 开源，相比于 Docker Swarm K8s 提供更加复杂强大的功能。&lt;/p&gt;
+&lt;p&gt;K8s 集群中包含两种节点，一种是 Control Plane 节点（master 节点），另一种是 worker 节点。K8s 中的容器运行在 Pod 中，Pod 运行在 Node 中。每个集群默认至少有一个 Pod ，否则 Pod 无法调度和运行。Control Plane 是 K8s 的容器编排层，通过它提供的 API ，可以定义和部署容器及管理容器的整个生命周期。Control Plane 有以下组件：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

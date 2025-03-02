@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Daily Dev on KurongBlog</title>
+    <link>http://localhost:1313/tags/daily-dev/</link>
+    <description>Recent content in Daily Dev on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/daily-dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>华为云部署踩坑</title>
+      <link>http://localhost:1313/posts/dailydev/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%83%A8%E7%BD%B2%E8%B8%A9%E5%9D%91/</link>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%83%A8%E7%BD%B2%E8%B8%A9%E5%9D%91/</guid>
+      <description>&lt;h2 id=&#34;华为云部署踩坑&#34;&gt;华为云部署踩坑&lt;/h2&gt;
+&lt;h3 id=&#34;docker-国内镜像源截止到2024111&#34;&gt;Docker 国内镜像源（截止到2024.11.1）&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;DockerHub 镜像仓库&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;是否正常&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.xdark.top&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.littlediary.cn&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dockerpull.org&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;新增&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.crdz.gq&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.1panel.live&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.unsee.tech&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;新增&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.m.daocloud.io&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.kejilion.pro&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;registry.dockermirror.com&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.rat.dev&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dhub.kubesre.xyz&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.nastool.de&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.hpcloud.cloud&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.hlyun.org&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;doublezonline.cloud&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.chenby.cn&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;ginger20240704.asia&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;lynn520.xyz&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.docker-ttc.xyz&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;noohub.ru&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.nat.tf&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dockerproxy.cn&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;freeno.xyz&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.registry.cyou&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.yuzuha.cc&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker-cf.registry.cyou&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.mrxn.net&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dockerproxy.github.io&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;docker.wget.at&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;atomhub.openatom.cn&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;ccr.ccs.tencentyun.com&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dockerproxy.com&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dislabaiot.xyz&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dockerpull.com&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hub.firefly.store&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;失效&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;配置方式1临时使用&#34;&gt;配置方式1：临时使用&lt;/h4&gt;
+&lt;p&gt;直接使用，直接拿镜像&lt;a href=&#34;https://cloud.tencent.com/act/pro/domain-sales?from_column=20065&amp;amp;from=20065&#34;&gt;域名&lt;/a&gt;拼接上官方镜像名，例如要拉去镜像&lt;code&gt;istio/distroless&lt;/code&gt;，可以用下面写法（不要带 &lt;code&gt;https://&lt;/code&gt;）&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《计组KG》课题开发过程（三）</title>
+      <link>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%89/</link>
+      <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%89/</guid>
+      <description>&lt;h2 id=&#34;牢骚&#34;&gt;牢骚&lt;/h2&gt;
+&lt;p&gt;时隔一个多月才完成了基本的可视化系统的搭建，中间有着各种各样的原因：Vue3第一次用、Django-Ninja不熟悉等等再加上一些闲杂原因就一直拖到了现在，效率多少有点堪忧。&lt;/p&gt;
+&lt;p&gt;总之不算怎么说，也算是曲折的完成了原定计划，下面将从后端、前端的技术选择、功能介绍、成品展示等几个章节大致的讲述下。&lt;/p&gt;
+&lt;h2 id=&#34;后端&#34;&gt;后端&lt;/h2&gt;
+&lt;h3 id=&#34;项目地址&#34;&gt;项目地址&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/KurongTohsaka/PCCKGVisualization/tree/main&#34;&gt;KurongTohsaka/PCCKGVisualization&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;技术栈&#34;&gt;技术栈&lt;/h3&gt;
+&lt;p&gt;Web 框架自然是选相对擅长且好用的 Django ，但是 Django 本身使用起来又过于繁重，不太适合开发Restful类型的接口，所以一般会搭配着 Django REST Framework (DRF) 使用。但是这一次我打算尝试一个新的 Django 扩展，它是 FastAPI 的 Django 版：Django-Ninja 。&lt;/p&gt;
+&lt;p&gt;Web 框架订好了以后，就该选数据库了。既然是存储图数据，那肯定是 Neo4j 。而网站数据就使用简单的 Sqlite 吧，主要就是省事。&lt;/p&gt;
+&lt;h3 id=&#34;功能与接口&#34;&gt;功能与接口&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;下面的所有接口的最上级请求路径：&lt;code&gt;pcc_kg_vs&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;功能主要分为两部分：认证和可视化。&lt;/p&gt;
+&lt;p&gt;首先是认证，包含以下基本功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户认证：用户登陆、注册、登出&lt;/li&gt;
+&lt;li&gt;API 鉴权：token 验证&lt;/li&gt;
+&lt;li&gt;CSRF 验证：CSRF token 验证&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面是简易的接口标准：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;登陆&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;先检查该用户是否已注册，若注册则从数据库中根据信息查询到用户，然后登陆该用户。若未注册则登陆失败&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-1&#34;&gt; 1&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-2&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-2&#34;&gt; 2&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-3&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-3&#34;&gt; 3&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-4&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-4&#34;&gt; 4&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-5&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-5&#34;&gt; 5&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-6&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-6&#34;&gt; 6&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-7&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-7&#34;&gt; 7&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-8&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-8&#34;&gt; 8&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-9&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-9&#34;&gt; 9&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-10&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-10&#34;&gt;10&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-11&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-11&#34;&gt;11&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-12&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-12&#34;&gt;12&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-13&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-13&#34;&gt;13&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-14&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-14&#34;&gt;14&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;method&amp;#34;: &amp;#34;POST&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;path&amp;#34;: &amp;#34;/login&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;params&amp;#34;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#34;username&amp;#34;: &amp;#34;&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#34;password&amp;#34;: &amp;#34;&amp;#34;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;#34;return&amp;#34;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#34;successful&amp;#34;: bool,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#34;code&amp;#34;: int,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#34;token&amp;#34;: str,  //登陆令牌
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;#39;info&amp;#39;: str
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;登出 HTTPBearer&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《计组KG》课题开发过程（二）</title>
+      <link>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%BA%8C/</link>
+      <pubDate>Sat, 14 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%BA%8C/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;自从上次记录已经过去了一个月，整个课题进展不大。原因一个是暑期有点摆，另一个是关系抽取确实比较繁琐。不管怎么说，来记录下吧。&lt;/p&gt;
+&lt;h2 id=&#34;ner-数据集下的模型训练&#34;&gt;NER 数据集下的模型训练&lt;/h2&gt;
+&lt;p&gt;首先需要声明的是该阶段的模型不参与于最后 KG 的构建，目的仅仅是跑通模型训练、验证的过程，为后续阶段提供便利。&lt;/p&gt;
+&lt;h3 id=&#34;ner-数据集&#34;&gt;NER 数据集&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;该部分信息在完成 RE 部分后可能会发生些微变动，仅作参考，后续会做调整。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;共标记5147条中文语句，实体共标注1472个。&lt;/p&gt;
+&lt;p&gt;下面是各个标签下的数量统计：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Label&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Count&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;TECH&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;388&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;COMP&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;382&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;STOR&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;170&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;DATA&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;133&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;INST&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;105&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;ARCH&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;71&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;IO&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;61&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PERF&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;54&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PROG&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;52&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CORP&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;17&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;ALG&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;16&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PROT&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;15&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PER&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;GRP&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;模型选择&#34;&gt;模型选择&lt;/h3&gt;
+&lt;p&gt;模型有两大类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;传统深度学习方法
+&lt;ul&gt;
+&lt;li&gt;CNN-CRF&lt;/li&gt;
+&lt;li&gt;BiLSTM-CRF&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BERT 系预训练模型，输出层为 CRF 或 MLP+Softmax
+&lt;ul&gt;
+&lt;li&gt;BERT：BERT 是一个双向 Transformer 模型，通过掩码语言模型（Masked Language Model, MLM）和下一句预测（Next Sentence Prediction, NSP）任务进行预训练&lt;/li&gt;
+&lt;li&gt;RoBERTa：RoBERTa 是对 BERT 的优化版本，移除了 NSP 任务，并采用了动态掩码策略&lt;/li&gt;
+&lt;li&gt;ALBERT：ALBERT 是 BERT 的轻量级版本，通过参数共享和嵌入参数因子化来减少模型大小&lt;/li&gt;
+&lt;li&gt;XLM-RoBERTa：XLM-RoBERTa 是针对多语言的预训练模型，基于 RoBERTa 和 XLM 的结合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里选择的是 XLM-RoBERTa，预训练模型选择的是 &lt;a href=&#34;https://huggingface.co/FacebookAI/xlm-roberta-large-finetuned-conll03-english&#34;&gt;FacebookAI/xlm-roberta-large-finetuned-conll03-english · Hugging Face&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《计组KG》课题开发番外：关系抽取的思考过程</title>
+      <link>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E7%95%AA%E5%A4%96%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E7%9A%84%E6%80%9D%E8%80%83%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Sat, 24 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E7%95%AA%E5%A4%96%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E7%9A%84%E6%80%9D%E8%80%83%E8%BF%87%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;现状&#34;&gt;现状&lt;/h2&gt;
+&lt;p&gt;目前课题进行到了关系抽取这一步。在看完之前的RE综述后，我决定整一个 Joint 的 NER+RE 模型。目前已经完成了 NER 的标注工作，下一步工作自然就是 RE 的标注。但是 RE 的标注要比 NER 要困难的多，一个是对于关系的定义依赖于实体类型、句子词性等多种复杂要素，二是手工标注势必工作量巨大。所以 RE 的标注有什么解决方法呢？&lt;/p&gt;
+&lt;p&gt;我决定把整个思考过程记录下来，方便复盘。&lt;/p&gt;
+&lt;h2 id=&#34;相关开源库&#34;&gt;相关开源库&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/thunlp/OpenNRE&#34;&gt;thunlp/OpenNRE：用于神经关系提取 （NRE） 的开源包 (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/SapienzaNLP/relik?tab=readme-ov-file&#34;&gt;SapienzaNLP/relik：检索、读取和 LinK：学术预算上的快速准确的实体链接和关系提取 （ACL 2024） (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/huggingface/setfit&#34;&gt;huggingface/setfit：使用句子转换器进行高效的少样本学习 (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/EleutherAI/lm-evaluation-harness&#34;&gt;EleutherAI/lm-evaluation-harness：一种用于语言模型小样本评估的框架。 (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关系抽取的可能方案&#34;&gt;关系抽取的可能方案&lt;/h2&gt;
+&lt;p&gt;首先能想到的两种常见方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 RE 预训练模型预标注：和 NER 的标注工作流程一致，但是中文 RE 预训练模型很难找&lt;/li&gt;
+&lt;li&gt;远程监督：使用已有的知识库或实体关系词典，对大规模文本进行远程监督标注。但是不适合当前课题的小规模数据集，而且没有现成的大量 RE 标注数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上两种方案中只有预训练模型的预标注还算可行，那有没有什么方法可以加速这一过程？可以看看下面的两种方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;半监督学习：结合少量人工标注数据和大量未标注数据，通过半监督学习的方法训练模型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;few-shot 小样本学习：使用少量人工标注的数据对few-shot模型进行训练，以提高模型在少样本情况下的泛化能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两种方案值得单独进行介绍。&lt;/p&gt;
+&lt;h3 id=&#34;半监督学习&#34;&gt;半监督学习&lt;/h3&gt;
+&lt;p&gt;半监督学习（Semi-Supervised Learning）是一种结合了监督学习和无监督学习的机器学习方法。它利用少量的标记数据和大量的未标记数据来训练模型，从而提高模型的泛化能力和性能。&lt;/p&gt;
+&lt;p&gt;半监督学习的样本标注依赖假设，以下是部分常见假设：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;平滑性假设：如果两个数据点在高密度区域中且距离很近，那么它们的输出也应该相似&lt;/li&gt;
+&lt;li&gt;聚类假设：如果数据点形成簇，那么同一簇中的数据点应该属于同一类&lt;/li&gt;
+&lt;li&gt;流形假设：高维数据通常位于低维流形上，同一流形上的数据点具有相同的标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常用的方法有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一致性正则化：假设对未标记数据加入小扰动后，其分类结果不应改变&lt;/li&gt;
+&lt;li&gt;伪标签：使用已标记数据训练初始模型，然后用该模型对未标记数据进行预测，生成伪标签，再将这些伪标签数据加入训练集中进行再训练&lt;/li&gt;
+&lt;li&gt;生成式模型：利用生成模型（如GANs）从数据分布中生成样本，并将这些样本用于训练分类器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用未标注数据，提高模型的泛化能力和性能&lt;/li&gt;
+&lt;li&gt;较低标注成本&lt;/li&gt;
+&lt;li&gt;适应性强，可以应用于多种任务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;依赖数据假设：半监督学习通常假设未标记数据和标记数据在特征空间中具有相似性，这在实际应用中并不总是成立。如果这些假设不成立，可能会导致模型性能下降&lt;/li&gt;
+&lt;li&gt;标签传播误差&lt;/li&gt;
+&lt;li&gt;数据不平衡问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我曾经在 kaggle 比赛中使用过半监督学习中的伪标签方法，只从工程实现的角度看比较容易，但是模型性能不一定有提升。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《计组KG》课题开发过程（一）</title>
+      <link>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%80/</link>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%80/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;开发该课题也有一个月了，整个过程并不是很顺利，很多细节部分如果没有得到及时梳理，对以后的研究和论文写作也有坏处。基于以上和其他原因，遂决定分阶段进行记录。&lt;/p&gt;
+&lt;h2 id=&#34;数据集&#34;&gt;数据集&lt;/h2&gt;
+&lt;p&gt;深度学习项目的良好开端就是有一个优良标注的数据集。而由于本课题起源于一个极小领域下，导致数据集必须完全自建。所有工作由我一人进行，工作量不可避免的大。所以必须尽可能的减少工作量，尽量实现在课题的中后期的所有标注工作都由程序自动化解决。&lt;/p&gt;
+&lt;p&gt;计组数据集的构建分为了以下几个过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计组数据集来源&lt;/li&gt;
+&lt;li&gt;数据预处理&lt;/li&gt;
+&lt;li&gt;数据集的预标注&lt;/li&gt;
+&lt;li&gt;基于词典的多次迭代标注&lt;/li&gt;
+&lt;li&gt;数据集格式的转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来对每一个部分进行详述。&lt;/p&gt;
+&lt;h3 id=&#34;计组数据集来源&#34;&gt;计组数据集来源&lt;/h3&gt;
+&lt;p&gt;目前数据的来源如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计算机组成原理第6版 (白中英)，pdf 转 txt&lt;/li&gt;
+&lt;li&gt;计算机组成原理第6版 (白中英) 课件，ppt 转 txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据预处理&#34;&gt;数据预处理&lt;/h3&gt;
+&lt;p&gt;以下是大概的预处理过程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将所有的文本合并到一个文件，方便后续操作；&lt;/li&gt;
+&lt;li&gt;手工去掉一些与课题无关的文本和小部分错误内容；&lt;/li&gt;
+&lt;li&gt;去掉所有的空白字符（空格、换行符、制表符等）；&lt;/li&gt;
+&lt;li&gt;去掉所有的特殊字符（数字、半角符号、特殊字符）；&lt;/li&gt;
+&lt;li&gt;以中文句号进行分割，分别以整句、分词的形式输出到 json 文件中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;处理结果：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-2&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-2&#34;&gt;2&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-3&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-3&#34;&gt;3&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-4&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-4&#34;&gt;4&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 整句
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u8ba1\u7b97\u673a\u7cfb\u7edf\u4e0d\u540c\u4e8e\u4e00\u822c\u7684\u7535\u5b50\u8bbe\u5907\uff0c\u5b83\u662f\u4e00\u4e2a\u7531\u786c\u4ef6\u3001\u8f6f\u4ef6\u7ec4\u6210\u7684\u590d\u6742\u7684\u81ea\u52a8\u5316\u8bbe\u5907&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-1-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-1-1&#34;&gt;1&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-1-2&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-1-2&#34;&gt;2&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-1-3&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-1-3&#34;&gt;3&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-1-4&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-1-4&#34;&gt;4&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 分词
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\u8ba1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7b97&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u673a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7cfb&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7edf&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4e0d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u540c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4e8e&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4e00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u822c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7684&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7535&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u5b50&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u8bbe&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u5907&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\uff0c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u5b83&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u662f&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4e00&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4e2a&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7531&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u786c&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4ef6&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u3001&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u8f6f&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u4ef6&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7ec4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u6210&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7684&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u590d&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u6742&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u7684&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u81ea&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u52a8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u5316&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u8bbe&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\u5907&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集的预标注&#34;&gt;数据集的预标注&lt;/h3&gt;
+&lt;p&gt;以上所有数据处理完后，共得到5632条文本。如果要自己一条条的标注，真就是整一个月啥也别干，所以还是要用比较省力的方式进行标注。我选择用一个在中文语料集上训练过的预训练模型进行第一轮标注，也就是预标注。&lt;/p&gt;
+&lt;p&gt;我选择了 &lt;a href=&#34;https://modelscope.cn/models/iic/nlp_raner_named-entity-recognition_chinese-large-generic&#34;&gt;RaNER命名实体识别-中文-通用领域-large&lt;/a&gt; 作为预标注阶段的预训练模型。该模型的标签如下：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;实体类型&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;英文名&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;公司名&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CORP&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;创作名&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CW&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;其他组织名&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;GRP&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;地名&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;LOC&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;人名&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PER&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;消费品&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PROD&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;为什么要选择这个模型呢？我当时认为有以下几点可以考虑：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

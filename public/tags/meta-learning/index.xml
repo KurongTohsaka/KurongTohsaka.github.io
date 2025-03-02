@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Meta Learning on KurongBlog</title>
+    <link>http://localhost:1313/tags/meta-learning/</link>
+    <description>Recent content in Meta Learning on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 17 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/meta-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RAPL: A Relation-Aware Prototype Learning Approach for Few-Shot Document-Level Relation Extraction</title>
+      <link>http://localhost:1313/posts/papernotes/rapl/</link>
+      <pubDate>Tue, 17 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/papernotes/rapl/</guid>
+      <description>&lt;h2 id=&#34;link&#34;&gt;Link&lt;/h2&gt;
+&lt;p&gt;[&lt;a href=&#34;https://arxiv.org/abs/2310.15743&#34;&gt;2310.15743] RAPL: A Relation-Aware Prototype Learning Approach for Few-Shot Document-Level Relation Extraction (arxiv.org)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Accepted EMNLP 2023.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;EMNLP：CCF B&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;related-works&#34;&gt;Related Works&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这一部分内容本来是在论文的最后面，但是考虑到这篇论文也算是打开了新世界的大门，所以把这个放在最前面。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;关系抽取（Relation Extraction，RE）大致可以分为三种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;语句级 RE（Sentence-Level RE）&lt;/strong&gt;：早期的研究主要集中在预测单个句子内两个实体之间的关系。各种基于模式和神经网络的方法在句子级关系抽取上取得了令人满意的结果。然而，句子级关系抽取在抽取范围和规模上有显著的局限性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以说是早期的 RE 大多是这一类别。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文档级 RE  （Document-Level RE，DocRE）&lt;/strong&gt;：现有的大多数文档级关系抽取研究都基于数据驱动的监督场景，通常分为基于图和基于序列的方法。基于图的方法通常通过图结构抽象文档，并使用图神经网络进行推理。基于序列的方法则使用仅包含变压器的架构来编码长距离的上下文依赖关系。这两类方法在文档级关系抽取中都取得了令人印象深刻的结果。然而，这些方法对大规模标注文档的依赖使得它们难以适应低资源场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;小样本文档级 RE （Few-Shot Document-Level RE，FSDLRE）&lt;/strong&gt;：为了应对现实世界文档级关系抽取场景中普遍存在的数据稀缺问题，&lt;a href=&#34;https://aclanthology.org/2022.naacl-main.421/&#34;&gt;Popovic等&lt;/a&gt;将文档级关系抽取任务形式化为小样本学习任务。为了完成这一任务，他们提出了多种基于度量的模型，这些模型建立在最先进的监督文档级关系抽取方法和少样本句子级关系抽取方法的基础上，旨在解决不同任务设置的问题。有效的基于度量的少样本文档级关系抽取方法的每个类别的原型应该准确捕捉相应的关系语义。然而，由于现有方法的粗粒度关系原型学习策略和”一刀切”的 NOTA 原型学习策略，这对现有方法来说是一个挑战。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;术语解释：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;原型学习（Prototype-Based Learning）是一种通过存储一组代表性样本（原型）来进行分类、回归或聚类的学习方法。原型学习的主要步骤包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;选择原型&lt;/strong&gt;：从训练数据中选择一组代表性的样本作为原型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计算距离&lt;/strong&gt;：使用距离度量（如欧氏距离、曼哈顿距离等）来确定测试样本与原型之间的相似性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分类或聚类&lt;/strong&gt;：将测试样本分配给最接近的原型，从而确定其所属的类别或簇。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;NOTA Prototype&lt;/strong&gt; 在本文中指的是 &lt;strong&gt;“None-Of-The-Above”&lt;/strong&gt; 原型，用于处理那些不属于任何目标关系类型的实体对。以下是其主要特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;任务特定&lt;/strong&gt;：每个任务生成特定的 NOTA 原型，以更好地捕捉该任务中的 NOTA 语义。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;基础原型&lt;/strong&gt;：引入一组可学习的基础 NOTA 原型，这些原型需要在每个任务中进一步修正。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;支持实例选择&lt;/strong&gt;：从支持文档中选择 NOTA 实例，并将其与基础NOTA原型融合，生成最终的任务特定NOTA 原型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;语义捕捉&lt;/strong&gt;：通过这种方法，NOTA 原型不仅包含了元学习的通用知识，还能捕捉每个任务中的特定NOTA 语义。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;FSDLRE 任务的简单描述：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/img/PaperNotes/RAPL/img1.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,103 @@
+<!doctype html><html lang=en dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>BPE算法 | KurongBlog</title>
+<meta name=keywords content="NLP"><meta name=description content="基本概念
+Byte-Pair Encoding (BPE) 是一种常用于自然语言处理（NLP）的分词算法。BPE最初是一种数据压缩算法，由Philip Gage在1994年提出。在NLP中，BPE被用来将文本分割成子词（subword）单元，这样可以在处理未见过的单词时更有效。
+工作原理
+BPE的核心思想是通过多次迭代，将最常见的字符对（或子词对）合并成一个新的符号，直到词汇表达到预定的大小。具体步骤如下：
+
+初始化词汇表：将所有单个字符作为初始词汇表。
+统计频率：统计所有相邻字符对的出现频率。
+合并字符对：找到出现频率最高的字符对，并将其合并成一个新的符号。
+更新词汇表：将新的符号加入词汇表，并更新文本中的所有相应字符对。
+重复步骤2-4：直到词汇表达到预定大小。
+
+例子
+假设我们有一个简单的文本：“banana banana”. 初始词汇表为：{b, a, n, }. 具体步骤如下：
+
+初始化：词汇表为 {b, a, n, }。
+统计频率：统计相邻字符对的频率，如 “ba” 出现2次，“an” 出现2次，“na” 出现2次。
+合并字符对：选择频率最高的字符对 “an”，将其合并成一个新符号 “an”。更新后的文本为 “b an an a b an an a”。
+更新词汇表：词汇表更新为 {b, a, n, an}。
+重复步骤2-4：继续统计频率并合并，直到词汇表达到预定大小。
+
+Byte-Level BPE
+在处理多语言文本时，BPE的一个问题是字符集可能会非常大。为了解决这个问题，可以使用Byte-Level BPE。Byte-Level BPE将每个字节视为一个字符，这样基础字符集的大小固定为256（即所有可能的字节值）。
+优缺点
+优点：
+
+处理未见过的单词：通过将单词分割成子词，可以更好地处理未见过的单词
+词汇表大小可控：可以通过设置预定大小来控制词汇表的大小
+
+缺点：
+
+语义信息丢失：在某些情况下，分割后的子词可能会丢失部分语义信息
+计算复杂度：多次迭代合并字符对的过程可能会增加计算复杂度
+"><meta name=author content="Kurong"><link rel=canonical href=http://localhost:1313/posts/nlp/bpe/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/nlp/bpe/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><meta property="og:title" content="BPE算法"><meta property="og:description" content="基本概念
+Byte-Pair Encoding (BPE) 是一种常用于自然语言处理（NLP）的分词算法。BPE最初是一种数据压缩算法，由Philip Gage在1994年提出。在NLP中，BPE被用来将文本分割成子词（subword）单元，这样可以在处理未见过的单词时更有效。
+工作原理
+BPE的核心思想是通过多次迭代，将最常见的字符对（或子词对）合并成一个新的符号，直到词汇表达到预定的大小。具体步骤如下：
+
+初始化词汇表：将所有单个字符作为初始词汇表。
+统计频率：统计所有相邻字符对的出现频率。
+合并字符对：找到出现频率最高的字符对，并将其合并成一个新的符号。
+更新词汇表：将新的符号加入词汇表，并更新文本中的所有相应字符对。
+重复步骤2-4：直到词汇表达到预定大小。
+
+例子
+假设我们有一个简单的文本：“banana banana”. 初始词汇表为：{b, a, n, }. 具体步骤如下：
+
+初始化：词汇表为 {b, a, n, }。
+统计频率：统计相邻字符对的频率，如 “ba” 出现2次，“an” 出现2次，“na” 出现2次。
+合并字符对：选择频率最高的字符对 “an”，将其合并成一个新符号 “an”。更新后的文本为 “b an an a b an an a”。
+更新词汇表：词汇表更新为 {b, a, n, an}。
+重复步骤2-4：继续统计频率并合并，直到词汇表达到预定大小。
+
+Byte-Level BPE
+在处理多语言文本时，BPE的一个问题是字符集可能会非常大。为了解决这个问题，可以使用Byte-Level BPE。Byte-Level BPE将每个字节视为一个字符，这样基础字符集的大小固定为256（即所有可能的字节值）。
+优缺点
+优点：
+
+处理未见过的单词：通过将单词分割成子词，可以更好地处理未见过的单词
+词汇表大小可控：可以通过设置预定大小来控制词汇表的大小
+
+缺点：
+
+语义信息丢失：在某些情况下，分割后的子词可能会丢失部分语义信息
+计算复杂度：多次迭代合并字符对的过程可能会增加计算复杂度
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/posts/nlp/bpe/"><meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-08-17T00:00:00+00:00"><meta property="article:modified_time" content="2024-08-17T00:00:00+00:00"><meta property="og:site_name" content="KurongBlog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="BPE算法"><meta name=twitter:description content="基本概念
+Byte-Pair Encoding (BPE) 是一种常用于自然语言处理（NLP）的分词算法。BPE最初是一种数据压缩算法，由Philip Gage在1994年提出。在NLP中，BPE被用来将文本分割成子词（subword）单元，这样可以在处理未见过的单词时更有效。
+工作原理
+BPE的核心思想是通过多次迭代，将最常见的字符对（或子词对）合并成一个新的符号，直到词汇表达到预定的大小。具体步骤如下：
+
+初始化词汇表：将所有单个字符作为初始词汇表。
+统计频率：统计所有相邻字符对的出现频率。
+合并字符对：找到出现频率最高的字符对，并将其合并成一个新的符号。
+更新词汇表：将新的符号加入词汇表，并更新文本中的所有相应字符对。
+重复步骤2-4：直到词汇表达到预定大小。
+
+例子
+假设我们有一个简单的文本：“banana banana”. 初始词汇表为：{b, a, n, }. 具体步骤如下：
+
+初始化：词汇表为 {b, a, n, }。
+统计频率：统计相邻字符对的频率，如 “ba” 出现2次，“an” 出现2次，“na” 出现2次。
+合并字符对：选择频率最高的字符对 “an”，将其合并成一个新符号 “an”。更新后的文本为 “b an an a b an an a”。
+更新词汇表：词汇表更新为 {b, a, n, an}。
+重复步骤2-4：继续统计频率并合并，直到词汇表达到预定大小。
+
+Byte-Level BPE
+在处理多语言文本时，BPE的一个问题是字符集可能会非常大。为了解决这个问题，可以使用Byte-Level BPE。Byte-Level BPE将每个字节视为一个字符，这样基础字符集的大小固定为256（即所有可能的字节值）。
+优缺点
+优点：
+
+处理未见过的单词：通过将单词分割成子词，可以更好地处理未见过的单词
+词汇表大小可控：可以通过设置预定大小来控制词汇表的大小
+
+缺点：
+
+语义信息丢失：在某些情况下，分割后的子词可能会丢失部分语义信息
+计算复杂度：多次迭代合并字符对的过程可能会增加计算复杂度
+"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"BPE算法","item":"http://localhost:1313/posts/nlp/bpe/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"BPE算法","name":"BPE算法","description":"基本概念 Byte-Pair Encoding (BPE) 是一种常用于自然语言处理（NLP）的分词算法。BPE最初是一种数据压缩算法，由Philip Gage在1994年提出。在NLP中，BPE被用来将文本分割成子词（subword）单元，这样可以在处理未见过的单词时更有效。\n工作原理 BPE的核心思想是通过多次迭代，将最常见的字符对（或子词对）合并成一个新的符号，直到词汇表达到预定的大小。具体步骤如下：\n初始化词汇表：将所有单个字符作为初始词汇表。 统计频率：统计所有相邻字符对的出现频率。 合并字符对：找到出现频率最高的字符对，并将其合并成一个新的符号。 更新词汇表：将新的符号加入词汇表，并更新文本中的所有相应字符对。 重复步骤2-4：直到词汇表达到预定大小。 例子 假设我们有一个简单的文本：“banana banana”. 初始词汇表为：{b, a, n, }. 具体步骤如下：\n初始化：词汇表为 {b, a, n, }。 统计频率：统计相邻字符对的频率，如 “ba” 出现2次，“an” 出现2次，“na” 出现2次。 合并字符对：选择频率最高的字符对 “an”，将其合并成一个新符号 “an”。更新后的文本为 “b an an a b an an a”。 更新词汇表：词汇表更新为 {b, a, n, an}。 重复步骤2-4：继续统计频率并合并，直到词汇表达到预定大小。 Byte-Level BPE 在处理多语言文本时，BPE的一个问题是字符集可能会非常大。为了解决这个问题，可以使用Byte-Level BPE。Byte-Level BPE将每个字节视为一个字符，这样基础字符集的大小固定为256（即所有可能的字节值）。\n优缺点 优点：\n处理未见过的单词：通过将单词分割成子词，可以更好地处理未见过的单词 词汇表大小可控：可以通过设置预定大小来控制词汇表的大小 缺点：\n语义信息丢失：在某些情况下，分割后的子词可能会丢失部分语义信息 计算复杂度：多次迭代合并字符对的过程可能会增加计算复杂度 ","keywords":["NLP"],"articleBody":"基本概念 Byte-Pair Encoding (BPE) 是一种常用于自然语言处理（NLP）的分词算法。BPE最初是一种数据压缩算法，由Philip Gage在1994年提出。在NLP中，BPE被用来将文本分割成子词（subword）单元，这样可以在处理未见过的单词时更有效。\n工作原理 BPE的核心思想是通过多次迭代，将最常见的字符对（或子词对）合并成一个新的符号，直到词汇表达到预定的大小。具体步骤如下：\n初始化词汇表：将所有单个字符作为初始词汇表。 统计频率：统计所有相邻字符对的出现频率。 合并字符对：找到出现频率最高的字符对，并将其合并成一个新的符号。 更新词汇表：将新的符号加入词汇表，并更新文本中的所有相应字符对。 重复步骤2-4：直到词汇表达到预定大小。 例子 假设我们有一个简单的文本：“banana banana”. 初始词汇表为：{b, a, n, }. 具体步骤如下：\n初始化：词汇表为 {b, a, n, }。 统计频率：统计相邻字符对的频率，如 “ba” 出现2次，“an” 出现2次，“na” 出现2次。 合并字符对：选择频率最高的字符对 “an”，将其合并成一个新符号 “an”。更新后的文本为 “b an an a b an an a”。 更新词汇表：词汇表更新为 {b, a, n, an}。 重复步骤2-4：继续统计频率并合并，直到词汇表达到预定大小。 Byte-Level BPE 在处理多语言文本时，BPE的一个问题是字符集可能会非常大。为了解决这个问题，可以使用Byte-Level BPE。Byte-Level BPE将每个字节视为一个字符，这样基础字符集的大小固定为256（即所有可能的字节值）。\n优缺点 优点：\n处理未见过的单词：通过将单词分割成子词，可以更好地处理未见过的单词 词汇表大小可控：可以通过设置预定大小来控制词汇表的大小 缺点：\n语义信息丢失：在某些情况下，分割后的子词可能会丢失部分语义信息 计算复杂度：多次迭代合并字符对的过程可能会增加计算复杂度 ","wordCount":"60","inLanguage":"en","image":"http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2024-08-17T00:00:00Z","dateModified":"2024-08-17T00:00:00Z","author":{"@type":"Person","name":"Kurong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/nlp/bpe/"},"publisher":{"@type":"Organization","name":"KurongBlog","logo":{"@type":"ImageObject","url":"http://localhost:1313/%3Clink%20/%20abs%20url%3E"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="Home (Alt + H)"><img src=http://localhost:1313/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=http://localhost:1313/categories/ title=categories><span>categories</span></a></li><li><a href=http://localhost:1313/tags/ title=tags><span>tags</span></a></li><li><a href=http://localhost:1313/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://localhost:1313/>Home</a>&nbsp;»&nbsp;<a href=http://localhost:1313/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">BPE算法</h1><div class=post-meta><span title='2024-08-17 00:00:00 +0000 UTC'>August 17, 2024</span>&nbsp;·&nbsp;Kurong&nbsp;|&nbsp;<a href=https://github.com/KurongTohsaka/KurongTohsaka.github.io/content/posts/NLP/BPE.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#基本概念>基本概念</a></li><li><a href=#工作原理>工作原理</a></li><li><a href=#例子>例子</a></li><li><a href=#byte-level-bpe>Byte-Level BPE</a></li><li><a href=#优缺点>优缺点</a></li></ul></nav></div></details></div><div class=post-content><h2 id=基本概念>基本概念<a hidden class=anchor aria-hidden=true href=#基本概念>#</a></h2><p>Byte-Pair Encoding (BPE) 是一种常用于自然语言处理（NLP）的分词算法。BPE最初是一种数据压缩算法，由Philip Gage在1994年提出。在NLP中，BPE被用来将文本分割成子词（subword）单元，这样可以在处理未见过的单词时更有效。</p><h2 id=工作原理>工作原理<a hidden class=anchor aria-hidden=true href=#工作原理>#</a></h2><p>BPE的核心思想是通过多次迭代，将最常见的字符对（或子词对）合并成一个新的符号，直到词汇表达到预定的大小。具体步骤如下：</p><ol><li><strong>初始化词汇表</strong>：将所有单个字符作为初始词汇表。</li><li><strong>统计频率</strong>：统计所有相邻字符对的出现频率。</li><li><strong>合并字符对</strong>：找到出现频率最高的字符对，并将其合并成一个新的符号。</li><li><strong>更新词汇表</strong>：将新的符号加入词汇表，并更新文本中的所有相应字符对。</li><li><strong>重复步骤2-4</strong>：直到词汇表达到预定大小。</li></ol><h2 id=例子>例子<a hidden class=anchor aria-hidden=true href=#例子>#</a></h2><p>假设我们有一个简单的文本：“banana banana”. 初始词汇表为：{b, a, n, }. 具体步骤如下：</p><ol><li><strong>初始化</strong>：词汇表为 {b, a, n, }。</li><li><strong>统计频率</strong>：统计相邻字符对的频率，如 “ba” 出现2次，“an” 出现2次，“na” 出现2次。</li><li><strong>合并字符对</strong>：选择频率最高的字符对 “an”，将其合并成一个新符号 “an”。更新后的文本为 “b an an a b an an a”。</li><li><strong>更新词汇表</strong>：词汇表更新为 {b, a, n, an}。</li><li><strong>重复步骤2-4</strong>：继续统计频率并合并，直到词汇表达到预定大小。</li></ol><h2 id=byte-level-bpe>Byte-Level BPE<a hidden class=anchor aria-hidden=true href=#byte-level-bpe>#</a></h2><p>在处理多语言文本时，BPE的一个问题是字符集可能会非常大。为了解决这个问题，可以使用Byte-Level BPE。Byte-Level BPE将每个字节视为一个字符，这样基础字符集的大小固定为256（即所有可能的字节值）。</p><h2 id=优缺点>优缺点<a hidden class=anchor aria-hidden=true href=#优缺点>#</a></h2><p><strong>优点</strong>：</p><ul><li><strong>处理未见过的单词</strong>：通过将单词分割成子词，可以更好地处理未见过的单词</li><li><strong>词汇表大小可控</strong>：可以通过设置预定大小来控制词汇表的大小</li></ul><p><strong>缺点</strong>：</p><ul><li><strong>语义信息丢失</strong>：在某些情况下，分割后的子词可能会丢失部分语义信息</li><li><strong>计算复杂度</strong>：多次迭代合并字符对的过程可能会增加计算复杂度</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=http://localhost:1313/tags/nlp/>NLP</a></li></ul><nav class=paginav><a class=prev href=http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E7%95%AA%E5%A4%96%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E7%9A%84%E6%80%9D%E8%80%83%E8%BF%87%E7%A8%8B/><span class=title>« Prev</span><br><span>《计组KG》课题开发番外：关系抽取的思考过程</span>
+</a><a class=next href=http://localhost:1313/posts/cs224n/lesson_10/><span class=title>Next »</span><br><span>Lecture 10: Pretrained Model</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2025 <a href=http://localhost:1313/>KurongBlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

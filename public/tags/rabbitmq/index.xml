@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>RabbitMQ on KurongBlog</title>
+    <link>http://localhost:1313/tags/rabbitmq/</link>
+    <description>Recent content in RabbitMQ on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《深入RabbitMQ》记录</title>
+      <link>http://localhost:1313/posts/dailydev/%E6%B7%B1%E5%85%A5rabbitmq%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E6%B7%B1%E5%85%A5rabbitmq%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h1 id=&#34;深入rabbitmq记录&#34;&gt;《深入RabbitMQ》记录&lt;/h1&gt;
+&lt;h2 id=&#34;rabbitmq-基础&#34;&gt;RabbitMQ 基础&lt;/h2&gt;
+&lt;h3 id=&#34;amqp-协议&#34;&gt;AMQP 协议&lt;/h3&gt;
+&lt;p&gt;AMQP，即高级消息队列协议（Advanced Meesage Queuing Protocal）。它定义了一个 AMQ 应该有以下三部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;交换器：一个接收器接收发送到 MQ 中的消息并决定把它们投递到何处；&lt;/li&gt;
+&lt;li&gt;队列：存储接收到的消息；&lt;/li&gt;
+&lt;li&gt;绑定：定义队列和交换器之间的关系。在 RabbitMQ 中，绑定或者叫绑定键即告知一个叫交换器应该将消息投递到哪些队列中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使用-amq-协议与-rabbit-进行交互&#34;&gt;使用 AMQ 协议与 Rabbit 进行交互&lt;/h2&gt;
+&lt;h3 id=&#34;amqp-帧类型&#34;&gt;AMQP 帧类型&lt;/h3&gt;
+&lt;p&gt;AMQP 规定了五种类型的帧：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;协议头帧：用于连接到 RabbitMQ，仅使用一次；&lt;/li&gt;
+&lt;li&gt;方法帧：携带发送到 RabbitMQ 或从 RabbitMQ 接收到的 RPC 请求或响应；&lt;/li&gt;
+&lt;li&gt;内容头帧：包含一条消息的大小和属性；&lt;/li&gt;
+&lt;li&gt;消息体帧：包含消息的内容；&lt;/li&gt;
+&lt;li&gt;心跳帧：确保连接，一种校验机制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;将消息编组成帧&#34;&gt;将消息编组成帧&lt;/h3&gt;
+&lt;p&gt;首先是方法帧、内容头帧，这两种帧比较好理解。&lt;/p&gt;
+&lt;p&gt;而消息体帧会根据消息体的大小切分成一到多个消息体帧。&lt;/p&gt;
+&lt;p&gt;要发送消息，首先发送的是方法帧，之后是内容帧，最后是若干个消息体帧。&lt;/p&gt;
+&lt;h3 id=&#34;帧结构&#34;&gt;帧结构&lt;/h3&gt;
+&lt;p&gt;方法帧携带构建 RPC 请求所需的类、方法和参数。&lt;/p&gt;
+&lt;p&gt;内容头帧包含了消息的大小和其他对消息起描述作用的属性。&lt;/p&gt;
+&lt;p&gt;消息体帧可以传输很多类型的数据，可以是二进制、文本，也可以是二进制化的图片和序列化后的json、xml。&lt;/p&gt;
+&lt;h3 id=&#34;使用协议&#34;&gt;使用协议&lt;/h3&gt;
+&lt;p&gt;包含下面一个基本流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;声明交换器&lt;/li&gt;
+&lt;li&gt;声明队列&lt;/li&gt;
+&lt;li&gt;绑定队列到交换器&lt;/li&gt;
+&lt;li&gt;发布消息到 RabbitMQ&lt;/li&gt;
+&lt;li&gt;从 RabbitMQ 消费消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;消息属性详解&#34;&gt;消息属性详解&lt;/h2&gt;
+&lt;h3 id=&#34;使用-content-type-创建显式的消息契约&#34;&gt;使用 content-type 创建显式的消息契约&lt;/h3&gt;
+&lt;p&gt;在不同的语言的消费者框架中，框架可以自动的根据 content-type 类型将其反序列化为该语言中的数据结构。&lt;/p&gt;
+&lt;h3 id=&#34;使用-gzip-和-content-encoding-压缩消息大小&#34;&gt;使用 gzip 和 content-encoding 压缩消息大小&lt;/h3&gt;
+&lt;p&gt;通过指定 content-encoding 属性可以在消息体上应用特殊的编码。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

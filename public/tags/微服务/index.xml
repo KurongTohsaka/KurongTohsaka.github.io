@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>微服务 on KurongBlog</title>
+    <link>http://localhost:1313/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 微服务 on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 25 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《Kubernetes微服务实战》记录</title>
+      <link>http://localhost:1313/posts/dailydev/kubernetes%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 25 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/kubernetes%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h1 id=&#34;kubernetes微服务实战记录&#34;&gt;《Kubernetes微服务实战》记录&lt;/h1&gt;
+&lt;h2 id=&#34;面向开发人员的-kubernetes-简介&#34;&gt;面向开发人员的 Kubernetes 简介&lt;/h2&gt;
+&lt;h3 id=&#34;部分核心概念&#34;&gt;部分核心概念&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Node：Node 是 Kubernetes 集群中的一个工作单元，表示集群中的一台物理机或虚拟机。Node 的作用是为运行容器化应用提供计算资源，一个 Node 可以运行多个 Pod。Node 分为：
+&lt;ul&gt;
+&lt;li&gt;Master Node：负责集群的控制平面，管理所有工作节点。&lt;/li&gt;
+&lt;li&gt;Worker Node：运行实际的应用程序工作负载，实际上就是 Pod。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pod：Pod 是 Kubernetes 中最小的可部署单位，表示一个或多个容器的集合。有以下特性：
+&lt;ul&gt;
+&lt;li&gt;Pod 内的容器共享一个 IP 地址，可以通过 &lt;code&gt;localhost&lt;/code&gt; 相互通信。&lt;/li&gt;
+&lt;li&gt;Pod 内的容器可以共享挂载的存储卷（Volume）。&lt;/li&gt;
+&lt;li&gt;Pod 通常包含运行同一应用程序组件的容器，如主应用程序容器、日志采集容器等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Namespace：用于逻辑上隔离资源。可以在同一集群中运行多个项目或团队的工作负载。&lt;/li&gt;
+&lt;li&gt;Service：用于将一组 Pod 的访问暴露给外部或集群内部的其他 Pod。&lt;/li&gt;
+&lt;li&gt;Deployment：用于声明和管理 Pod 的期望状态，例如副本数、滚动更新等。&lt;/li&gt;
+&lt;li&gt;Volume：提供持久化存储，允许 Pod 重启后数据仍然保留。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;kubernetes-架构&#34;&gt;Kubernetes 架构&lt;/h3&gt;
+&lt;p&gt;每个集群都有一个控制平面和数据平面，数据平面由多个节点组成，控制平面将在这些节点上部署并运行 Pod（容器组），监控变更并做出响应。&lt;/p&gt;
+&lt;p&gt;控制平面包含以下组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;API 服务器。&lt;/li&gt;
+&lt;li&gt;etcd 存储。&lt;/li&gt;
+&lt;li&gt;调度器：kube 调度器负责将 Pod 调度到工作节点。&lt;/li&gt;
+&lt;li&gt;控制器管理器：kube 控制器管理器是包含多个控制器的单个进程，这些控制器监控着集群事件和对集群的更改做出响应。
+&lt;ul&gt;
+&lt;li&gt;节点控制器：负责在节点出现故障时进行通知和响应。&lt;/li&gt;
+&lt;li&gt;副本控制器：确保每个副本集（replica set）或副本控制器对象中有正确数量的 Pod 。&lt;/li&gt;
+&lt;li&gt;端点控制器：为每个服务分配一个列出该服务的 Pod 的端点对象。&lt;/li&gt;
+&lt;li&gt;服务账户和令牌控制器：使用默认服务账户和响应的 API 访问令牌对新的命名空间进行初始化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;数据平面是集群中将容器化工作负载转为 Pod 运行的节点的集合。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《云原生开发实践》记录</title>
+      <link>http://localhost:1313/posts/dailydev/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h1 id=&#34;云原生开发实践记录&#34;&gt;《云原生开发实践》记录&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;本书会包含大量的实践内容，现阶段应着重看理论内容、实践内容暂且忽略，实践内容在理论补充完毕后用到哪块补哪块。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;容器化&#34;&gt;容器化&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;DOCKERFILE 的多阶段构建在部署阶段很有用，可以大幅减少镜像的体积。&lt;/li&gt;
+&lt;li&gt;Docker 可以自建网络，这样就可以把很多容器纳入到同一个网络下，实现容器间按容器名访问对方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;容器编排&#34;&gt;容器编排&lt;/h2&gt;
+&lt;p&gt;对于一个中大型的应用，会有很多的容器组件。而有些容器如Redis、RabbitMQ、Kafka等需要紧密的配合，这时候就需要用到容器编排。&lt;/p&gt;
+&lt;p&gt;Docker Compose 组件用于实现本地单个节点上的容器编排，它会从 &lt;code&gt;docker-compose.yaml&lt;/code&gt; 文件中读取所需的全部容器的定义，然后运行 &lt;code&gt;docker-compose up&lt;/code&gt; 命令启动容器编排。Docker Swarm 可以管理多个节点上的容器，即管理 Docker 集群。&lt;/p&gt;
+&lt;h2 id=&#34;云原生软件生产流程&#34;&gt;云原生软件生产流程&lt;/h2&gt;
+&lt;p&gt;云计算的能力：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;弱化了传统 IT 硬件概念，革命性地降低了企业在基础设施上的建设成本。&lt;/li&gt;
+&lt;li&gt;实现了弹性获取计算资源，用户可以按需使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;云计算的成熟时云原生发展的基石，使云原生的许多概念得以落地。云原生应用一般有以下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在应用的设计和开发阶段就为部署到云上做适配。&lt;/li&gt;
+&lt;li&gt;应用由多个松耦合的小模块构成而不是一个庞大的单体项目，即微服务架构。&lt;/li&gt;
+&lt;li&gt;通过容器来交付和发布应用，应用代码中会加入容器化需要的文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;和传统的软件生产方式相比，云原生的优势主要在塔提高了应用发布和运维时的效率，显著降低了运维的复杂性。&lt;/p&gt;
+&lt;h2 id=&#34;云原生基础设施&#34;&gt;云原生基础设施&lt;/h2&gt;
+&lt;h3 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h3&gt;
+&lt;p&gt;Kubernetes 是开源的容器编排平台，支持集群环境下部署和管理容器化应用。目前已经是容器编排领域的事实标准，成为云原生的操作系统。Kubernetes 也叫 K8s ，8指中间的8个字母。K8s 2013年由 Google 开源，相比于 Docker Swarm K8s 提供更加复杂强大的功能。&lt;/p&gt;
+&lt;p&gt;K8s 集群中包含两种节点，一种是 Control Plane 节点（master 节点），另一种是 worker 节点。K8s 中的容器运行在 Pod 中，Pod 运行在 Node 中。每个集群默认至少有一个 Pod ，否则 Pod 无法调度和运行。Control Plane 是 K8s 的容器编排层，通过它提供的 API ，可以定义和部署容器及管理容器的整个生命周期。Control Plane 有以下组件：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《Go微服务实战》记录</title>
+      <link>http://localhost:1313/posts/dailydev/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h1 id=&#34;go微服务实战记录&#34;&gt;《Go微服务实战》记录&lt;/h1&gt;
+&lt;p&gt;本书包含很多的 Go 基础和部分进阶内容，这里只选取对现阶段有帮助的内容，毕竟 Go 已经入门过一遍了。&lt;/p&gt;
+&lt;h2 id=&#34;go-基础&#34;&gt;Go 基础&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关于指针，如果涉及到修改变量本身就使用指针作为函数输入变量等，典型的如单例模式下的变量都是指针。反之如果不修改变量本身，就直接使用复制变量作为函数输入变量等，函数返回值自然也是某个新的变量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关于 Go 中的循环，请看 code：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-1&#34;&gt; 1&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-2&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-2&#34;&gt; 2&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-3&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-3&#34;&gt; 3&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-4&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-4&#34;&gt; 4&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-5&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-5&#34;&gt; 5&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-6&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-6&#34;&gt; 6&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-7&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-7&#34;&gt; 7&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-8&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-8&#34;&gt; 8&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-9&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-9&#34;&gt; 9&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-10&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-10&#34;&gt;10&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-11&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-11&#34;&gt;11&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-12&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-12&#34;&gt;12&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-13&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-13&#34;&gt;13&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-14&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-14&#34;&gt;14&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-15&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-15&#34;&gt;15&lt;/a&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-16&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-16&#34;&gt;16&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 最标准的循环
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 就是没有显式跳出条件的 while
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;arr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;arr&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 这里的 range 是关键字，用法有些类似于 Python 中的 enumerate 函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Go 的垃圾回收策略使用的三色标记法，具体内容会单独进行学习。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;字符串与复合数据类型&#34;&gt;字符串与复合数据类型&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关于字符串的相关操作，见代码：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

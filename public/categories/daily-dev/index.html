@@ -1,0 +1,168 @@
+<!doctype html><html lang=en dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Daily Dev | KurongBlog</title>
+<meta name=keywords content><meta name=description content="记录日常"><meta name=author content="Kurong"><link rel=canonical href=http://localhost:1313/categories/daily-dev/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=http://localhost:1313/categories/daily-dev/index.xml><link rel=alternate hreflang=en href=http://localhost:1313/categories/daily-dev/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><meta property="og:title" content="Daily Dev"><meta property="og:description" content="记录日常"><meta property="og:type" content="website"><meta property="og:url" content="http://localhost:1313/categories/daily-dev/"><meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="og:site_name" content="KurongBlog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="Daily Dev"><meta name=twitter:description content="记录日常"></head><body class="list dark" id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="Home (Alt + H)"><img src=http://localhost:1313/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=http://localhost:1313/categories/ title=categories><span>categories</span></a></li><li><a href=http://localhost:1313/tags/ title=tags><span>tags</span></a></li><li><a href=http://localhost:1313/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=http://localhost:1313/>Home</a>&nbsp;»&nbsp;<a href=http://localhost:1313/categories/>Categories</a></div><h1>Daily Dev</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《数据密集型系统设计》记录</h2></header><div class=entry-content><p>《数据密集型系统设计》记录 本书的电子版本链接：Vonng/ddia: 《Designing Data-Intensive Application》DDIA中文翻译
+3. 存储与检索 本章围绕两大类存储引擎：日志结构（log-structured）的存储引擎，以及面向页面（page-oriented）的存储引擎（例如 B 树）。
+数据库核心：数据结构 这里所使用的“日志”是一个更一般性的概念：一个支持 append-only 仅追加操作的记录序列。
+为了高效查找数据库中特定键的值，需要用到索引。索引是从主要数据中衍生的额外结构，维护它会产生额外开销，特别是写入时。任何类型的索引通常都会减慢写入速度，因为每次写入数据时都需要更新索引。这是存储系统中一个重要的权衡：精心选择的索引加快了读查询的速度，但是每个索引都会拖慢写入速度。因为这个原因，数据库默认并不会索引所有的内容，而需要程序员或数据库管理员（DBA），基于对应用的典型查询模式的了解来手动选择索引。
+SSTable 把键值对的序列按照键进行排序，这个格式称为排序字符串表（Sorted String Table, SSTable）。此时再要求每个键值在每个合并的段文件中出现一次。与使用散列索引的日志段相比，SSTable 有几个大的优势：
+即使文件大于可用内存，合并段的操作仍然是简单高效： 一开始并排读取多个输入文件，查看每个文件中的第一个键，复制最低的键（根据排序顺序）到输出文件，不断重复此步骤，将产生一个新的合并段文件，而且它也是也按键排序的。 如果在几个输入段中出现相同的键，该怎么办？请记住，每个段都包含在一段时间内写入数据库的所有值。这意味着一个输入段中的所有值一定比另一个段中的所有值都更近（假设我们总是合并相邻的段）。当多个段包含相同的键时，我们可以保留最近段的值，并丢弃旧段中的值。 为了在文件中找到一个特定的键，你不再需要在内存中保存所有键的索引： 假设你正在内存中寻找键 handiwork，但是你不知道这个键在段文件中的确切偏移量。然而，你知道 handbag 和 handsome 的偏移，而且由于排序特性，你知道 handiwork 必须出现在这两者之间。这意味着你可以跳到 handbag 的偏移位置并从那里扫描，直到你找到 handiwork（或没找到，如果该文件中没有该键）。 由于读取请求无论如何都需要扫描所请求范围内的多个键值对，因此可以将这些记录分组为块（block），并在将其写入硬盘之前对其进行压缩。稀疏内存索引中的每个条目都指向压缩块的开始处。除了节省硬盘空间之外，压缩还可以减少对 I/O 带宽的使用。 那么，可以构建 SSTable 了，可以让存储引擎这样工作：
+有新写入时，将其添加到内存中的平衡树数据结构（例如红黑树），这个内存树有时被称为内存表（memtable）。 当内存表大于某个阈值（通常为几兆字节）时，将其作为 SSTable 文件写入硬盘。这可以高效地完成，因为树已经维护了按键排序的键值对。新的 SSTable 文件将成为数据库中最新的段。当该 SSTable 被写入硬盘时，新的写入可以在一个新的内存表实例上继续进行。 收到读取请求时，首先尝试在内存表中找到对应的键，如果没有就在最近的硬盘段中寻找，如果还没有就在下一个较旧的段中继续寻找，以此类推。 后台进程周期性地执行合并和压缩过程，以合并段文件，并将已覆盖或已删除的值丢弃。 这样的索引结构被称为 LSM-Tree（Log-Structured Merge-Tree）。
+当查找数据库中不存在的键时，LSM 树算法可能会很慢。为了优化这种访问，存储引擎通常会使用布隆过滤器。还可以使用大小分级和分层压缩。对于大小分级，较新和较小的 SSTables 相继被合并到较旧的和较大的 SSTable 中。对于分层压缩，键的范围被拆分到多个较小的 SSTables，而较旧的数据被移动到单独的层级，这使得压缩能够逐步进行并且使用较少的硬盘空间。
+B-Tree 前面看到的日志结构索引将数据库分解为可变大小的段，通常是几兆字节或更大的大小，并且总是按顺序写入段。相比之下，B 树将数据库分解成固定大小的块或分页，传统上大小为 4KB（有时会更大），并且一次只能读取或写入一个页面。这种设计更接近于底层硬件，因为硬盘空间也是按固定大小的块来组织的。
+在 B 树的底层中，写操作是用新数据覆写硬盘上的页面，并假定覆写不改变页面的位置。即当页面被覆写时，对该页面的所有引用保持完整。这与日志结构索引（如 LSM 树）形成鲜明对比，后者只追加到文件（并最终删除过时的文件），但从不修改文件中已有的内容。
+...</p></div><footer class=entry-footer><span title='2025-02-07 00:00:00 +0000 UTC'>February 7, 2025</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《数据密集型系统设计》记录" href=http://localhost:1313/posts/dailydev/%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《Kubernetes微服务实战》记录</h2></header><div class=entry-content><p>《Kubernetes微服务实战》记录 面向开发人员的 Kubernetes 简介 部分核心概念 Node：Node 是 Kubernetes 集群中的一个工作单元，表示集群中的一台物理机或虚拟机。Node 的作用是为运行容器化应用提供计算资源，一个 Node 可以运行多个 Pod。Node 分为： Master Node：负责集群的控制平面，管理所有工作节点。 Worker Node：运行实际的应用程序工作负载，实际上就是 Pod。 Pod：Pod 是 Kubernetes 中最小的可部署单位，表示一个或多个容器的集合。有以下特性： Pod 内的容器共享一个 IP 地址，可以通过 localhost 相互通信。 Pod 内的容器可以共享挂载的存储卷（Volume）。 Pod 通常包含运行同一应用程序组件的容器，如主应用程序容器、日志采集容器等。 Namespace：用于逻辑上隔离资源。可以在同一集群中运行多个项目或团队的工作负载。 Service：用于将一组 Pod 的访问暴露给外部或集群内部的其他 Pod。 Deployment：用于声明和管理 Pod 的期望状态，例如副本数、滚动更新等。 Volume：提供持久化存储，允许 Pod 重启后数据仍然保留。 Kubernetes 架构 每个集群都有一个控制平面和数据平面，数据平面由多个节点组成，控制平面将在这些节点上部署并运行 Pod（容器组），监控变更并做出响应。
+控制平面包含以下组件：
+API 服务器。 etcd 存储。 调度器：kube 调度器负责将 Pod 调度到工作节点。 控制器管理器：kube 控制器管理器是包含多个控制器的单个进程，这些控制器监控着集群事件和对集群的更改做出响应。 节点控制器：负责在节点出现故障时进行通知和响应。 副本控制器：确保每个副本集（replica set）或副本控制器对象中有正确数量的 Pod 。 端点控制器：为每个服务分配一个列出该服务的 Pod 的端点对象。 服务账户和令牌控制器：使用默认服务账户和响应的 API 访问令牌对新的命名空间进行初始化。 数据平面是集群中将容器化工作负载转为 Pod 运行的节点的集合。
+...</p></div><footer class=entry-footer><span title='2025-01-25 00:00:00 +0000 UTC'>January 25, 2025</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《Kubernetes微服务实战》记录" href=http://localhost:1313/posts/dailydev/kubernetes%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>minikube：Ubuntu部署本地集群踩坑</h2></header><div class=entry-content><p>minikube：Ubuntu 部署本地集群踩坑 官方安装教程 minikube start | minikube
+再次感叹 homebrew 的伟大，一行命令就安装、后续也没有问题。
+仪表盘 使用 minikube dashboard 启动仪表盘。如果在服务器上启动、本地访问，就运行类似于的下面命令：
+1 kubectl proxy --address='0.0.0.0' --disable-filter=true 然后把 http://127.0.0.1:46749/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ 这样的 URL 改为 http://ServerIP:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ ，就可以外网直接访问了（注意服务器开端口）。
+Helm 安装 直接使用 snap 安装，方便快捷：
+1 sudo snap install helm --classic kubectl 安装 snap 上大分：
+1 sudo snap install kubectl --classic 安装可能遇到的问题的解决方案 The “docker” driver should not be used with root privileges 使用命令 minikube start 启动，参数 driver 默认为 docker 。如果以 root 用户运行该命令会出现如标题所示的错误，下面是解决方法：
+...</p></div><footer class=entry-footer><span title='2025-01-25 00:00:00 +0000 UTC'>January 25, 2025</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to minikube：Ubuntu部署本地集群踩坑" href=http://localhost:1313/posts/dailydev/minikubeubuntu%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E9%9B%86%E7%BE%A4%E8%B8%A9%E5%9D%91/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《云原生开发实践》记录</h2></header><div class=entry-content><p>《云原生开发实践》记录 本书会包含大量的实践内容，现阶段应着重看理论内容、实践内容暂且忽略，实践内容在理论补充完毕后用到哪块补哪块。
+容器化 DOCKERFILE 的多阶段构建在部署阶段很有用，可以大幅减少镜像的体积。 Docker 可以自建网络，这样就可以把很多容器纳入到同一个网络下，实现容器间按容器名访问对方。 容器编排 对于一个中大型的应用，会有很多的容器组件。而有些容器如Redis、RabbitMQ、Kafka等需要紧密的配合，这时候就需要用到容器编排。
+Docker Compose 组件用于实现本地单个节点上的容器编排，它会从 docker-compose.yaml 文件中读取所需的全部容器的定义，然后运行 docker-compose up 命令启动容器编排。Docker Swarm 可以管理多个节点上的容器，即管理 Docker 集群。
+云原生软件生产流程 云计算的能力：
+弱化了传统 IT 硬件概念，革命性地降低了企业在基础设施上的建设成本。 实现了弹性获取计算资源，用户可以按需使用。 云计算的成熟时云原生发展的基石，使云原生的许多概念得以落地。云原生应用一般有以下特点：
+在应用的设计和开发阶段就为部署到云上做适配。 应用由多个松耦合的小模块构成而不是一个庞大的单体项目，即微服务架构。 通过容器来交付和发布应用，应用代码中会加入容器化需要的文件。 和传统的软件生产方式相比，云原生的优势主要在塔提高了应用发布和运维时的效率，显著降低了运维的复杂性。
+云原生基础设施 Kubernetes Kubernetes 是开源的容器编排平台，支持集群环境下部署和管理容器化应用。目前已经是容器编排领域的事实标准，成为云原生的操作系统。Kubernetes 也叫 K8s ，8指中间的8个字母。K8s 2013年由 Google 开源，相比于 Docker Swarm K8s 提供更加复杂强大的功能。
+K8s 集群中包含两种节点，一种是 Control Plane 节点（master 节点），另一种是 worker 节点。K8s 中的容器运行在 Pod 中，Pod 运行在 Node 中。每个集群默认至少有一个 Pod ，否则 Pod 无法调度和运行。Control Plane 是 K8s 的容器编排层，通过它提供的 API ，可以定义和部署容器及管理容器的整个生命周期。Control Plane 有以下组件：
+...</p></div><footer class=entry-footer><span title='2025-01-22 00:00:00 +0000 UTC'>January 22, 2025</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《云原生开发实践》记录" href=http://localhost:1313/posts/dailydev/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《Go微服务实战》记录</h2></header><div class=entry-content><p>《Go微服务实战》记录 本书包含很多的 Go 基础和部分进阶内容，这里只选取对现阶段有帮助的内容，毕竟 Go 已经入门过一遍了。
+Go 基础 关于指针，如果涉及到修改变量本身就使用指针作为函数输入变量等，典型的如单例模式下的变量都是指针。反之如果不修改变量本身，就直接使用复制变量作为函数输入变量等，函数返回值自然也是某个新的变量。
+关于 Go 中的循环，请看 code：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 package main func main() { for i := 0; i &lt; 10; i++ { ... } // 最标准的循环 for { ... } // 就是没有显式跳出条件的 while arr := []int{1, 2, 3, 4, 5} for i, v := range arr { ... } // 这里的 range 是关键字，用法有些类似于 Python 中的 enumerate 函数 } Go 的垃圾回收策略使用的三色标记法，具体内容会单独进行学习。
+字符串与复合数据类型 关于字符串的相关操作，见代码：
+...</p></div><footer class=entry-footer><span title='2025-01-18 00:00:00 +0000 UTC'>January 18, 2025</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《Go微服务实战》记录" href=http://localhost:1313/posts/dailydev/go%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《PostgreSQL指南》记录</h2></header><div class=entry-content><p>《PostgreSQL指南》记录 Why choose PostgreSQL, or not MySQL ? SQL 标准支持更好：PostgreSQL 对 SQL 标准的支持更加全面，而 MySQL 在某些情况下依赖非标准实现（如分组函数的行为）。 高级功能更强： JOSNB 的性能更优：PostgreSQL 的 JSONB 数据类型支持更高效的索引和操作，而 MySQL 的 JSON 功能较为有限。 复杂查询：支持递归查询、窗口函数等复杂功能，而 MySQL 在这些方面功能较弱或支持有限。 并行查询：PostgreSQL 提供原生的并行查询能力，能够充分利用多核 CPU，而 MySQL 直到 8.0 版本才有一定程度的改进。 扩展性更好： PostgreSQL 支持自定义数据类型、函数和插件，更适合需要扩展或复杂业务逻辑的项目。 PostGIS 插件使其在地理信息领域表现出色，而 MySQL 的 GIS 功能相对简单。 更高的性能和灵活性： 支持多种索引类型（如 GIN、GiST、BRIN 等），适合高性能全文搜索、地理查询等场景。 支持更复杂的查询优化器策略，适合复杂查询和数据分析。 更可靠的数据一致性： PostgreSQL 的 MVCC 机制更成熟，避免了常见的锁争用问题。 MySQL 的 MVCC 在某些情况下（如高并发）性能欠佳，容易导致死锁。 PostgreSQL 适用于有复杂数据分析需求、地理信息系统、高并发和大数据量等应用场景，相比于 MySQL 的应用场景更复杂。
+数据库集簇、数据库和数据表 数据库集簇的逻辑结构 数据库集簇是一组数据库的集合，由一个 PostgreSQL 服务器管理。而数据库是数据对象的集合，数据库对象用于存储或引用数据的数据结构。
+在 PosgreSQL 中，所有的数据库对象都通过相应的对象标识符（oid）进行管理，这些标识都是无符号 4 字节整型。
+...</p></div><footer class=entry-footer><span title='2024-12-22 00:00:00 +0000 UTC'>December 22, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《PostgreSQL指南》记录" href=http://localhost:1313/posts/dailydev/postgresql%E6%8C%87%E5%8D%97%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《高效使用Redis》记录</h2></header><div class=entry-content><p>《高效使用Redis》记录 基础数据结构解析 对象 Redis中的 RedisObject 的 c 定义：
+1 2 3 4 5 6 7 8 #define LRU_BITS 24 typedef struct redisObject { unsigned type:4; // 数据类型 unsigned encoding:4; // 底层数据结构 unsigned lru:LRU_BITS; // 缓存淘汰时使用 int refcount; // 引用计数 void *ptr; // 指向实际存储位置 } robj; RedisObject 是 Redis 中数据结构的一个抽象，用它来存储所有的 key-value 数据。
+下面是结构体中各个属性的。说明：
+type：用来表示对象类型；
+encoding：表示当前对象底层存储所采用的数据结构，如int、字典、压缩列表、跳跃表等等；
+lru：用于在配置文件中通过 maxmemory-policy 配置已用内存到最大内存限制时的缓存淘汰策略。
+以 GET 命令为例，简单看看 Redis 中的 LRU 实现。使用 GET 后，会执行这段代码更新对象的 lru 属性：
+1 2 3 4 5 if (server.maxmemory_policy & MAXMEMORY_FLAG_LRU) { uodateLFU(val); } else { val->lru = LRU_CLOCK(); } LRU_CLOCK 用于获取当前时间，但并不是实时获取。Redis 每 1s 执行系统调用来获取精确时间，然后存储在全局变量 server.lruclock 中，LRU_CLOCK 只是获取该缓存时间。updateLFU 用于更新对象的上次访问时间和访问次数。
+...</p></div><footer class=entry-footer><span title='2024-12-05 00:00:00 +0000 UTC'>December 5, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《高效使用Redis》记录" href=http://localhost:1313/posts/dailydev/%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8redis%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《gRPC与云原生应用开发》记录</h2></header><div class=entry-content><p>《gRPC与云原生应用开发》记录 gRPC 入门 gRPC 的定义 gRPC 是一项进程间通信技术，可以用来连接、调用、操作和调试分布式异构应用程序。
+开发 gRPC 应用程序时，要先定义服务接口：消费者消费信息的方式、消费者能够远程调用的方法以及调用方法所使用的参数和消息格式等。在服务定义中使用的语言叫作接口定义语言（IDL）。
+下面是使用 protocol buffers 作为 IDL 来定义服务接口：
+服务定义
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 // ProductInfo.proto syntax = "proto3"; package ecommerce; // 防止协议消息类型之间发生命名冲突 // 定义服务接口 service ProductInfo { rpc addProduct(Product) returns (ProductID); rpc getProduct(ProductID) returns (Product); } // 定义消息格式 message Product { string id = 1; string name = 2; string description = 3; } message ProductID { string value = 1; } 上面定义完成之后，就使用 protocol buffers 编译器 protoc 生成服务器端和客户端代码。
+...</p></div><footer class=entry-footer><span title='2024-11-30 00:00:00 +0000 UTC'>November 30, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《gRPC与云原生应用开发》记录" href=http://localhost:1313/posts/dailydev/grpc%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《深入RabbitMQ》记录</h2></header><div class=entry-content><p>《深入RabbitMQ》记录 RabbitMQ 基础 AMQP 协议 AMQP，即高级消息队列协议（Advanced Meesage Queuing Protocal）。它定义了一个 AMQ 应该有以下三部分：
+交换器：一个接收器接收发送到 MQ 中的消息并决定把它们投递到何处； 队列：存储接收到的消息； 绑定：定义队列和交换器之间的关系。在 RabbitMQ 中，绑定或者叫绑定键即告知一个叫交换器应该将消息投递到哪些队列中。 使用 AMQ 协议与 Rabbit 进行交互 AMQP 帧类型 AMQP 规定了五种类型的帧：
+协议头帧：用于连接到 RabbitMQ，仅使用一次； 方法帧：携带发送到 RabbitMQ 或从 RabbitMQ 接收到的 RPC 请求或响应； 内容头帧：包含一条消息的大小和属性； 消息体帧：包含消息的内容； 心跳帧：确保连接，一种校验机制。 将消息编组成帧 首先是方法帧、内容头帧，这两种帧比较好理解。
+而消息体帧会根据消息体的大小切分成一到多个消息体帧。
+要发送消息，首先发送的是方法帧，之后是内容帧，最后是若干个消息体帧。
+帧结构 方法帧携带构建 RPC 请求所需的类、方法和参数。
+内容头帧包含了消息的大小和其他对消息起描述作用的属性。
+消息体帧可以传输很多类型的数据，可以是二进制、文本，也可以是二进制化的图片和序列化后的json、xml。
+使用协议 包含下面一个基本流程：
+声明交换器 声明队列 绑定队列到交换器 发布消息到 RabbitMQ 从 RabbitMQ 消费消息 消息属性详解 使用 content-type 创建显式的消息契约 在不同的语言的消费者框架中，框架可以自动的根据 content-type 类型将其反序列化为该语言中的数据结构。
+使用 gzip 和 content-encoding 压缩消息大小 通过指定 content-encoding 属性可以在消息体上应用特殊的编码。
+...</p></div><footer class=entry-footer><span title='2024-11-28 00:00:00 +0000 UTC'>November 28, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《深入RabbitMQ》记录" href=http://localhost:1313/posts/dailydev/%E6%B7%B1%E5%85%A5rabbitmq%E8%AE%B0%E5%BD%95/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>华为云部署踩坑</h2></header><div class=entry-content><p>华为云部署踩坑 Docker 国内镜像源（截止到2024.11.1） DockerHub 镜像仓库 是否正常 hub.xdark.top 正常 hub.littlediary.cn 正常 dockerpull.org 新增 hub.crdz.gq 正常 docker.1panel.live 正常 docker.unsee.tech 新增 docker.m.daocloud.io 正常 docker.kejilion.pro 正常 registry.dockermirror.com 正常 hub.rat.dev 正常 dhub.kubesre.xyz 正常 docker.nastool.de 正常 docker.hpcloud.cloud 失效 docker.hlyun.org 失效 doublezonline.cloud 失效 docker.chenby.cn 失效 ginger20240704.asia 失效 lynn520.xyz 失效 hub.docker-ttc.xyz 失效 noohub.ru 失效 docker.nat.tf 失效 dockerproxy.cn 失效 freeno.xyz 失效 docker.registry.cyou 失效 hub.yuzuha.cc 失效 docker-cf.registry.cyou 失效 docker.mrxn.net 失效 dockerproxy.github.io 失效 docker.wget.at 失效 atomhub.openatom.cn 失效 ccr.ccs.tencentyun.com 失效 dockerproxy.com 失效 dislabaiot.xyz 失效 dockerpull.com 失效 hub.firefly.store 失效 配置方式1：临时使用 直接使用，直接拿镜像域名拼接上官方镜像名，例如要拉去镜像istio/distroless，可以用下面写法（不要带 https://）
+...</p></div><footer class=entry-footer><span title='2024-11-05 00:00:00 +0000 UTC'>November 5, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 华为云部署踩坑" href=http://localhost:1313/posts/dailydev/%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%83%A8%E7%BD%B2%E8%B8%A9%E5%9D%91/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《计组KG》课题开发过程（三）</h2></header><div class=entry-content><p>牢骚 时隔一个多月才完成了基本的可视化系统的搭建，中间有着各种各样的原因：Vue3第一次用、Django-Ninja不熟悉等等再加上一些闲杂原因就一直拖到了现在，效率多少有点堪忧。
+总之不算怎么说，也算是曲折的完成了原定计划，下面将从后端、前端的技术选择、功能介绍、成品展示等几个章节大致的讲述下。
+后端 项目地址 KurongTohsaka/PCCKGVisualization
+技术栈 Web 框架自然是选相对擅长且好用的 Django ，但是 Django 本身使用起来又过于繁重，不太适合开发Restful类型的接口，所以一般会搭配着 Django REST Framework (DRF) 使用。但是这一次我打算尝试一个新的 Django 扩展，它是 FastAPI 的 Django 版：Django-Ninja 。
+Web 框架订好了以后，就该选数据库了。既然是存储图数据，那肯定是 Neo4j 。而网站数据就使用简单的 Sqlite 吧，主要就是省事。
+功能与接口 下面的所有接口的最上级请求路径：pcc_kg_vs
+功能主要分为两部分：认证和可视化。
+首先是认证，包含以下基本功能：
+用户认证：用户登陆、注册、登出 API 鉴权：token 验证 CSRF 验证：CSRF token 验证 下面是简易的接口标准：
+登陆
+先检查该用户是否已注册，若注册则从数据库中根据信息查询到用户，然后登陆该用户。若未注册则登陆失败
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 { "method": "POST", "path": "/login", "params": { "username": "", "password": "" }, "return": { "successful": bool, "code": int, "token": str, //登陆令牌 'info': str } } 登出 HTTPBearer
+...</p></div><footer class=entry-footer><span title='2024-11-04 00:00:00 +0000 UTC'>November 4, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《计组KG》课题开发过程（三）" href=http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%89/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>MAC上用docker配置neo4j以及apoc扩展的过程</h2></header><div class=entry-content><p>拉取 neo4j Docker image 在 MAC 上用的 Docker Desktop，确实很方便操作。
+直接在 Image Tab 页搜 Neo4j 就有一个官方 image，我选的 5.24.1版本，pull 下来。
+这里之所以要选择一个特定的版本，原因是之后要启用的 apoc 扩展需要用对应 neo4j 版本的 jar 包。
+配置容器 因为用的 Docker Desktop，很多没必要的步骤都可以直接忽略。配置好转发端口、挂载位置后，就启动容器。
+Neo4j 容器启动后默认直接运行，登陆 Web 管理界面配置后用户名密码后就完成了基本配置。
+Docker 真 tm 好用（
+配置 apoc 这里需要注意一点，neo4j 5.x 之后的版本中，apoc 本身的相关配置需要写在 neo4j/conf/apoc.conf 里，而不是 neo4j/conf/neo4j.conf 中，不然在启动服务时会报错！！！
+首先是 apoc 的下载地址：Index of /doc/neo4j-apoc/ 。
+下载好后，把它放进 neo4j/plugins，并改名为 apoc.jar （啥名都行，这里是方面后面改配置）。
+接下来修改 neo4j/conf/neo4j.conf ，修改以下两行并取消该行注释：
+1 2 dbms.security.procedures.unrestricted=apoc.* dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.* 最后修改 neo4j/conf/apoc.conf ：
+1 2 apoc.import.file.enabled=true apoc.export.file.enabled=true 到这里就配置完所有的了，重启服务即可。
+...</p></div><footer class=entry-footer><span title='2024-10-22 00:00:00 +0000 UTC'>October 22, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to MAC上用docker配置neo4j以及apoc扩展的过程" href=http://localhost:1313/posts/dailydev/%E9%85%8D%E7%BD%AEnep4j%E8%BF%87%E7%A8%8B/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《计组KG》课题开发过程（二）</h2></header><div class=entry-content><p>前言 自从上次记录已经过去了一个月，整个课题进展不大。原因一个是暑期有点摆，另一个是关系抽取确实比较繁琐。不管怎么说，来记录下吧。
+NER 数据集下的模型训练 首先需要声明的是该阶段的模型不参与于最后 KG 的构建，目的仅仅是跑通模型训练、验证的过程，为后续阶段提供便利。
+NER 数据集 该部分信息在完成 RE 部分后可能会发生些微变动，仅作参考，后续会做调整。
+共标记5147条中文语句，实体共标注1472个。
+下面是各个标签下的数量统计：
+Label Count TECH 388 COMP 382 STOR 170 DATA 133 INST 105 ARCH 71 IO 61 PERF 54 PROG 52 CORP 17 ALG 16 PROT 15 PER 4 GRP 4 模型选择 模型有两大类：
+传统深度学习方法 CNN-CRF BiLSTM-CRF BERT 系预训练模型，输出层为 CRF 或 MLP+Softmax BERT：BERT 是一个双向 Transformer 模型，通过掩码语言模型（Masked Language Model, MLM）和下一句预测（Next Sentence Prediction, NSP）任务进行预训练 RoBERTa：RoBERTa 是对 BERT 的优化版本，移除了 NSP 任务，并采用了动态掩码策略 ALBERT：ALBERT 是 BERT 的轻量级版本，通过参数共享和嵌入参数因子化来减少模型大小 XLM-RoBERTa：XLM-RoBERTa 是针对多语言的预训练模型，基于 RoBERTa 和 XLM 的结合 这里选择的是 XLM-RoBERTa，预训练模型选择的是 FacebookAI/xlm-roberta-large-finetuned-conll03-english · Hugging Face
+...</p></div><footer class=entry-footer><span title='2024-09-14 00:00:00 +0000 UTC'>September 14, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《计组KG》课题开发过程（二）" href=http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%BA%8C/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《计组KG》课题开发番外：关系抽取的思考过程</h2></header><div class=entry-content><p>现状 目前课题进行到了关系抽取这一步。在看完之前的RE综述后，我决定整一个 Joint 的 NER+RE 模型。目前已经完成了 NER 的标注工作，下一步工作自然就是 RE 的标注。但是 RE 的标注要比 NER 要困难的多，一个是对于关系的定义依赖于实体类型、句子词性等多种复杂要素，二是手工标注势必工作量巨大。所以 RE 的标注有什么解决方法呢？
+我决定把整个思考过程记录下来，方便复盘。
+相关开源库 thunlp/OpenNRE：用于神经关系提取 （NRE） 的开源包 (github.com)
+SapienzaNLP/relik：检索、读取和 LinK：学术预算上的快速准确的实体链接和关系提取 （ACL 2024） (github.com)
+huggingface/setfit：使用句子转换器进行高效的少样本学习 (github.com)
+EleutherAI/lm-evaluation-harness：一种用于语言模型小样本评估的框架。 (github.com)
+关系抽取的可能方案 首先能想到的两种常见方案：
+使用 RE 预训练模型预标注：和 NER 的标注工作流程一致，但是中文 RE 预训练模型很难找 远程监督：使用已有的知识库或实体关系词典，对大规模文本进行远程监督标注。但是不适合当前课题的小规模数据集，而且没有现成的大量 RE 标注数据 以上两种方案中只有预训练模型的预标注还算可行，那有没有什么方法可以加速这一过程？可以看看下面的两种方法：
+半监督学习：结合少量人工标注数据和大量未标注数据，通过半监督学习的方法训练模型
+few-shot 小样本学习：使用少量人工标注的数据对few-shot模型进行训练，以提高模型在少样本情况下的泛化能力
+这两种方案值得单独进行介绍。
+半监督学习 半监督学习（Semi-Supervised Learning）是一种结合了监督学习和无监督学习的机器学习方法。它利用少量的标记数据和大量的未标记数据来训练模型，从而提高模型的泛化能力和性能。
+半监督学习的样本标注依赖假设，以下是部分常见假设：
+平滑性假设：如果两个数据点在高密度区域中且距离很近，那么它们的输出也应该相似 聚类假设：如果数据点形成簇，那么同一簇中的数据点应该属于同一类 流形假设：高维数据通常位于低维流形上，同一流形上的数据点具有相同的标签 常用的方法有：
+一致性正则化：假设对未标记数据加入小扰动后，其分类结果不应改变 伪标签：使用已标记数据训练初始模型，然后用该模型对未标记数据进行预测，生成伪标签，再将这些伪标签数据加入训练集中进行再训练 生成式模型：利用生成模型（如GANs）从数据分布中生成样本，并将这些样本用于训练分类器 优势：
+利用未标注数据，提高模型的泛化能力和性能 较低标注成本 适应性强，可以应用于多种任务 缺点：
+依赖数据假设：半监督学习通常假设未标记数据和标记数据在特征空间中具有相似性，这在实际应用中并不总是成立。如果这些假设不成立，可能会导致模型性能下降 标签传播误差 数据不平衡问题 我曾经在 kaggle 比赛中使用过半监督学习中的伪标签方法，只从工程实现的角度看比较容易，但是模型性能不一定有提升。
+...</p></div><footer class=entry-footer><span title='2024-08-24 00:00:00 +0000 UTC'>August 24, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《计组KG》课题开发番外：关系抽取的思考过程" href=http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E7%95%AA%E5%A4%96%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E7%9A%84%E6%80%9D%E8%80%83%E8%BF%87%E7%A8%8B/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>《计组KG》课题开发过程（一）</h2></header><div class=entry-content><p>前言 开发该课题也有一个月了，整个过程并不是很顺利，很多细节部分如果没有得到及时梳理，对以后的研究和论文写作也有坏处。基于以上和其他原因，遂决定分阶段进行记录。
+数据集 深度学习项目的良好开端就是有一个优良标注的数据集。而由于本课题起源于一个极小领域下，导致数据集必须完全自建。所有工作由我一人进行，工作量不可避免的大。所以必须尽可能的减少工作量，尽量实现在课题的中后期的所有标注工作都由程序自动化解决。
+计组数据集的构建分为了以下几个过程：
+计组数据集来源 数据预处理 数据集的预标注 基于词典的多次迭代标注 数据集格式的转换 接下来对每一个部分进行详述。
+计组数据集来源 目前数据的来源如下：
+计算机组成原理第6版 (白中英)，pdf 转 txt 计算机组成原理第6版 (白中英) 课件，ppt 转 txt 数据预处理 以下是大概的预处理过程：
+将所有的文本合并到一个文件，方便后续操作； 手工去掉一些与课题无关的文本和小部分错误内容； 去掉所有的空白字符（空格、换行符、制表符等）； 去掉所有的特殊字符（数字、半角符号、特殊字符）； 以中文句号进行分割，分别以整句、分词的形式输出到 json 文件中。 处理结果：
+1 2 3 4 // 整句 { "0": "\u8ba1\u7b97\u673a\u7cfb\u7edf\u4e0d\u540c\u4e8e\u4e00\u822c\u7684\u7535\u5b50\u8bbe\u5907\uff0c\u5b83\u662f\u4e00\u4e2a\u7531\u786c\u4ef6\u3001\u8f6f\u4ef6\u7ec4\u6210\u7684\u590d\u6742\u7684\u81ea\u52a8\u5316\u8bbe\u5907" } 1 2 3 4 // 分词 { "0": ["\u8ba1", "\u7b97", "\u673a", "\u7cfb", "\u7edf", "\u4e0d", "\u540c", "\u4e8e", "\u4e00", "\u822c", "\u7684", "\u7535", "\u5b50", "\u8bbe", "\u5907", "\uff0c", "\u5b83", "\u662f", "\u4e00", "\u4e2a", "\u7531", "\u786c", "\u4ef6", "\u3001", "\u8f6f", "\u4ef6", "\u7ec4", "\u6210", "\u7684", "\u590d", "\u6742", "\u7684", "\u81ea", "\u52a8", "\u5316", "\u8bbe", "\u5907"] } 数据集的预标注 以上所有数据处理完后，共得到5632条文本。如果要自己一条条的标注，真就是整一个月啥也别干，所以还是要用比较省力的方式进行标注。我选择用一个在中文语料集上训练过的预训练模型进行第一轮标注，也就是预标注。
+我选择了 RaNER命名实体识别-中文-通用领域-large 作为预标注阶段的预训练模型。该模型的标签如下：
+实体类型 英文名 公司名 CORP 创作名 CW 其他组织名 GRP 地名 LOC 人名 PER 消费品 PROD 为什么要选择这个模型呢？我当时认为有以下几点可以考虑：
+...</p></div><footer class=entry-footer><span title='2024-08-01 00:00:00 +0000 UTC'>August 1, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 《计组KG》课题开发过程（一）" href=http://localhost:1313/posts/dailydev/%E8%AE%A1%E7%BB%84kg%E8%AF%BE%E9%A2%98%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%80/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>neo4j常用命令</h2></header><div class=entry-content><p>neo4j启动与访问 启动neo4j
+1 2 docker start test_neo4j docker exec -it test_neo4j /bin/bash 访问browser
+1 http://localhost:7474/browser/ 访问database
+1 2 3 neo4j://localhost:7687 auth: neo4j pw: 5225400599 CQL语法 create 创建节点 1 2 3 4 5 6 7 8 CREATE ( &lt;node-name>:&lt;label-name> { &lt;Property1-name>:&lt;Property1-Value> ........ &lt;Propertyn-name>:&lt;Propertyn-Value> } ) match 查询节点或属性 1 2 3 4 5 6 7 8 9 10 11 12 13 14 # 查询Dept下的内容 MATCH (dept:Dept) return dept # 查询Employee标签下 id=123，name="Lokesh"的节点 MATCH (p:Employee {id:123,name:"Lokesh"}) RETURN p ## 查询Employee标签下name="Lokesh"的节点，使用（where命令） MATCH (p:Employee) WHERE p.name = "Lokesh" RETURN p ## 返回一个table MATCH (dept: Dept) RETURN dept.deptno,dept.dname,dept.location match 要绑定return使用，而return不能单独使用。
+...</p></div><footer class=entry-footer><span title='2024-06-26 00:00:00 +0000 UTC'>June 26, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to neo4j常用命令" href=http://localhost:1313/posts/dailydev/neo4j/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>SQL</h2></header><div class=entry-content><p>第一章：数据库基础 数据库：保存有组织的数据的容器（通常是一个文件或一组文件）
+数据库软件（DBMS）：MySql，Oracle，MongoDB之类。人们通常用数据库来代替数据库软件的名称
+表（table）：某种特定类型数据的结构化清单
+模式：关于数据库和表的布局及特性的信息
+列（column）：表中的一个字段（该列由字段来唯一标识），所有表都是由一个或多个列组成的，每一列都有自己的数据类型
+行（row）：表中的一条数据是由行来存储的
+主键（primary key）：唯一标识表中每行的这个列就是主键，应该总是定义主键
+关于主键：
+任意两行都不具有相同的主键值 每个行都必须有一个主键值 SQL：结构化查询语言
+第二章：MySQL简介 略
+第三章：使用MySQL 登录数据库
+默认主机名：localhost
+默认端口：3306
+1 2 mysql -u root -p # 然后输入密码 选择数据库
+1 USE database_name; 了解数据库和表
+查看所有数据库
+1 SHOW DATABASES; 查看一个数据库中的所有表
+1 SHOW TABLES; 查看一个表的所有字段
+1 SHOW COLUMNS FROM table; 还有一种快捷写法
+1 DESCRIBE table; 在返回的列表中可以看到一些建表信息，如字段名，数据类型，键类型，是否为NULL，默认值，其他类型。
+其他的show语句
+1 2 3 4 5 SHOW GRANTS; # 显示授予用户的安全权限 SHOW ERRORS; # 显示服务器错误 SHOW WARNINGS; # 显示服务器警告信息 SHOW STATUS; # 显示服务器的状态信息 HELP SHOW; # 显示mysql允许的show语句 有一个书写规则：select这样的关键词要大写，表名、列名、数据库名要小写
+...</p></div><footer class=entry-footer><span title='2024-06-26 00:00:00 +0000 UTC'>June 26, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to SQL" href=http://localhost:1313/posts/dailydev/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>正则表达式</h2></header><div class=entry-content><p>第二章. 匹配单个字符 ’ . ’ 用来匹配任意单一字符, 元字符的一种
+’ \ ‘为转义字符, 属于元字符的一种, 元字符: 有特殊含义的字符
+正则表达式被称为模式(pattern)
+第三章. 匹配一组字符 ’ [ ] ‘为元字符, 表示一个字符集合, 必须匹配其中的一个或多个字符, 也可以全部匹配. ’ [ ] ‘可以用来匹配大小写, 如[Aa].*就匹配任意以A或a或Aa开头的字符串. 还有几种常见的用法, 如[a-z] [A-Z] [0-9], 这几种很常用, 还有一个用法[A-Za-z0-9] 这个字符集可以匹配以上三种用法的合集
+’ - ‘表示连字符, 是一种较为特殊的元字符, 只有在’ [ ] ’ 里才是元字符, 在其他地方就是一个普通的字符’ - ‘, 也因此在这种情况下它不需要转义
+’ ^ ’ 表示排除, 也是元字符. 在上面的几种用法中, 在集合的最前面加上’ ^ ‘, 就表示匹配除了该集合以外的字符, 而且需要注意的是, ’ ^ ‘的作用域是整个字符集合, 而不是紧跟在其身后的单个字符什么的
+第四章. 使用元字符 如果要匹配元字符本身, 可以用 ’ \ . 如: 匹配[ ], 用\ [ \ ]
+...</p></div><footer class=entry-footer><span title='2024-06-26 00:00:00 +0000 UTC'>June 26, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 正则表达式" href=http://localhost:1313/posts/dailydev/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A__%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>记一次博客搭建</h2></header><div class=entry-content><p>My Blog Construction 前言 这是第二次用 Hugo 搭建静态博客了，之前的那个博客不论是主题、工作流、文件结构都很不合理，用起来效率低下。遂决定在研一之前重新搞一次。
+完整过程 hugo 安装 在官方的 Releases · gohugoio/hugo (github.com) 下载对应版本即可，然后设置环境变量。
+环境配置 网站选用 Github Pages 搭建，因为静态网站可以满足我的所有写作需求。域名就是仓库名705248010.github.io.
+将仓库拉取到本地后就要开始配置了。先用
+1 hugo new site &lt;your site name> 生成一个对应文件夹，然后我将选择的主题 adityatelange/hugo-PaperMod: A fast, clean, responsive Hugo theme. (github.com) 放到 themes 文件夹内。
+可以通过
+1 hugo server 查看效果。
+写Markdown 根据官方文档配置完成后就可以本地写文章了，用以下命令生成
+1 hugo new --kind post ./xxxx/xxxx.md KaTex PaperMod 本身没有对数学公式的支持，但在 Hugo 官网能找到相关文档：Mathematics in Markdown | Hugo (gohugo.io) 。
+这里选用 KaTex ，不用Mathjax的原因在于其对于内联公式符号 $ 的不支持。
+...</p></div><footer class=entry-footer><span title='2024-06-24 00:00:00 +0000 UTC'>June 24, 2024</span>&nbsp;·&nbsp;Kurong</footer><a class=entry-link aria-label="post link to 记一次博客搭建" href=http://localhost:1313/posts/dailydev/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/></a></article></main><footer class=footer><span>&copy; 2025 <a href=http://localhost:1313/>KurongBlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

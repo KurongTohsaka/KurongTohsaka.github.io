@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CS224N on KurongBlog</title>
+    <link>http://localhost:1313/tags/cs224n/</link>
+    <description>Recent content in CS224N on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 16 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cs224n/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lecture 10: Pretrained Model</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_10/</link>
+      <pubDate>Fri, 16 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_10/</guid>
+      <description>第十讲：预训练模型</description>
+    </item>
+    <item>
+      <title>Lecture 9: Transformer</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_9/</link>
+      <pubDate>Tue, 13 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_9/</guid>
+      <description>第九讲：Transformer</description>
+    </item>
+    <item>
+      <title>Lecture 8: Attention</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_8/</link>
+      <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_8/</guid>
+      <description>第八讲：注意力机制</description>
+    </item>
+    <item>
+      <title>Lecture 7: Machine Translation and Sequence to Sequence</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_7/</link>
+      <pubDate>Sat, 13 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_7/</guid>
+      <description>第七讲：机器翻译与Seq2seq</description>
+    </item>
+    <item>
+      <title>Lecture 6: Long Short-Term Memory RNNs</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_6/</link>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_6/</guid>
+      <description>第六讲：LSTM</description>
+    </item>
+    <item>
+      <title>Lecture 5: Language Models and Recurrent Neural Network</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_5/</link>
+      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_5/</guid>
+      <description>第五讲：语言模型和循环神经网络</description>
+    </item>
+    <item>
+      <title>Lecture 4: Dependency parsing</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_4/</link>
+      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_4/</guid>
+      <description>第四讲：依存句法分析</description>
+    </item>
+    <item>
+      <title>Lecture 1: Introduction and Word Vectors</title>
+      <link>http://localhost:1313/posts/cs224n/lesson_1/</link>
+      <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cs224n/lesson_1/</guid>
+      <description>第一讲：简介和词向量</description>
+    </item>
+  </channel>
+</rss>

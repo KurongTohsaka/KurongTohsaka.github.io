@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Regular Expression on KurongBlog</title>
+    <link>http://localhost:1313/tags/regular-expression/</link>
+    <description>Recent content in Regular Expression on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 26 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/regular-expression/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>正则表达式</title>
+      <link>http://localhost:1313/posts/dailydev/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A__%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A__%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h2 id=&#34;第二章-匹配单个字符&#34;&gt;第二章. 匹配单个字符&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;rsquo; . &amp;rsquo; 用来匹配任意单一字符, 元字符的一种&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;rsquo; \ &amp;lsquo;为转义字符, 属于元字符的一种, 元字符: 有特殊含义的字符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正则表达式被称为模式(pattern)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;第三章-匹配一组字符&#34;&gt;第三章. 匹配一组字符&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;rsquo; [ ] &amp;lsquo;为元字符, 表示一个字符集合, 必须匹配其中的一个或多个字符, 也可以全部匹配. &amp;rsquo; [ ] &amp;lsquo;可以用来匹配大小写, 如[Aa].*就匹配任意以A或a或Aa开头的字符串. 还有几种常见的用法, 如[a-z] [A-Z] [0-9], 这几种很常用, 还有一个用法[A-Za-z0-9] 这个字符集可以匹配以上三种用法的合集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;rsquo; - &amp;lsquo;表示连字符, 是一种较为特殊的元字符, 只有在&amp;rsquo; [ ] &amp;rsquo; 里才是元字符, 在其他地方就是一个普通的字符&amp;rsquo; - &amp;lsquo;, 也因此在这种情况下它不需要转义&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;rsquo; ^ &amp;rsquo; 表示排除, 也是元字符. 在上面的几种用法中, 在集合的最前面加上&amp;rsquo; ^ &amp;lsquo;, 就表示匹配除了该集合以外的字符, 而且需要注意的是, &amp;rsquo; ^ &amp;lsquo;的作用域是整个字符集合, 而不是紧跟在其身后的单个字符什么的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;第四章-使用元字符&#34;&gt;第四章. 使用元字符&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果要匹配元字符本身, 可以用 &amp;rsquo; \ . 如: 匹配[ ], 用\ [ \ ]&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Website on KurongBlog</title>
+    <link>http://localhost:1313/tags/website/</link>
+    <description>Recent content in Website on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 24 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/website/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记一次博客搭建</title>
+      <link>http://localhost:1313/posts/dailydev/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>&lt;h1 id=&#34;my-blog-construction&#34;&gt;My Blog Construction&lt;/h1&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;这是第二次用 Hugo 搭建静态博客了，之前的那个博客不论是主题、工作流、文件结构都很不合理，用起来效率低下。遂决定在研一之前重新搞一次。&lt;/p&gt;
+&lt;h2 id=&#34;完整过程&#34;&gt;完整过程&lt;/h2&gt;
+&lt;h3 id=&#34;hugo-安装&#34;&gt;hugo 安装&lt;/h3&gt;
+&lt;p&gt;在官方的 &lt;a href=&#34;https://github.com/gohugoio/hugo/releases&#34;&gt;Releases · gohugoio/hugo (github.com)&lt;/a&gt; 下载对应版本即可，然后设置环境变量。&lt;/p&gt;
+&lt;h3 id=&#34;环境配置&#34;&gt;环境配置&lt;/h3&gt;
+&lt;p&gt;网站选用 &lt;code&gt;Github Pages&lt;/code&gt; 搭建，因为静态网站可以满足我的所有写作需求。域名就是仓库名&lt;code&gt;705248010.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;将仓库拉取到本地后就要开始配置了。先用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-0-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new site &amp;lt;your site name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;生成一个对应文件夹，然后我将选择的主题 &lt;a href=&#34;https://github.com/adityatelange/hugo-PaperMod&#34;&gt;adityatelange/hugo-PaperMod: A fast, clean, responsive Hugo theme. (github.com)&lt;/a&gt; 放到 &lt;code&gt;themes&lt;/code&gt; 文件夹内。&lt;/p&gt;
+&lt;p&gt;可以通过&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-1-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-1-1&#34;&gt;1&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;查看效果。&lt;/p&gt;
+&lt;h3 id=&#34;写markdown&#34;&gt;写Markdown&lt;/h3&gt;
+&lt;p&gt;根据官方文档配置完成后就可以本地写文章了，用以下命令生成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34; id=&#34;hl-2-1&#34;&gt;&lt;a class=&#34;lnlinks&#34; href=&#34;#hl-2-1&#34;&gt;1&lt;/a&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new --kind post ./xxxx/xxxx.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;katex&#34;&gt;KaTex&lt;/h3&gt;
+&lt;p&gt;PaperMod 本身没有对数学公式的支持，但在 Hugo 官网能找到相关文档：&lt;a href=&#34;https://gohugo.io/content-management/mathematics/&#34;&gt;Mathematics in Markdown | Hugo (gohugo.io)&lt;/a&gt; 。&lt;/p&gt;
+&lt;p&gt;这里选用 KaTex ，不用Mathjax的原因在于其对于内联公式符号 &lt;code&gt;$&lt;/code&gt; 的不支持。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

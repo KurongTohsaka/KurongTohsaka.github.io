@@ -1,0 +1,67 @@
+<!doctype html><html lang=en dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>7.22-7.28：一周总结 | KurongBlog</title>
+<meta name=keywords content="WeeklyWorking"><meta name=description content="本周任务
+本周主要还是做计组知识图谱课题。以下为本周具体进度：
+
+把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量
+第一次标注采用预标注，之后用词典不断迭代标注
+完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注
+用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决
+
+课题下周改进
+
+PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签
+弃用 Adaseq ，国产的玩意是真不如 Transformers 好用
+找一个新的预训练模型进行训练（其实已经找到了）
+多模型对比训练
+
+以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少
+本周反思
+
+每一步的数据尽可能的量化并记录，方便日后发论文
+对课题各个工作部分理解浅显，应当在阅读部分文献后再进行
+"><meta name=author content="Kurong"><link rel=canonical href=http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><meta property="og:title" content="7.22-7.28：一周总结"><meta property="og:description" content="本周任务
+本周主要还是做计组知识图谱课题。以下为本周具体进度：
+
+把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量
+第一次标注采用预标注，之后用词典不断迭代标注
+完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注
+用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决
+
+课题下周改进
+
+PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签
+弃用 Adaseq ，国产的玩意是真不如 Transformers 好用
+找一个新的预训练模型进行训练（其实已经找到了）
+多模型对比训练
+
+以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少
+本周反思
+
+每一步的数据尽可能的量化并记录，方便日后发论文
+对课题各个工作部分理解浅显，应当在阅读部分文献后再进行
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/"><meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-07-28T00:00:00+00:00"><meta property="article:modified_time" content="2024-07-28T00:00:00+00:00"><meta property="og:site_name" content="KurongBlog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="7.22-7.28：一周总结"><meta name=twitter:description content="本周任务
+本周主要还是做计组知识图谱课题。以下为本周具体进度：
+
+把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量
+第一次标注采用预标注，之后用词典不断迭代标注
+完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注
+用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决
+
+课题下周改进
+
+PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签
+弃用 Adaseq ，国产的玩意是真不如 Transformers 好用
+找一个新的预训练模型进行训练（其实已经找到了）
+多模型对比训练
+
+以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少
+本周反思
+
+每一步的数据尽可能的量化并记录，方便日后发论文
+对课题各个工作部分理解浅显，应当在阅读部分文献后再进行
+"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"7.22-7.28：一周总结","item":"http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"7.22-7.28：一周总结","name":"7.22-7.28：一周总结","description":"本周任务 本周主要还是做计组知识图谱课题。以下为本周具体进度：\n把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量 第一次标注采用预标注，之后用词典不断迭代标注 完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注 用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决 课题下周改进 PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签 弃用 Adaseq ，国产的玩意是真不如 Transformers 好用 找一个新的预训练模型进行训练（其实已经找到了） 多模型对比训练 以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少\n本周反思 每一步的数据尽可能的量化并记录，方便日后发论文 对课题各个工作部分理解浅显，应当在阅读部分文献后再进行 ","keywords":["WeeklyWorking"],"articleBody":"本周任务 本周主要还是做计组知识图谱课题。以下为本周具体进度：\n把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量 第一次标注采用预标注，之后用词典不断迭代标注 完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注 用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决 课题下周改进 PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签 弃用 Adaseq ，国产的玩意是真不如 Transformers 好用 找一个新的预训练模型进行训练（其实已经找到了） 多模型对比训练 以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少\n本周反思 每一步的数据尽可能的量化并记录，方便日后发论文 对课题各个工作部分理解浅显，应当在阅读部分文献后再进行 ","wordCount":"25","inLanguage":"en","image":"http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2024-07-28T00:00:00Z","dateModified":"2024-07-28T00:00:00Z","author":{"@type":"Person","name":"Kurong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/weeklyworking/2024_07_22-2024_07_28/"},"publisher":{"@type":"Organization","name":"KurongBlog","logo":{"@type":"ImageObject","url":"http://localhost:1313/%3Clink%20/%20abs%20url%3E"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="Home (Alt + H)"><img src=http://localhost:1313/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=http://localhost:1313/categories/ title=categories><span>categories</span></a></li><li><a href=http://localhost:1313/tags/ title=tags><span>tags</span></a></li><li><a href=http://localhost:1313/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://localhost:1313/>Home</a>&nbsp;»&nbsp;<a href=http://localhost:1313/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">7.22-7.28：一周总结</h1><div class=post-meta><span title='2024-07-28 00:00:00 +0000 UTC'>July 28, 2024</span>&nbsp;·&nbsp;Kurong&nbsp;|&nbsp;<a href=https://github.com/KurongTohsaka/KurongTohsaka.github.io/content/posts/WeeklyWorking/2024_07_22-2024_07_28.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#本周任务>本周任务</a></li><li><a href=#课题下周改进>课题下周改进</a></li><li><a href=#本周反思>本周反思</a></li></ul></nav></div></details></div><div class=post-content><h2 id=本周任务>本周任务<a hidden class=anchor aria-hidden=true href=#本周任务>#</a></h2><p>本周主要还是做计组知识图谱课题。以下为本周具体进度：</p><ul><li>把数据集分割为了训练集、验证集、测试集，对训练集以随机抽样进行进一步分割，以减小工作量</li><li>第一次标注采用预标注，之后用词典不断迭代标注</li><li>完成了第一份训练集1000条和验证集、测试集的标注，总共2000余条语料，用新标签PCC 标注</li><li>用 Adaseq 训练模型，但是遇到了诸多问题，尚未解决</li></ul><h2 id=课题下周改进>课题下周改进<a hidden class=anchor aria-hidden=true href=#课题下周改进>#</a></h2><ul><li>PCC 标签过于笼统，下周对标签进一步细化，并去除少部分无用标签</li><li>弃用 Adaseq ，国产的玩意是真不如 Transformers 好用</li><li>找一个新的预训练模型进行训练（其实已经找到了）</li><li>多模型对比训练</li></ul><p>以上修改标签预计最少3天，用 Transformers 训练最少2天，多模型能做多少算多少</p><h2 id=本周反思>本周反思<a hidden class=anchor aria-hidden=true href=#本周反思>#</a></h2><ul><li>每一步的数据尽可能的量化并记录，方便日后发论文</li><li>对课题各个工作部分理解浅显，应当在阅读部分文献后再进行</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=http://localhost:1313/tags/weeklyworking/>WeeklyWorking</a></li></ul><nav class=paginav><a class=prev href=http://localhost:1313/posts/papernotes/%E5%9F%BA%E4%BA%8E%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BB%E8%8D%AF%E8%AF%B4%E6%98%8E%E4%B9%A6%E5%AE%9E%E4%BD%93%E6%8A%BD%E5%8F%96%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6_%E9%99%88%E4%BB%B2%E6%B0%B8/><span class=title>« Prev</span><br><span>《基于预训练模型的医药说明书实体抽取方法研究》笔记</span>
+</a><a class=next href=http://localhost:1313/posts/papernotes/%E4%B8%AD%E6%96%87%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB%E7%A0%94%E7%A9%B6%E7%BB%BC%E8%BF%B0_%E8%B5%B5%E7%BB%A7%E8%B4%B5/><span class=title>Next »</span><br><span>《中文命名实体识别研究综述》笔记</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2025 <a href=http://localhost:1313/>KurongBlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

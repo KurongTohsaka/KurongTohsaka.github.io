@@ -1,0 +1,66 @@
+<!doctype html><html lang=en dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>残差连接 | KurongBlog</title>
+<meta name=keywords content="NLP"><meta name=description content="原理
+残差连接（Residual Connection）最早由何凯明等人在2015年提出的 ResNet 中引入。ResNet 通过引入残差块，使得网络可以扩展到更深的层数，并在 ImageNet 比赛中取得了显著的成功。
+残差连接的核心思想是引入跳跃连接，将输入信号直接传递到网络的后续层，从而构建了一条捷径路径。这种结构允许网络学习输入和输出之间的残差，而不是直接学习输出。
+残差连接可以表示为：
+
+$$
+y=F(x)+x
+$$
+其中，$x$ 表示输入，$F(x)$ 表示经过非线性变换后的输出。
+作用
+
+解决梯度消失和梯度爆炸问题
+提高训练效率
+增强模型的泛化性能
+
+例子
+下图是 Transformer 论文中的模型结构图。
+
+
+可以看到在每一个 Attention Layer 中都有一个 Add ，原输入和 Multi-head 变换后的输出做了一个简单的相加操作，而这就是所谓的残差连接。"><meta name=author content="Kurong"><link rel=canonical href=http://localhost:1313/posts/nlp/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=http://localhost:1313/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/nlp/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><meta property="og:title" content="残差连接"><meta property="og:description" content="原理
+残差连接（Residual Connection）最早由何凯明等人在2015年提出的 ResNet 中引入。ResNet 通过引入残差块，使得网络可以扩展到更深的层数，并在 ImageNet 比赛中取得了显著的成功。
+残差连接的核心思想是引入跳跃连接，将输入信号直接传递到网络的后续层，从而构建了一条捷径路径。这种结构允许网络学习输入和输出之间的残差，而不是直接学习输出。
+残差连接可以表示为：
+
+$$
+y=F(x)+x
+$$
+其中，$x$ 表示输入，$F(x)$ 表示经过非线性变换后的输出。
+作用
+
+解决梯度消失和梯度爆炸问题
+提高训练效率
+增强模型的泛化性能
+
+例子
+下图是 Transformer 论文中的模型结构图。
+
+
+可以看到在每一个 Attention Layer 中都有一个 Add ，原输入和 Multi-head 变换后的输出做了一个简单的相加操作，而这就是所谓的残差连接。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/posts/nlp/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5/"><meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-08-11T00:00:00+00:00"><meta property="article:modified_time" content="2024-08-11T00:00:00+00:00"><meta property="og:site_name" content="KurongBlog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="残差连接"><meta name=twitter:description content="原理
+残差连接（Residual Connection）最早由何凯明等人在2015年提出的 ResNet 中引入。ResNet 通过引入残差块，使得网络可以扩展到更深的层数，并在 ImageNet 比赛中取得了显著的成功。
+残差连接的核心思想是引入跳跃连接，将输入信号直接传递到网络的后续层，从而构建了一条捷径路径。这种结构允许网络学习输入和输出之间的残差，而不是直接学习输出。
+残差连接可以表示为：
+
+$$
+y=F(x)+x
+$$
+其中，$x$ 表示输入，$F(x)$ 表示经过非线性变换后的输出。
+作用
+
+解决梯度消失和梯度爆炸问题
+提高训练效率
+增强模型的泛化性能
+
+例子
+下图是 Transformer 论文中的模型结构图。
+
+
+可以看到在每一个 Attention Layer 中都有一个 Add ，原输入和 Multi-head 变换后的输出做了一个简单的相加操作，而这就是所谓的残差连接。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"残差连接","item":"http://localhost:1313/posts/nlp/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"残差连接","name":"残差连接","description":"原理 残差连接（Residual Connection）最早由何凯明等人在2015年提出的 ResNet 中引入。ResNet 通过引入残差块，使得网络可以扩展到更深的层数，并在 ImageNet 比赛中取得了显著的成功。\n残差连接的核心思想是引入跳跃连接，将输入信号直接传递到网络的后续层，从而构建了一条捷径路径。这种结构允许网络学习输入和输出之间的残差，而不是直接学习输出。\n残差连接可以表示为： $$ y=F(x)+x $$ 其中，$x$ 表示输入，$F(x)$ 表示经过非线性变换后的输出。\n作用 解决梯度消失和梯度爆炸问题 提高训练效率 增强模型的泛化性能 例子 下图是 Transformer 论文中的模型结构图。\n可以看到在每一个 Attention Layer 中都有一个 Add ，原输入和 Multi-head 变换后的输出做了一个简单的相加操作，而这就是所谓的残差连接。\n","keywords":["NLP"],"articleBody":"原理 残差连接（Residual Connection）最早由何凯明等人在2015年提出的 ResNet 中引入。ResNet 通过引入残差块，使得网络可以扩展到更深的层数，并在 ImageNet 比赛中取得了显著的成功。\n残差连接的核心思想是引入跳跃连接，将输入信号直接传递到网络的后续层，从而构建了一条捷径路径。这种结构允许网络学习输入和输出之间的残差，而不是直接学习输出。\n残差连接可以表示为： $$ y=F(x)+x $$ 其中，$x$ 表示输入，$F(x)$ 表示经过非线性变换后的输出。\n作用 解决梯度消失和梯度爆炸问题 提高训练效率 增强模型的泛化性能 例子 下图是 Transformer 论文中的模型结构图。\n可以看到在每一个 Attention Layer 中都有一个 Add ，原输入和 Multi-head 变换后的输出做了一个简单的相加操作，而这就是所谓的残差连接。\n","wordCount":"32","inLanguage":"en","image":"http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2024-08-11T00:00:00Z","dateModified":"2024-08-11T00:00:00Z","author":{"@type":"Person","name":"Kurong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/nlp/%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5/"},"publisher":{"@type":"Organization","name":"KurongBlog","logo":{"@type":"ImageObject","url":"http://localhost:1313/%3Clink%20/%20abs%20url%3E"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="Home (Alt + H)"><img src=http://localhost:1313/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=http://localhost:1313/categories/ title=categories><span>categories</span></a></li><li><a href=http://localhost:1313/tags/ title=tags><span>tags</span></a></li><li><a href=http://localhost:1313/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://localhost:1313/>Home</a>&nbsp;»&nbsp;<a href=http://localhost:1313/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">残差连接</h1><div class=post-meta><span title='2024-08-11 00:00:00 +0000 UTC'>August 11, 2024</span>&nbsp;·&nbsp;Kurong&nbsp;|&nbsp;<a href=https://github.com/KurongTohsaka/KurongTohsaka.github.io/content/posts/NLP/%e6%ae%8b%e5%b7%ae%e8%bf%9e%e6%8e%a5.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#原理>原理</a></li><li><a href=#作用>作用</a></li><li><a href=#例子>例子</a></li></ul></nav></div></details></div><div class=post-content><h2 id=原理>原理<a hidden class=anchor aria-hidden=true href=#原理>#</a></h2><p>残差连接（Residual Connection）最早由何凯明等人在2015年提出的 ResNet 中引入。ResNet 通过引入残差块，使得网络可以扩展到更深的层数，并在 ImageNet 比赛中取得了显著的成功。</p><p>残差连接的核心思想是引入跳跃连接，将输入信号直接传递到网络的后续层，从而构建了一条捷径路径。这种结构允许网络学习输入和输出之间的残差，而不是直接学习输出。</p><p>残差连接可以表示为：</p>$$
+y=F(x)+x
+$$<p>其中，$x$ 表示输入，$F(x)$ 表示经过非线性变换后的输出。</p><h2 id=作用>作用<a hidden class=anchor aria-hidden=true href=#作用>#</a></h2><ul><li>解决梯度消失和梯度爆炸问题</li><li>提高训练效率</li><li>增强模型的泛化性能</li></ul><h2 id=例子>例子<a hidden class=anchor aria-hidden=true href=#例子>#</a></h2><p>下图是 Transformer 论文中的模型结构图。</p><p><img loading=lazy src=/img/NLP/img14.png alt></p><p>可以看到在每一个 Attention Layer 中都有一个 <code>Add</code> ，原输入和 Multi-head 变换后的输出做了一个简单的相加操作，而这就是所谓的残差连接。</p></div><footer class=post-footer><ul class=post-tags><li><a href=http://localhost:1313/tags/nlp/>NLP</a></li></ul><nav class=paginav><a class=prev href=http://localhost:1313/posts/nlp/encoder-decoder/><span class=title>« Prev</span><br><span>Encoder-Decoder 架构</span>
+</a><a class=next href=http://localhost:1313/posts/papernotes/%E5%9F%BA%E4%BA%8Emrc%E7%9A%84%E8%AE%BE%E5%A4%87%E6%95%85%E9%9A%9C%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95_%E5%BE%90%E9%B9%8F/><span class=title>Next »</span><br><span>《基于MRC的设备故障命名实体识别方法》笔记</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2025 <a href=http://localhost:1313/>KurongBlog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

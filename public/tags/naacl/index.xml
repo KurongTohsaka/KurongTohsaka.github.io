@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NAACL on KurongBlog</title>
+    <link>http://localhost:1313/tags/naacl/</link>
+    <description>Recent content in NAACL on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/naacl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《Efficient Information Extraction in Few-Shot Relation Classification through Contrastive Representation Learning》笔记</title>
+      <link>http://localhost:1313/posts/papernotes/efficient_information_extraction_in_few-shot_relation_classification_through_contrastive_representation_learning/</link>
+      <pubDate>Thu, 19 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/papernotes/efficient_information_extraction_in_few-shot_relation_classification_through_contrastive_representation_learning/</guid>
+      <description>&lt;h2 id=&#34;link&#34;&gt;Link&lt;/h2&gt;
+&lt;p&gt;[&lt;a href=&#34;https://arxiv.org/abs/2403.16543&#34;&gt;2403.16543] Efficient Information Extraction in Few-Shot Relation Classification through Contrastive Representation Learning (arxiv.org)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Accepted NAACL 2024.&lt;/p&gt;
+&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;关系分类（Relation Classification, RC）是关系抽取中的一个重要子任务，主要关注在给定文本上下文中识别实体对之间的关系类型。为了实现这一目标，RC 模型必须从句子中提取丰富的信息，包括上下文线索、实体属性和关系特征。虽然语言模型在提取文本表示方面重要，但它们在句子表示中的向量空间使用并不理想。为了改进这一点，最近的研究通过各种技术增强了句子表示。&lt;/p&gt;
+&lt;p&gt;关系抽取在许多关系类型上面临数据有限的挑战，并且数据获取成本不成比例。为了解决这一挑战，通过小样本 RC 训练模型以快速适应新关系类型，仅使用少量标记示例。&lt;/p&gt;
+&lt;p&gt;由于区分各种关系类型的内在复杂性，RC 应用通常将实体标记令牌的表示作为句子表示。最近的工作在少样本 RC 中使用对比学习以获得更具辨别力的表示。此外，研究表明，通过提示使用 [MASK] 令牌表示句子可以改善句子表示。&lt;/p&gt;
+&lt;p&gt;本文贡献如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;新方法&lt;/strong&gt;：我们引入了一种使用对比学习对齐多重表示的方法，用于小样本关系分类。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;适应性&lt;/strong&gt;：我们的方法能够适应各种资源限制，并扩展到包括关系描述在内的额外信息源。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源效率&lt;/strong&gt;：我们强调了该方法的资源效率，提升了在低资源环境下的性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;实体标记：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;实体标记技术通过在输入句子中添加标记来指示文本中的实体。例如，句子“他在2006年世界杯上为墨西哥效力”可以被标记为“他在[E1S]2006年世界杯[E1E]上为[E2S]墨西哥[E2E]效力”。&lt;/li&gt;
+&lt;li&gt;在 BERT 编码器中，句子的表示是通过连接实体开始标记的表示来构建的。这种方法增强了模型对实体及其关系的理解。&lt;/li&gt;
+&lt;li&gt;这种技术有助于模型更好地捕捉句子中的上下文线索、实体属性和关系特征，从而提高关系分类的准确性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;对比学习：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对比学习是一种用于增强模型表示能力的方法，特别是在少样本关系分类任务中。&lt;/li&gt;
+&lt;li&gt;对比学习的主要目标是使相似的样本在表示空间中更接近，而使不相似的样本更远离。&lt;/li&gt;
+&lt;li&gt;在训练过程中，对比学习会创建正样本对（相似样本）和负样本对（不相似样本），并通过优化模型使正样本对的表示更接近，负样本对的表示更远。而表现在损失函数中，对比学习的损失函数旨在最大化同一输入句子不同表示之间的相似性，同时最小化不同输入句子表示之间的相似性。&lt;/li&gt;
+&lt;li&gt;在少样本关系分类中，对比学习通过对齐多个句子表示（如[CLS]标记、[MASK]标记和实体标记）来提取补充的判别信息，从而提高模型在低资源环境中的表现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;approach&#34;&gt;Approach&lt;/h2&gt;
+&lt;p&gt;方法一览：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/img/PaperNotes/Efficient_Information_Extraction_in_Few-Shot_Relation_Classification_through_Contrastive_Representation_Learning/img1.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;sentence-representations&#34;&gt;Sentence Representations&lt;/h3&gt;
+&lt;p&gt;使用了&lt;strong&gt;平均池化&lt;/strong&gt;从BERT编码器生成各种句子表示。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过平均 token 表示来计算句子表示。同时，BERT-Base 编码器预训练期间使用 [CLS] 标记作为句子表示，捕捉整个输入序列的信息。实体标记技术通过在文本中标记实体来增强输入句子。这将输入增强为 $x = [x_0, …, [E1S], x_i, [E1E], …, x_n]$ 。句子表示通过连接实体开始标记表示 [E1S] 和 [E2S] 构建。&lt;/li&gt;
+&lt;li&gt;在 Prompt 方法中，RC 任务被重新表述为掩码语言建模问题。使用模板 T，每个输入被转换为包含至少一个 [MASK] 标记的 $x_{prompt} = T(x)$ 。这个掩码标记表示关系标签，并从上下文中预测，例如 $\hat x = [MASK]: x$​ 。&lt;/li&gt;
+&lt;li&gt;使用 dropout 掩码生成增强句子表示的方法。由于实体标记表示不适用于关系描述，我们使用提示和[CLS]表示，并使用不同的dropout掩码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Prompt-Mask Method&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

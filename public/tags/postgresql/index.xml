@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PostgreSQL on KurongBlog</title>
+    <link>http://localhost:1313/tags/postgresql/</link>
+    <description>Recent content in PostgreSQL on KurongBlog</description>
+    <image>
+      <title>KurongBlog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《PostgreSQL指南》记录</title>
+      <link>http://localhost:1313/posts/dailydev/postgresql%E6%8C%87%E5%8D%97%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dailydev/postgresql%E6%8C%87%E5%8D%97%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;h1 id=&#34;postgresql指南记录&#34;&gt;《PostgreSQL指南》记录&lt;/h1&gt;
+&lt;h2 id=&#34;why-choose-postgresql-or-not-mysql-&#34;&gt;Why choose PostgreSQL, or not MySQL ?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL 标准支持更好：PostgreSQL 对 SQL 标准的支持更加全面，而 MySQL 在某些情况下依赖非标准实现（如分组函数的行为）。&lt;/li&gt;
+&lt;li&gt;高级功能更强：
+&lt;ul&gt;
+&lt;li&gt;JOSNB 的性能更优：PostgreSQL 的 JSONB 数据类型支持更高效的索引和操作，而 MySQL 的 JSON 功能较为有限。&lt;/li&gt;
+&lt;li&gt;复杂查询：支持递归查询、窗口函数等复杂功能，而 MySQL 在这些方面功能较弱或支持有限。&lt;/li&gt;
+&lt;li&gt;并行查询：PostgreSQL 提供原生的并行查询能力，能够充分利用多核 CPU，而 MySQL 直到 8.0 版本才有一定程度的改进。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;扩展性更好：
+&lt;ul&gt;
+&lt;li&gt;PostgreSQL 支持自定义数据类型、函数和插件，更适合需要扩展或复杂业务逻辑的项目。&lt;/li&gt;
+&lt;li&gt;PostGIS 插件使其在地理信息领域表现出色，而 MySQL 的 GIS 功能相对简单。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;更高的性能和灵活性：
+&lt;ul&gt;
+&lt;li&gt;支持多种索引类型（如 GIN、GiST、BRIN 等），适合高性能全文搜索、地理查询等场景。&lt;/li&gt;
+&lt;li&gt;支持更复杂的查询优化器策略，适合复杂查询和数据分析。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;更可靠的数据一致性：
+&lt;ul&gt;
+&lt;li&gt;PostgreSQL 的 MVCC 机制更成熟，避免了常见的锁争用问题。&lt;/li&gt;
+&lt;li&gt;MySQL 的 MVCC 在某些情况下（如高并发）性能欠佳，容易导致死锁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PostgreSQL 适用于有复杂数据分析需求、地理信息系统、高并发和大数据量等应用场景，相比于 MySQL 的应用场景更复杂。&lt;/p&gt;
+&lt;h2 id=&#34;数据库集簇数据库和数据表&#34;&gt;数据库集簇、数据库和数据表&lt;/h2&gt;
+&lt;h3 id=&#34;数据库集簇的逻辑结构&#34;&gt;数据库集簇的逻辑结构&lt;/h3&gt;
+&lt;p&gt;数据库集簇是一组数据库的集合，由一个 PostgreSQL 服务器管理。而数据库是数据对象的集合，数据库对象用于存储或引用数据的数据结构。&lt;/p&gt;
+&lt;p&gt;在 PosgreSQL 中，所有的数据库对象都通过相应的对象标识符（oid）进行管理，这些标识都是无符号 4 字节整型。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
