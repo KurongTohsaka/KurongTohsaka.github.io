@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{ $paginator := .Paginate .Pages 50 }} <!-- 每页50条 -->
+{{ range $paginator.Pages }}
+   <!-- 原有标签展示代码 -->
+{{ end }}
+<!-- 添加分页导航 -->
+{{ template "_internal/pagination.html" . }}
+{{ end }}
