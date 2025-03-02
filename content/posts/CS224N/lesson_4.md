@@ -20,6 +20,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
+searchHidden: false
 ---
 
 ## Two views of linguistic structure

@@ -20,6 +20,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
+searchHidden: false
 ---
 
 ## Word structure and subword models

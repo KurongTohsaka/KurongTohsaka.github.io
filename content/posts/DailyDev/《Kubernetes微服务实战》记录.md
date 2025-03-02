@@ -20,6 +20,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
+searchHidden: false
 ---
 
 # 《Kubernetes微服务实战》记录

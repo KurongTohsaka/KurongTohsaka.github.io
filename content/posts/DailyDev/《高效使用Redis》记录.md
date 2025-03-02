@@ -20,6 +20,7 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
+searchHidden: false
 ---
 
 # 《高效使用Redis》记录
