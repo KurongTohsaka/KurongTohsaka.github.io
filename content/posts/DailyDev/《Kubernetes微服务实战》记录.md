@@ -2,7 +2,7 @@
 title: "《Kubernetes微服务实战》记录"
 date: 2025-01-25
 aliases: ["/Daily Dev"]
-tags: ["微服务", "Kubernetes"]
+tags: ["Micro Service", "Kubernetes"]
 categories: ["Daily Dev"]
 author: "Kurong"
 showToc: true

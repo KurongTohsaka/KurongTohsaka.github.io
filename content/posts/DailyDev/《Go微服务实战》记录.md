@@ -2,7 +2,7 @@
 title: "《Go微服务实战》记录"
 date: 2025-01-18
 aliases: ["/Daily Dev"]
-tags: ["Golang", "微服务"]
+tags: ["Golang", "Micro Service"]
 categories: ["Daily Dev"]
 author: "Kurong"
 showToc: true
