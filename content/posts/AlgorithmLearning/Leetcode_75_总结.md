@@ -168,3 +168,21 @@ searchHidden: false
  
 
 ## Backtrace
+
+- 17 电话号码的字母组合：回溯解法，这里的回溯是 DFS 写法。
+- 216 组合总和3：回溯解法，还是 DFS 写法。 这里需要注意当递归终止条件触发时，加入的应该是 combination 的复制（因为该变量还需要变更）。 每次递归都要从 start 开始依次遍历，这里有一个剪枝条件 `sum+i > n` 。
+
+
+
+## DynamicProgramming - 1D
+
+- 198 打家劫舍：状态转移方程 `cache[i] = max(cache[i-1], cache[i-2]+nums[i-1])` ，`cache[i]` 表示到第i个房屋为止所能偷取的最大金额，`cache[i-1]` 表示相邻房屋的最大值，不加 `nums[i-1]` 因为相邻房屋不能连续偷取。
+- 746 使用最小花费爬楼梯：本题是 0-1 背包的变形，0-1 对应的两个选择是登一级或登两级阶梯。楼梯为 `0~n-1` 级，楼梯顶对应 `n` 级。设 `cache[n]` 表示直到第 n 级阶梯的最小花费，`costs[n]` 表示从第 n 级阶梯向上爬花费。则 `cache[0], cache[1]` 用于初始化，从 `cache[2]` 开始计算：`cache[n]=min{cache[n-1]+costs[n-1], cache[n-2]+costs[n-2]}`
+- 790 多米诺和托米诺平铺：设 `f[i]` 表示平铺 `2*i` 面板的方案数，`f[n]` 即为所求。
+  - ![](https://pic.leetcode.cn/1668157188-nBzesC-790-5.png)
+  - 先找到上图中的规律，然后将递推式与 `1e9 + 7` 取模运算得到答案。
+- 1137 第N个泰波那契数：前缀和，动态规划的前置步骤。
+
+
+
+## DynamicProgramming - MultiD
