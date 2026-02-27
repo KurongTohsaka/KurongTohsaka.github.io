@@ -36,15 +36,13 @@ https://doc.embedfire.com/linux/rk3588/quick_start/zh/latest/quick_start/lubanca
 
 1. Recovery/MASKROM
    - 注意这两种模式在LubanCat5下有实体按键的，具体见讲解链接。
-   - 烧录需要用到USB OTG，注意不要把线插错位置。
+   - 烧录需要用到OTG（在板子上是一个type-c接口），注意不要把线插错位置。
    - 之后操作可以继续按照指导文档进行。
 2. SD卡
-   - 这种方式就是将系统镜像烧录到SD卡中，私认为这种方式是最方便、最快的。
+   - 这种方式就是将系统镜像烧录到SD卡中，这种方案是临时方案。
    - 然后插到TF卡槽中即可。
 
-不管哪种，启动后可能会发现之前的MIPI屏无法使用了，这是因为设备树没有启动：https://doc.embedfire.com/linux/rk356x/quick_start/zh/latest/quick_start/screen/screen.html#id11。可以暂时用HDMI显示器代替。
-
-此外所有有关屏幕的设置也都可以在上面的链接找到，在此不再赘述。
+不管哪种，启动后可能会发现之前的MIPI屏无法使用了，这是因为设备树没有启动，具体配置可以按文档操作：https://doc.embedfire.com/linux/rk356x/quick_start/zh/latest/quick_start/screen/screen.html#id11。可以暂时用HDMI连显示器代替。此外所有有关屏幕的设置也都可以在上面的链接找到，在此不再赘述。
 
 
 
@@ -81,6 +79,10 @@ https://doc.embedfire.com/linux/rk3588/quick_start/zh/latest/quick_start/lubanca
    sudo install -m 0755 -d /etc/apt/keyrings
    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   echo \
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    
    # Update the index again
    sudo apt-get update
